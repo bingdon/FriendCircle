@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FriendPlace</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="back">返回</string>
+    <string name="title_activity_friend_place">朋友圈</string>
+    <string name="todaycan_count">今日访客</string>
+    <string name="total_scan_count">总浏览量</string>
+
+</resources>
