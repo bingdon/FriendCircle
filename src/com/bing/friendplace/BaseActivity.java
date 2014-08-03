@@ -16,8 +16,13 @@ public class BaseActivity extends Activity {
 	
 	protected ImageView rightImageView;
 	
+	protected Activity context;
+	
 	
 	protected void OnInitView(){
+		
+		context=this;
+		
 		leftTextView=(TextView)findViewById(R.id.left_txt);
 		rightTextView=(TextView)findViewById(R.id.right_title_txt);
 		rightImageView=(ImageView)findViewById(R.id.right_title_img);

@@ -14,17 +14,24 @@ import com.bing.support.http.HttpMethod;
 import com.bing.support.http.JsonUtils;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
+import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class FriendPlaceActivity extends BaseListActivity {
+public class FriendPlaceActivity extends BaseListActivity implements OnRefreshListener {
 
 	private static final String TAG = FriendPlaceActivity.class.getSimpleName();
 
 	private View headView;
 
 	private List<MoodBean> list = new ArrayList<>();
+	
+	private String moodid="";
 
 	@Override
 	protected void OnInitView() {
@@ -36,7 +43,29 @@ public class FriendPlaceActivity extends BaseListActivity {
 
 		mBingListView.addHeaderView(headView);
 
+		circleAdapter=new CircleAdapter(list, context);
+		mBingListView.setAdapter(circleAdapter);
 		OnReshData();
+		
+		mSwipeRefreshLayout.setOnRefreshListener(this);
+		
+		
+		mBingListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				if (position>0) {
+					loopMoodInfo(list.get(position-1));
+				}
+				
+			}
+		});
+		
+		
+		rightImageView.setOnClickListener(listener);
+		
 
 	}
 
@@ -62,7 +91,7 @@ public class FriendPlaceActivity extends BaseListActivity {
 	@Override
 	protected void OnReshData() {
 		// TODO Auto-generated method stub
-		HttpMethod.getOurMood("6", responseHandler);
+		HttpMethod.getCircleMoods("6", responseHandler);
 	}
 
 	private JsonHttpResponseHandler responseHandler = new JsonHttpResponseHandler() {
@@ -87,12 +116,14 @@ public class FriendPlaceActivity extends BaseListActivity {
 		public void onFinish() {
 			// TODO Auto-generated method stub
 			super.onFinish();
+			mSwipeRefreshLayout.setRefreshing(false);
 		}
 
 		@Override
 		public void onStart() {
 			// TODO Auto-generated method stub
 			super.onStart();
+			mSwipeRefreshLayout.setRefreshing(true);
 		}
 
 	};
@@ -108,15 +139,50 @@ public class FriendPlaceActivity extends BaseListActivity {
 
 					list.add(moodBean);
 				}
+				
+				circleAdapter.notifyDataSetChanged();
+				
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 
-		AppLog.i(TAG, "大小:"
-				+ list.get(1).getUser().getUsername());
+//		AppLog.i(TAG, "大小:"
+//				+ list.get(1).getUser().getUsername());
 
 	}
 
+	@Override
+	public void onRefresh() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+	private void loopMoodInfo(MoodBean moodBean){
+		Intent intent=new Intent();
+		intent.putExtra("moodid", moodid);
+		intent.putExtra("moodBean", moodBean);
+		intent.setClass(context, MoodInfoActivity.class);
+		startActivity(intent);
+	}
+	
+	private OnClickListener listener=new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			switch (v.getId()) {
+			case R.id.right_title_img:
+				startActivity(new Intent(context, PublishActivity.class));
+				break;
+
+			default:
+				break;
+			}
+		}
+	};
+	
 }

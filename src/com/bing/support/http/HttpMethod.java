@@ -13,7 +13,11 @@ public class HttpMethod {
 	private static final String GET_CIRCLE_INIO = BASE_URL_ + "myCircles";
 
 	private static final String GET_OUR_MOOOD = BASE_URL_ + "userMoods";
+	
+	public static final String IMAG_URL = BASE_URL + "/upload";
 
+	public static final String CIRCLE_MOOD=BASE_URL_+"userCircleMoods";
+	
 	private static AsyncHttpClient client = new AsyncHttpClient();
 
 	public static void getMyCircle(String uid,
@@ -29,4 +33,10 @@ public class HttpMethod {
 		client.post(GET_OUR_MOOOD, params, responseHandler);
 	}
 
+	public static void getCircleMoods(String uid, AsyncHttpResponseHandler responseHandler) {
+		RequestParams params=new RequestParams();
+		params.put("uid", uid);
+		client.post(CIRCLE_MOOD, params, responseHandler);
+	}
+	
 }

@@ -10,8 +10,5 @@
     </style>
 
     
-     <style name="Bingnotitle" parent="@android:style/Theme.Holo.NoActionBar">
-         <!-- API 14 theme customizations can go here. -->
-    </style>
     
 </resources>

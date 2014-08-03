@@ -9,4 +9,27 @@
     <string name="todaycan_count">今日访客</string>
     <string name="total_scan_count">总浏览量</string>
 
+    <!-- time -->
+    <string name="year">年前</string>
+    <string name="month">月前</string>
+    <string name="day">天前</string>
+    <string name="hour">小时前</string>
+    <string name="min">分钟前</string>
+    <string name="sec">秒前</string>
+    <string name="justnow">刚刚</string>
+    <string name="yesterday">昨天</string>
+    <string name="the_day_before_yesterday">前天</string>
+    <string name="today">今天</string>
+    <string name="date_format">M月d日 HH:mm</string>
+    <string name="year_format">yyyy年 M月d日 HH:mm</string>
+    <string name="publish_content_hint">描述内容</string>
+    <string name="cur_position">当前位置:</string>
+    <string name="visible_range">可见范围</string>
+    <string name="at_txt">提醒谁看</string>
+    <string name="publish">发布</string>
+    <string name="takepic">拍照</string>
+    <string name="photo">相册</string>
+    <string name="secphoto">选择图片</string>
+    <string name="cant_insert_album">发生意外，无法写入相册</string>
+
 </resources>

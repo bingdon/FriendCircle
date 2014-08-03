@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Name_style"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="TextView" />
+
+    <com.bing.ui.custmeview.BingGridView
+        android:id="@+id/picGridView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="3" >
+    </com.bing.ui.custmeview.BingGridView>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        layout="@layout/time2coment" />
+
+    <ListView
+        android:id="@+id/comment_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp" >
+
+    </ListView>
+
+</LinearLayout>

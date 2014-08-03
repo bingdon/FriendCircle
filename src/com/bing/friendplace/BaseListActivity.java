@@ -12,6 +12,8 @@ public abstract class BaseListActivity extends BaseActivity {
 	
 	protected BingListView mBingListView;
 	
+	protected CircleAdapter circleAdapter;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

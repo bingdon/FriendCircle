@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <EditText
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/publish_content_hint" >
+
+        <requestFocus />
+    </EditText>
+
+    <com.bing.ui.custmeview.BingGridView
+        android:id="@+id/pic_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="2dp"
+        android:numColumns="4" >
+
+    </com.bing.ui.custmeview.BingGridView>
+
+    <LinearLayout
+        android:id="@+id/position_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/list_sec"
+        android:clickable="true" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_postion"
+            android:gravity="center"
+            android:text="@string/cur_position" />
+
+        <TextView
+            android:id="@+id/position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/visible_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/list_sec"
+        android:clickable="true" >
+
+        <TextView
+            android:id="@+id/a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_visible_range"
+            android:gravity="center"
+            android:text="@string/visible_range" />
+
+        <TextView
+            android:id="@+id/visible_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="1dp"
+            android:layout_toRightOf="@+id/a"
+            android:text="" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/list_arrow" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/at_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/list_sec"
+        android:clickable="true" >
+
+        <TextView
+             android:id="@+id/b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_at"
+            android:gravity="center"
+            android:text="@string/at_txt" />
+
+        <TextView
+            android:id="@+id/at_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="1dp"
+            android:layout_toRightOf="@+id/b"
+            android:text="" />
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/list_arrow" />
+        
+    </RelativeLayout>
+
+</merge>
