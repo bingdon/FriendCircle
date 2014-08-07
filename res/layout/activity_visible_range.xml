@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VisibleRangeActivity" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        layout="@layout/actionbar_layer" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp" >
+
+        <RadioButton
+            android:id="@+id/publicc"
+            style="@style/MRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/list_sec"
+            android:checked="true"
+            android:paddingLeft="50dp"
+            android:text="@string/publicc" />
+
+        <RadioButton
+            android:id="@+id/privatee"
+            style="@style/MRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/list_sec"
+            android:paddingLeft="50dp"
+            android:text="@string/privatee" />
+    </RadioGroup>
+
+</FrameLayout>

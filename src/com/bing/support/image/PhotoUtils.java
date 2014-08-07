@@ -1,5 +1,7 @@
 package com.bing.support.image;
 
+import java.io.ByteArrayOutputStream;
+
 import com.bing.friendplace.R;
 
 import android.app.Activity;
@@ -12,6 +14,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.widget.Toast;
 
 public class PhotoUtils {
@@ -22,7 +25,7 @@ public class PhotoUtils {
 		BitmapFactory.decodeFile(filePath, options);
 
 		// Calculate inSampleSize
-		options.inSampleSize = calculateInSampleSize(options, 400, 400);
+		options.inSampleSize = calculateInSampleSize(options, 400, 480);
 
 		options.inJustDecodeBounds = false;
 
@@ -167,5 +170,24 @@ public class PhotoUtils {
 			dlg.show();
 		}
 	
+		
+		/**
+		 * °Ñbitmap×ª»»³ÉString
+		 * 
+		 * @param filePath
+		 * @return
+		 */
+		public static synchronized String bitmapNCutToString(String filePath) {
+
+			Bitmap bm = getNoCutSmallBitmap(filePath);
+
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			bm.compress(Bitmap.CompressFormat.PNG, 40, baos);
+			byte[] b = baos.toByteArray();
+
+			return Base64.encodeToString(b, Base64.DEFAULT);
+
+		}
+		
 
 }

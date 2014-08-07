@@ -9,6 +9,9 @@
         <!-- API 14 theme customizations can go here. -->
     </style>
 
+    <style name="Bingnotitle" parent="AppBaseTheme">
+         <item name="android:windowNoTitle">true</item>  
+    </style>
     
     
 </resources>

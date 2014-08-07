@@ -23,7 +23,45 @@ public class MoodBean implements Serializable {
 	
 	private UserBean user;
 	
+	private int viewlevel;
 	
+	private int collectcount;
+	
+	private int laudcount;
+	
+	private int type;
+
+	public int getViewlevel() {
+		return viewlevel;
+	}
+
+	public void setViewlevel(int viewlevel) {
+		this.viewlevel = viewlevel;
+	}
+
+	public int getCollectcount() {
+		return collectcount;
+	}
+
+	public void setCollectcount(int collectcount) {
+		this.collectcount = collectcount;
+	}
+
+	public int getLaudcount() {
+		return laudcount;
+	}
+
+	public void setLaudcount(int laudcount) {
+		this.laudcount = laudcount;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
 
 	public String getId() {
 		return id;

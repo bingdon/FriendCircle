@@ -14,6 +14,8 @@ public abstract class BaseListActivity extends BaseActivity {
 	
 	protected CircleAdapter circleAdapter;
 	
+	protected boolean isLoading=false;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

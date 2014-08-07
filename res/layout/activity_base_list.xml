@@ -24,4 +24,11 @@
         </com.bing.ui.custmeview.BingListView>
     </android.support.v4.widget.SwipeRefreshLayout>
 
+    <include
+        android:id="@+id/send_v"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        layout="@layout/send_v" />
+
 </FrameLayout>

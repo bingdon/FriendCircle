@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.bing.bean.CommentBean;
+import com.bing.bean.FriendBean;
 import com.bing.bean.MoodBean;
 import com.bing.bean.UserBean;
 import com.bing.support.debug.AppLog;
@@ -50,17 +51,28 @@ public class JsonUtils {
 		}
 		return commentBean;
 	}
-	
-	public static UserBean getUserBean(JSONObject object){
-		UserBean userBean=new UserBean();
+
+	public static UserBean getUserBean(JSONObject object) {
+		UserBean userBean = new UserBean();
 		try {
-			userBean=new Gson().fromJson(object.toString(), UserBean.class);
+			userBean = new Gson().fromJson(object.toString(), UserBean.class);
 		} catch (Exception e) {
 			// TODO: handle exception
 			AppLog.e(TAG, "解析出错");
 		}
 		return userBean;
 	}
-	
+
+	public static FriendBean getFriendBean(JSONObject object) {
+		FriendBean friendBean = new FriendBean();
+		try {
+			friendBean = new Gson().fromJson(object.toString(),
+					FriendBean.class);
+		} catch (Exception e) {
+			// TODO: handle exception
+			AppLog.e(TAG, "解析出错");
+		}
+		return friendBean;
+	}
 
 }

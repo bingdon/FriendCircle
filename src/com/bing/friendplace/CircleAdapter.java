@@ -7,12 +7,18 @@ import com.bing.support.time.TimeUtility;
 import com.bing.ui.custmeview.BingGridView;
 
 import android.content.Context;
+import android.support.v4.view.ViewPager.LayoutParams;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 public class CircleAdapter extends BaseAdapter {
@@ -23,6 +29,20 @@ public class CircleAdapter extends BaseAdapter {
 
 	private LayoutInflater inflater;
 
+	private PopupWindow popupWindow;
+
+	private View popView;
+
+	private ImageView comment;
+
+	private ImageView laun;
+
+	int[] location = new int[2];
+
+	private CircleOnClickListener listener;
+	
+	private int realPostion=0;
+
 	public CircleAdapter(List<MoodBean> list, Context context) {
 
 		this.list = list;
@@ -31,6 +51,19 @@ public class CircleAdapter extends BaseAdapter {
 
 		this.context = context;
 
+		popView = inflater.inflate(R.layout.pop_view, null);
+		comment = (ImageView) popView.findViewById(R.id.laun);
+		laun = (ImageView) popView.findViewById(R.id.comment);
+		popupWindow = new PopupWindow(popView, LayoutParams.WRAP_CONTENT,
+				LayoutParams.WRAP_CONTENT);
+		popupWindow.setFocusable(false);
+		comment.setFocusable(false);
+		laun.setFocusable(false);
+
+	}
+
+	public void setOnClickLitener(CircleOnClickListener listener) {
+		this.listener = listener;
 	}
 
 	@Override
@@ -54,6 +87,7 @@ public class CircleAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
+		final int adapterPostion = position;
 		ViewHolder holder;
 		if (convertView == null) {
 			holder = new ViewHolder();
@@ -68,16 +102,18 @@ public class CircleAdapter extends BaseAdapter {
 					.findViewById(R.id.comment_list);
 			holder.username = (TextView) convertView
 					.findViewById(R.id.username);
+			holder.commentmenu = (ImageView) convertView
+					.findViewById(R.id.comment);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		
+
 		holder.bingGridView.setFocusable(false);
 		holder.bingGridView.setFocusableInTouchMode(false);
 		holder.comments.setFocusable(false);
 		holder.comments.setFocusableInTouchMode(false);
-		
+
 		holder.username
 				.setText("" + list.get(position).getUser().getUsername());
 		holder.time.setText(""
@@ -89,6 +125,67 @@ public class CircleAdapter extends BaseAdapter {
 		holder.commentsAdapter = new CommentsAdapter(list.get(position)
 				.getComment(), context);
 		holder.comments.setAdapter(holder.commentsAdapter);
+
+		holder.commentmenu.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				int width = popView.getWidth();
+				realPostion=adapterPostion;
+				if (width == 0) {
+					width = 254;
+				}
+
+				if (popupWindow.isShowing()) {
+					popupWindow.dismiss();
+					v.getLocationOnScreen(location);
+					popupWindow.showAtLocation(v, Gravity.NO_GRAVITY,
+							location[0] - width, location[1]);
+				} else {
+					v.getLocationOnScreen(location);
+					popupWindow.showAtLocation(v, Gravity.NO_GRAVITY,
+							location[0] - width, location[1]);
+				}
+			}
+		});
+
+		convertView.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				if (popupWindow.isShowing()) {
+					popupWindow.dismiss();
+					return true;
+				} else {
+					return false;
+				}
+			}
+		});
+
+		comment.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (listener != null) {
+					listener.onCommentClick(realPostion);
+				}
+			}
+		});
+
+		laun.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (listener != null) {
+					listener.onLaunClick(realPostion);
+				}
+			}
+		});
+
 		return convertView;
 	}
 
@@ -101,5 +198,15 @@ public class CircleAdapter extends BaseAdapter {
 		public ListView comments;
 		public GridAdapter gridAdapter;
 		public CommentsAdapter commentsAdapter;
+		public ImageView commentmenu;
 	}
+
+	public interface CircleOnClickListener {
+		public void onPicClick(int position);
+
+		public void onCommentClick(int position);
+
+		public void onLaunClick(int position);
+	}
+
 }

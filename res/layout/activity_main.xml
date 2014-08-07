@@ -17,4 +17,15 @@
         android:layout_marginBottom="184dp"
         android:text="进入朋友圈" />
 
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_marginBottom="49dp"
+        android:layout_marginLeft="25dp"
+        style="@style/defineCheckBox"
+        android:text=" " />
+
 </RelativeLayout>
