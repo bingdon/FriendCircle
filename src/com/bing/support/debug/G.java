@@ -1,7 +1,7 @@
 package com.bing.support.debug;
 
-public interface G {
+public class G {
 
-	public static final String uid="6";
+	public static  String uid="6";
 	
 }

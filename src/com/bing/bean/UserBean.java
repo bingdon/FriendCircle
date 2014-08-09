@@ -13,6 +13,17 @@ public class UserBean implements Serializable {
 	
 	private String username;
 
+	private String headimage;
+	
+	
+	public String getHeadimage() {
+		return headimage;
+	}
+
+	public void setHeadimage(String headimage) {
+		this.headimage = headimage;
+	}
+
 	public String getUid() {
 		return uid;
 	}

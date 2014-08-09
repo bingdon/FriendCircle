@@ -9,14 +9,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/Name_style"
-        android:text="TextView" />
+        android:text="" />
 
     <TextView
         android:id="@+id/content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="TextView" />
+        android:autoLink="web|phone|email"
+        android:text="" />
 
     <com.bing.ui.custmeview.BingGridView
         android:id="@+id/picGridView1"
@@ -35,6 +36,8 @@
         android:id="@+id/comment_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:divider="@color/transparent"
+        android:dividerHeight="1dp"
         android:layout_marginTop="5dp" >
 
     </ListView>

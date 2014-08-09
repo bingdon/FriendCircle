@@ -3,6 +3,7 @@ package com.bing.support.http;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.bing.bean.CircleBean;
 import com.bing.bean.CommentBean;
 import com.bing.bean.FriendBean;
 import com.bing.bean.MoodBean;
@@ -73,6 +74,18 @@ public class JsonUtils {
 			AppLog.e(TAG, "解析出错");
 		}
 		return friendBean;
+	}
+
+	public static CircleBean getCircleBean(JSONObject object) {
+		CircleBean circleBean = new CircleBean();
+		try {
+			circleBean = new Gson().fromJson(object.toString(),
+					CircleBean.class);
+		} catch (Exception e) {
+			// TODO: handle exception
+			AppLog.e(TAG, "解析出错");
+		}
+		return circleBean;
 	}
 
 }

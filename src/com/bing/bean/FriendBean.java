@@ -8,8 +8,6 @@ public class FriendBean extends UserBean {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String headimage;
-	
 	private String viewlevel;
 	
 	private String pinyin;
@@ -32,13 +30,6 @@ public class FriendBean extends UserBean {
 		this.pinyin = pinyin;
 	}
 
-	public String getHeadimage() {
-		return headimage;
-	}
-
-	public void setHeadimage(String headimage) {
-		this.headimage = headimage;
-	}
 
 	public String getViewlevel() {
 		return viewlevel;

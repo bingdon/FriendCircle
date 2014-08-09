@@ -46,5 +46,9 @@
     <string name="done">完成</string>
     <string name="say_hint">说点什么吧</string>
     <string name="nullcontentnotice">内容不能为空</string>
-
+    <string name="launed">已赞</string>
+	<string name="aboutme">与我相关</string>
+	<string name="delete">删除</string>
+	<string name="deletefailure">删除失败</string>
+	<string name="myabulm">我的相册</string>
 </resources>

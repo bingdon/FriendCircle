@@ -28,7 +28,6 @@
         android:id="@+id/content_pic"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/ic_launcher" />
+        android:layout_alignParentRight="true" />
 
 </RelativeLayout>

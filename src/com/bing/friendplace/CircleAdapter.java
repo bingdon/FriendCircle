@@ -3,7 +3,10 @@ package com.bing.friendplace;
 import java.util.List;
 
 import com.bing.bean.MoodBean;
+import com.bing.support.http.HttpMethod;
+import com.bing.support.image.LoadImageUtils;
 import com.bing.support.time.TimeUtility;
+import com.bing.support.view.ListUtils;
 import com.bing.ui.custmeview.BingGridView;
 
 import android.content.Context;
@@ -40,8 +43,8 @@ public class CircleAdapter extends BaseAdapter {
 	int[] location = new int[2];
 
 	private CircleOnClickListener listener;
-	
-	private int realPostion=0;
+
+	private int realPostion = 0;
 
 	public CircleAdapter(List<MoodBean> list, Context context) {
 
@@ -52,8 +55,8 @@ public class CircleAdapter extends BaseAdapter {
 		this.context = context;
 
 		popView = inflater.inflate(R.layout.pop_view, null);
-		comment = (ImageView) popView.findViewById(R.id.laun);
-		laun = (ImageView) popView.findViewById(R.id.comment);
+		comment = (ImageView) popView.findViewById(R.id.comment);
+		laun = (ImageView) popView.findViewById(R.id.laun);
 		popupWindow = new PopupWindow(popView, LayoutParams.WRAP_CONTENT,
 				LayoutParams.WRAP_CONTENT);
 		popupWindow.setFocusable(false);
@@ -104,6 +107,8 @@ public class CircleAdapter extends BaseAdapter {
 					.findViewById(R.id.username);
 			holder.commentmenu = (ImageView) convertView
 					.findViewById(R.id.comment);
+			holder.laundTextView = (TextView) convertView
+					.findViewById(R.id.laud_txt);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -113,6 +118,8 @@ public class CircleAdapter extends BaseAdapter {
 		holder.bingGridView.setFocusableInTouchMode(false);
 		holder.comments.setFocusable(false);
 		holder.comments.setFocusableInTouchMode(false);
+		holder.content.setFocusable(false);
+		holder.content.setFocusableInTouchMode(false);
 
 		holder.username
 				.setText("" + list.get(position).getUser().getUsername());
@@ -125,6 +132,16 @@ public class CircleAdapter extends BaseAdapter {
 		holder.commentsAdapter = new CommentsAdapter(list.get(position)
 				.getComment(), context);
 		holder.comments.setAdapter(holder.commentsAdapter);
+		ListUtils.setListViewHeightBasedOnChildren(holder.comments);
+
+		if (list.get(position).isIslaud()) {
+			holder.laundTextView.setVisibility(View.VISIBLE);
+		} else {
+			holder.laundTextView.setVisibility(View.INVISIBLE);
+		}
+
+		LoadImageUtils.loadOriginalImg(holder.userhead, HttpMethod.IMAG_URL
+				+ list.get(position).getUser().getHeadimage());
 
 		holder.commentmenu.setOnClickListener(new OnClickListener() {
 
@@ -132,7 +149,7 @@ public class CircleAdapter extends BaseAdapter {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				int width = popView.getWidth();
-				realPostion=adapterPostion;
+				realPostion = adapterPostion;
 				if (width == 0) {
 					width = 254;
 				}
@@ -169,6 +186,7 @@ public class CircleAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				popupWindow.dismiss();
 				if (listener != null) {
 					listener.onCommentClick(realPostion);
 				}
@@ -180,6 +198,7 @@ public class CircleAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				popupWindow.dismiss();
 				if (listener != null) {
 					listener.onLaunClick(realPostion);
 				}
@@ -199,6 +218,7 @@ public class CircleAdapter extends BaseAdapter {
 		public GridAdapter gridAdapter;
 		public CommentsAdapter commentsAdapter;
 		public ImageView commentmenu;
+		public TextView laundTextView;
 	}
 
 	public interface CircleOnClickListener {

@@ -12,6 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:id="@+id/convertView"
         layout="@layout/circle_ada" />
+
+    <include
+        android:id="@+id/send_v"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        layout="@layout/send_v"
+        android:visibility="gone" />
 
 </FrameLayout>

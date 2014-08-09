@@ -19,31 +19,46 @@
         android:src="@drawable/ic_launcher" />
 
     <include
+        android:id="@+id/cir_visit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginRight="16dp"
         android:layout_marginTop="140dp"
+        android:visibility="invisible"
         layout="@layout/user_head_label" />
 
     <FrameLayout
         android:id="@+id/notice_fra"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginTop="215dp"
-        android:clickable="true"
-        android:background="@drawable/notice_sec" >
+        android:background="@drawable/notice_sec"
+        android:clickable="true" 
+        android:visibility="invisible">
 
         <TextView
             android:id="@+id/notice_count"
+            style="@style/Small_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            style="@style/Small_style"
             android:background="@drawable/biao2"
-            android:text="1" />
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="18dp"
+            android:gravity="center"
+            android:text="@string/aboutme"
+            android:textColor="@color/gray"
+            android:textSize="12sp" />
 
     </FrameLayout>
 

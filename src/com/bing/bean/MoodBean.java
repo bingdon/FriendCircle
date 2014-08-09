@@ -30,6 +30,16 @@ public class MoodBean implements Serializable {
 	private int laudcount;
 	
 	private int type;
+	
+	private boolean islaud;
+	
+	public boolean isIslaud() {
+		return islaud;
+	}
+
+	public void setIslaud(boolean islaud) {
+		this.islaud = islaud;
+	}
 
 	public int getViewlevel() {
 		return viewlevel;

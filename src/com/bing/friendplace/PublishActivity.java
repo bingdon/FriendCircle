@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.view.Window;
@@ -44,6 +45,8 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 
 	private String content = "";
 	private String uids = "";
+
+	private String address = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +82,9 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 		super.OnInitData();
 		visible_txt.setText(""
 				+ VisibleParseUtils.getVisible(VisibleRangeActivity.type));
+
+		Intent intent = getIntent();
+		handelIntent(intent);
 	}
 
 	@Override
@@ -180,8 +186,14 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 
 	private void publishMood() {
 		content = editText.getText().toString();
+		editText.setError(null);
+		if (TextUtils.isEmpty(content)) {
+			editText.setError(getString(R.string.nullcontentnotice));
+			editText.requestFocus();
+			return;
+		}
 		HttpMethod.PostMood2Circle(G.uid, content, ""
-				+ VisibleRangeActivity.type, uids, responseHandler);
+				+ VisibleRangeActivity.type, uids, address, responseHandler);
 	}
 
 	private void loopVisibleActivity() {
@@ -287,6 +299,14 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 		}
 
 		@Override
+		public void onProgress(int bytesWritten, int totalSize) {
+			// TODO Auto-generated method stub
+			super.onProgress(bytesWritten, totalSize);
+			NoticeUtils.showProgressPublish(context, totalSize * bytesWritten
+					+ position, list.size() - 1, ConstantS.PUBLISH_MOOD);
+		}
+
+		@Override
 		public void onFailure(int statusCode, Header[] headers,
 				Throwable throwable, JSONObject errorResponse) {
 			// TODO Auto-generated method stub
@@ -336,6 +356,64 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 
 		at_one.setText(name);
 
+	}
+
+	private void handelIntent(Intent intent) {
+		String action = intent.getAction();
+		String type = intent.getType();
+		if (Intent.ACTION_SEND.equals(action) && type != null) {
+			if ("text/plain".equals(type)) {
+				handleSendText(intent); // Handle text being sent
+			} else if (type.startsWith("image/")) {
+				handleSendImage(intent); // Handle single image being sent
+			}
+		} else if (Intent.ACTION_SEND_MULTIPLE.equals(action) && type != null) {
+			if (type.startsWith("image/")) {
+				handleSendMultipleImages(intent); // Handle multiple images
+													// being sent
+			}
+		} else {
+			// Handle other intents, such as being started from the home screen
+		}
+	}
+
+	private void handleSendMultipleImages(Intent intent) {
+		// TODO Auto-generated method stub
+
+		String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+		if (!TextUtils.isEmpty(sharedText)) {
+			editText.setText(sharedText);
+		}
+
+		Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+		if (imageUri != null) {
+			// Update UI to reflect image being shared
+			String path = PhotoUtils.getPicPathFromUri(imageUri, this);
+			AppLog.i(TAG, "Â·¾¶:" + path);
+			list.add(0, path);
+			publishGridAdapter.notifyDataSetChanged();
+		}
+
+	}
+
+	private void handleSendImage(Intent intent) {
+		// TODO Auto-generated method stub
+		Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+		if (imageUri != null) {
+			// Update UI to reflect image being shared
+			String path = PhotoUtils.getPicPathFromUri(imageUri, this);
+			AppLog.i(TAG, "Â·¾¶:" + path);
+			list.add(0, path);
+			publishGridAdapter.notifyDataSetChanged();
+		}
+	}
+
+	private void handleSendText(Intent intent) {
+		// TODO Auto-generated method stub
+		String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+		if (!TextUtils.isEmpty(sharedText)) {
+			editText.setText(sharedText);
+		}
 	}
 
 }

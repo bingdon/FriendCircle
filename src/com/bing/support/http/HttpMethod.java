@@ -16,9 +16,9 @@ public class HttpMethod {
 
 	public static final String IMAG_URL = BASE_URL + "/upload";
 
-	public static final String CIRCLE_MOOD = BASE_URL_ + "userCircleMoods";
+	private static final String CIRCLE_MOOD = BASE_URL_ + "userCircleMoods";
 
-	public static final String POST_MOOD_URL = BASE_URL_ + "postMood";
+	private static final String POST_MOOD_URL = BASE_URL_ + "postMood";
 
 	private static final String GET_MY_FRIENDS = BASE_URL_ + "myCircles";
 
@@ -26,6 +26,17 @@ public class HttpMethod {
 
 	private static final String POST_COMMENT_TO_MOOD = BASE_URL_
 			+ "postMoodComment";
+
+	private static final String POST_LAUN_TO_MOOD = BASE_URL_ + "postMoodLand";
+
+	private static final String GET_NOTICE_COUNT = BASE_URL_
+			+ "noticeMoodCount";
+
+	private static final String GET_NOTICE_MOOD = BASE_URL_ + "noticeMood";
+
+	private static final String GET_MOOD_INFO = BASE_URL_ + "moodInfo";
+
+	private static final String GET_MY_MOOD = BASE_URL_ + "userMoods";
 
 	private static AsyncHttpClient client = new AsyncHttpClient();
 
@@ -61,17 +72,20 @@ public class HttpMethod {
 	 * @param viewlevel
 	 *            是否可见 1为公开 0为私密
 	 * @param noticeuids
-	 *            提示用户ID
+	 *            提示用户ID 多个以","隔开
+	 * @param address           
+	 *            实时位置
 	 * @param responseHandler
 	 */
 	public static void PostMood2Circle(String uid, String content,
-			String viewlevel, String noticeuids,
+			String viewlevel, String noticeuids,String address,
 			AsyncHttpResponseHandler responseHandler) {
 		RequestParams params = new RequestParams();
 		params.put("uid", uid);
 		params.put("content", content);
 		params.put("viewlevel", viewlevel);
 		params.put("noticeuids", noticeuids);
+		params.put("address", address);
 		client.post(POST_MOOD_URL, params, responseHandler);
 	}
 
@@ -120,6 +134,71 @@ public class HttpMethod {
 		params.put("uid", uid);
 		params.put("content", content);
 		client.post(POST_COMMENT_TO_MOOD, params, handler);
+	}
+
+	/**
+	 * 发表赞
+	 * 
+	 * @param moodid
+	 * @param uid
+	 * @param handler
+	 */
+	public static void postMoodLand(String moodid, String uid,
+			AsyncHttpResponseHandler handler) {
+		RequestParams params = new RequestParams();
+		params.put("moodid", moodid);
+		params.put("uid", uid);
+		client.post(POST_LAUN_TO_MOOD, params, handler);
+	}
+
+	/**
+	 * 获得提醒数量
+	 * 
+	 * @param uid
+	 * @param responseHandler
+	 */
+	public static void noticeMoodCount(String uid,
+			AsyncHttpResponseHandler responseHandler) {
+		RequestParams params = new RequestParams();
+		params.put("uid", uid);
+		client.post(GET_NOTICE_COUNT, params, responseHandler);
+	}
+
+	/**
+	 * 获取提示内容
+	 * 
+	 * @param uid
+	 * @param responseHandler
+	 */
+	public static void noticeMood(String uid,
+			AsyncHttpResponseHandler responseHandler) {
+		RequestParams params = new RequestParams();
+		params.put("uid", uid);
+		client.post(GET_NOTICE_MOOD, params, responseHandler);
+	}
+
+	public static void getMoodInfo(String moodid, String uid,
+			AsyncHttpResponseHandler responseHandler) {
+		RequestParams params = new RequestParams();
+		params.put("moodid", moodid);
+		params.put("uid", uid);
+		client.post(GET_MOOD_INFO, params, responseHandler);
+	}
+
+	/**
+	 * 获取个人心情
+	 * @param uid
+	 * @param first
+	 * @param limit
+	 * @param responseHandler
+	 */
+	public static void getuserMoods(String uid, int first, int limit,
+			AsyncHttpResponseHandler responseHandler) {
+		RequestParams params = new RequestParams();
+		params.put("uid", uid);
+		params.put("first", first);
+		params.put("limit", limit);
+		client.post(GET_MY_MOOD, params, responseHandler);
 	}
 
 }

@@ -1,21 +1,18 @@
 package com.bing.friendplace;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.bing.bean.CircleBean;
 import com.bing.bean.CommentBean;
-import com.bing.bean.MoodBean;
 import com.bing.bean.UserBean;
 import com.bing.friendplace.CircleAdapter.CircleOnClickListener;
 import com.bing.support.debug.AppLog;
 import com.bing.support.debug.G;
 import com.bing.support.http.HttpMethod;
 import com.bing.support.http.JsonUtils;
+import com.bing.support.image.LoadImageUtils;
+import com.bing.ui.custmeview.BingListView.IXListViewListener;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import android.content.Intent;
@@ -28,24 +25,26 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class FriendPlaceActivity extends BaseListActivity implements
-		OnRefreshListener, CircleOnClickListener {
+		OnRefreshListener, CircleOnClickListener, IXListViewListener {
 
 	private static final String TAG = FriendPlaceActivity.class.getSimpleName();
 
 	private View headView;
 
-	private List<MoodBean> list = new ArrayList<>();
+	private ImageView userhead;
+
+	private ImageView headbg;
 
 	private String moodid = "";
 
 	private TextView noticeNum;
 
-	private String lastjson = "";
+	private TextView noticetitle;
 
 	// 评论View
 	private View sendView;
@@ -54,7 +53,15 @@ public class FriendPlaceActivity extends BaseListActivity implements
 	// 评论按钮
 	private Button sendButton;
 
+	private TextView today_scan_count;
+
+	private TextView total_scan_count;
+
+	private CircleBean circleBean;
+
 	private int postion = 0;
+
+	private int noticecount = 0;
 
 	@Override
 	protected void OnInitView() {
@@ -63,17 +70,19 @@ public class FriendPlaceActivity extends BaseListActivity implements
 		titleTextView.setText(R.string.title_activity_friend_place);
 		rightImageView.setImageResource(R.drawable.publish_state);
 		headView = getLayoutInflater().inflate(R.layout.user_head, null);
-
+		initHeadView(headView);
 		mBingListView.addHeaderView(headView);
 
 		noticeNum = (TextView) headView.findViewById(R.id.notice_count);
+		noticetitle = (TextView) headView.findViewById(R.id.title);
 		sendView = findViewById(R.id.send_v);
 		initSendView(sendView);
 		circleAdapter = new CircleAdapter(list, context);
 		mBingListView.setAdapter(circleAdapter);
-		OnReshData();
 
 		mSwipeRefreshLayout.setOnRefreshListener(this);
+
+		mBingListView.setXListViewListener(this);
 
 		mBingListView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -90,8 +99,24 @@ public class FriendPlaceActivity extends BaseListActivity implements
 
 		rightImageView.setOnClickListener(listener);
 		findViewById(R.id.notice_fra).setOnClickListener(listener);
+		findViewById(R.id.notice_fra).setVisibility(View.VISIBLE);
+		findViewById(R.id.cir_visit).setVisibility(View.VISIBLE);
+		userhead.setOnClickListener(listener);
 		circleAdapter.setOnClickLitener(this);
+		initData();
+	}
 
+	private void initData() {
+		OnReshData();
+		getNoticeCount();
+		getCirInfo();
+	}
+
+	private void initHeadView(View v) {
+		today_scan_count = (TextView) v.findViewById(R.id.today_scan_count);
+		total_scan_count = (TextView) v.findViewById(R.id.total_scan_count);
+		userhead = (ImageView) v.findViewById(R.id.user_head);
+		headbg = (ImageView) v.findViewById(R.id.head_bg);
 	}
 
 	private void initSendView(View v) {
@@ -122,71 +147,14 @@ public class FriendPlaceActivity extends BaseListActivity implements
 	@Override
 	protected void OnReshData() {
 		// TODO Auto-generated method stub
-		HttpMethod.getCircleMoods(G.uid, 0, 10, responseHandler);
+		HttpMethod.getCircleMoods(G.uid, 0, limit, new ResponseHandler(true));
 	}
 
-	private JsonHttpResponseHandler responseHandler = new JsonHttpResponseHandler() {
-
-		@Override
-		public void onFailure(int statusCode, Header[] headers,
-				Throwable throwable, JSONObject errorResponse) {
-			// TODO Auto-generated method stub
-			super.onFailure(statusCode, headers, throwable, errorResponse);
-		}
-
-		@Override
-		public void onSuccess(int statusCode, Header[] headers,
-				JSONObject response) {
-			// TODO Auto-generated method stub
-			super.onSuccess(statusCode, headers, response);
-			AppLog.i(TAG, "返回结果:" + response);
-			if (lastjson.equals(response.toString())) {
-				Toast.makeText(context, R.string.nonewmsg, Toast.LENGTH_LONG)
-						.show();
-			} else {
-				parseJson(response);
-			}
-
-		}
-
-		@Override
-		public void onFinish() {
-			// TODO Auto-generated method stub
-			super.onFinish();
-			isLoading = false;
-			mSwipeRefreshLayout.setRefreshing(false);
-		}
-
-		@Override
-		public void onStart() {
-			// TODO Auto-generated method stub
-			super.onStart();
-			isLoading = true;
-			mSwipeRefreshLayout.setRefreshing(true);
-		}
-
-	};
-
-	private void parseJson(JSONObject response) {
-		if (JsonUtils.isSuccess(response)) {
-			try {
-				JSONArray jsonArray = response.getJSONArray("moods");
-				int length = jsonArray.length();
-				for (int i = 0; i < length; i++) {
-					MoodBean moodBean = JsonUtils.getMoodBean(jsonArray
-							.getJSONObject(i));
-
-					list.add(moodBean);
-				}
-
-				circleAdapter.notifyDataSetChanged();
-				lastjson = response.toString();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
+	@Override
+	protected void OnLoadMore() {
+		// TODO Auto-generated method stub
+		HttpMethod.getCircleMoods(G.uid, first, limit, new ResponseHandler(
+				false));
 	}
 
 	@Override
@@ -196,14 +164,6 @@ public class FriendPlaceActivity extends BaseListActivity implements
 			OnReshData();
 		}
 
-	}
-
-	private void loopMoodInfo(MoodBean moodBean) {
-		Intent intent = new Intent();
-		intent.putExtra("moodid", moodid);
-		intent.putExtra("moodBean", moodBean);
-		intent.setClass(context, MoodInfoActivity.class);
-		startActivity(intent);
 	}
 
 	private OnClickListener listener = new OnClickListener() {
@@ -217,12 +177,18 @@ public class FriendPlaceActivity extends BaseListActivity implements
 				break;
 
 			case R.id.notice_fra:
+				noticecount = 0;
 				noticeNum.setVisibility(View.GONE);
+				noticetitle.setVisibility(View.VISIBLE);
 				startActivity(new Intent(context, MessageActivity.class));
 				break;
 
 			case R.id.send_msg_btn:
+				comment2Mood();
+				break;
 
+			case R.id.user_head:
+				loopMyAblum();
 				break;
 
 			default:
@@ -242,13 +208,16 @@ public class FriendPlaceActivity extends BaseListActivity implements
 		// TODO Auto-generated method stub
 		moodid = list.get(position).getId();
 		this.postion = position;
-		comment2Mood();
+		sendView.setVisibility(View.VISIBLE);
 	}
 
 	@Override
 	public void onLaunClick(int position) {
 		// TODO Auto-generated method stub
-
+		HttpMethod.postMoodLand(list.get(position).getId(), G.uid,
+				new JsonHttpResponseHandler());
+		list.get(position).setIslaud(true);
+		circleAdapter.notifyDataSetChanged();
 	}
 
 	private void comment2Mood() {
@@ -256,6 +225,7 @@ public class FriendPlaceActivity extends BaseListActivity implements
 		String content = sendEditText.getText().toString();
 		if (TextUtils.isEmpty(content)) {
 			sendEditText.setError(getString(R.string.nullcontentnotice));
+			sendEditText.requestFocus();
 			return;
 		}
 		HttpMethod.postMoodComment(moodid, content, G.uid, new SendCommend(
@@ -266,9 +236,9 @@ public class FriendPlaceActivity extends BaseListActivity implements
 		private CommentBean commentBean;
 
 		public SendCommend(String content) {
-			commentBean=new CommentBean();
+			commentBean = new CommentBean();
 			commentBean.setContent(content);
-			UserBean userBean=new UserBean();
+			UserBean userBean = new UserBean();
 			userBean.setUid(G.uid);
 			userBean.setUsername("ben");
 			commentBean.setUser(userBean);
@@ -278,14 +248,103 @@ public class FriendPlaceActivity extends BaseListActivity implements
 		public void onStart() {
 			// TODO Auto-generated method stub
 			super.onStart();
-			CommentBean [] commentBeans=list.get(postion).getComment();
-			CommentBean[] commentBeans2=new CommentBean[commentBeans.length];
-			System.arraycopy(commentBeans, 0, commentBeans2, 0, commentBeans.length);
-			commentBeans2[commentBeans2.length-1]=commentBean;
+			sendEditText.setText("");
+			CommentBean[] commentBeans = list.get(postion).getComment();
+			CommentBean[] commentBeans2 = new CommentBean[commentBeans.length + 1];
+			System.arraycopy(commentBeans, 0, commentBeans2, 0,
+					commentBeans.length);
+			commentBeans2[commentBeans2.length - 1] = commentBean;
+			sendView.setVisibility(View.GONE);
 			list.get(postion).setComment(commentBeans2);
 			circleAdapter.notifyDataSetChanged();
 		}
 
+	}
+
+	private void getNoticeCount() {
+
+		JsonHttpResponseHandler responseHandler = new JsonHttpResponseHandler() {
+			@Override
+			public void onStart() {
+				// TODO Auto-generated method stub
+				super.onStart();
+			}
+
+			@Override
+			public void onSuccess(int statusCode, Header[] headers,
+					JSONObject response) {
+				// TODO Auto-generated method stub
+				super.onSuccess(statusCode, headers, response);
+				AppLog.i(TAG, "返回:" + response);
+				if (JsonUtils.isSuccess(response)) {
+					try {
+						noticecount = response.getInt("count");
+						if (noticecount > 0) {
+							noticeNum.setText("" + noticecount);
+							noticeNum.setVisibility(View.VISIBLE);
+							noticetitle.setVisibility(View.GONE);
+						}
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+
+				}
+
+			}
+
+		};
+
+		HttpMethod.noticeMoodCount(G.uid, responseHandler);
+	}
+
+	private void getCirInfo() {
+		JsonHttpResponseHandler responseHandler = new JsonHttpResponseHandler() {
+			@Override
+			public void onStart() {
+				// TODO Auto-generated method stub
+				super.onStart();
+			}
+
+			@Override
+			public void onSuccess(int statusCode, Header[] headers,
+					JSONObject response) {
+				// TODO Auto-generated method stub
+				super.onSuccess(statusCode, headers, response);
+				AppLog.i(TAG, "返回:" + response);
+				if (JsonUtils.isSuccess(response)) {
+					try {
+
+						String visitDay = response.getString("visitDay");
+						String visitAll = response.getString("visitAll");
+						circleBean = JsonUtils.getCircleBean(response
+								.getJSONObject("circle"));
+						today_scan_count.setText("" + visitDay);
+						total_scan_count.setText("" + visitAll);
+						LoadImageUtils
+								.loadOriginalImg(userhead, HttpMethod.IMAG_URL
+										+ circleBean.getHeadimage());
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+
+				}
+
+			}
+
+		};
+		HttpMethod.getFriendList(G.uid, responseHandler);
+	}
+
+	@Override
+	public void onLoadMore() {
+		// TODO Auto-generated method stub
+		if (!isLoading) {
+			OnLoadMore();
+		}
+	}
+
+	private void loopMyAblum() {
+		startActivity(new Intent(context, MyAlbum.class));
 	}
 
 }
