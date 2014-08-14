@@ -10,29 +10,69 @@ public class MoodBean implements Serializable {
 	private static final long serialVersionUID = -8365280700828200117L;
 
 	private String createtime;
-	
+
 	private String content;
-	
+
 	private String uid;
-	
+
 	private String id;
-	
+
 	private String img[];
-	
+
 	private CommentBean[] comment;
-	
+
 	private UserBean user;
-	
+
 	private int viewlevel;
-	
+
 	private int collectcount;
-	
+
 	private int laudcount;
-	
+
 	private int type;
-	
+
 	private boolean islaud;
+
+	private String day;
+
+	private String month;
 	
+	private LaundUsersBean [] laudusers;
+	
+	public LaundUsersBean[] getLaudusers() {
+		return laudusers;
+	}
+
+	public void setLaudusers(LaundUsersBean[] laudusers) {
+		this.laudusers = laudusers;
+	}
+
+	private int _id;
+
+	public int get_id() {
+		return _id;
+	}
+
+	public void set_id(int _id) {
+		this._id = _id;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
 	public boolean isIslaud() {
 		return islaud;
 	}
@@ -128,5 +168,5 @@ public class MoodBean implements Serializable {
 	public void setComment(CommentBean[] comment) {
 		this.comment = comment;
 	}
-	
+
 }

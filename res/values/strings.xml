@@ -47,8 +47,18 @@
     <string name="say_hint">说点什么吧</string>
     <string name="nullcontentnotice">内容不能为空</string>
     <string name="launed">已赞</string>
-	<string name="aboutme">与我相关</string>
-	<string name="delete">删除</string>
-	<string name="deletefailure">删除失败</string>
-	<string name="myabulm">我的相册</string>
+    <string name="aboutme">与我相关</string>
+    <string name="delete">删除</string>
+    <string name="deletefailure">删除失败</string>
+    <string name="myabulm">我的相册</string>
+    <string name="xiekang">/</string>
+    <string name="one">1</string>
+    <string name="zan">赞</string>
+    <string name="comment">评论</string>
+    <string name="submit">提交</string>
+    <string name="change_bg">更换背景</string>
+    <string name="notice">提示</string>
+    <string name="delete_msg">是否要删除心情？</string>
+     <string name="delete_comment_notice">是否要删除评论？</string>
+
 </resources>

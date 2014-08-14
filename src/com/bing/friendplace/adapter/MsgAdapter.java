@@ -73,12 +73,12 @@ public class MsgAdapter extends BaseAdapter {
 		}
 
 		AppLog.i(MsgAdapter.class.getSimpleName(), "name"
-				+ list.get(position).getUser().getUsername());
+				+ list.get(position).getUser().getNickname());
 
 		LoadImageUtils.loadOriginalImg(holder.userhead, HttpMethod.IMAG_URL
 				+ list.get(position).getUser().getHeadimage());
 		holder.username
-				.setText("" + list.get(position).getUser().getUsername());
+				.setText("" + list.get(position).getUser().getNickname());
 		holder.content.setText("" + list.get(position).getContent());
 		holder.time.setText(""
 				+ TimeUtility.getListTime(list.get(position).getCreatetime()));

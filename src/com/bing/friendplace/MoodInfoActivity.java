@@ -1,19 +1,34 @@
 package com.bing.friendplace;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.apache.http.Header;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.bing.bean.CommentBean;
 import com.bing.bean.MoodBean;
 import com.bing.bean.UserBean;
 import com.bing.friendplace.CircleAdapter.ViewHolder;
+import com.bing.friendplace.adapter.MoodInfoAdapter;
+import com.bing.friendplace.adapter.PicAdapter;
+import com.bing.friendplace.constant.ConstantS;
+import com.bing.support.debug.AppLog;
 import com.bing.support.debug.G;
 import com.bing.support.http.HttpMethod;
+import com.bing.support.http.JsonUtils;
 import com.bing.support.image.LoadImageUtils;
 import com.bing.support.time.TimeUtility;
 import com.bing.ui.custmeview.BingGridView;
+import com.bing.ui.custmeview.HorizontalListView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
+import android.R.array;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager.LayoutParams;
 import android.text.TextUtils;
@@ -22,6 +37,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,7 +46,10 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-public class MoodInfoActivity extends BaseActivity {
+public class MoodInfoActivity extends BaseActivity implements
+		OnItemClickListener {
+
+	private static final String TAG = MoodInfoActivity.class.getSimpleName();
 
 	private ViewHolder holder;
 
@@ -53,6 +73,12 @@ public class MoodInfoActivity extends BaseActivity {
 	MoodBean moodBean;
 
 	View convertView;
+
+	View laundView;
+
+	HorizontalListView gallery;
+
+	MoodInfoAdapter mInfoAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +105,11 @@ public class MoodInfoActivity extends BaseActivity {
 		holder.username = (TextView) findViewById(R.id.username);
 		holder.commentmenu = (ImageView) findViewById(R.id.comment);
 		holder.laundTextView = (TextView) findViewById(R.id.laud_txt);
+		holder.delete = (TextView) findViewById(R.id.delete);
+		laundView = findViewById(R.id.laun_list);
 
-		convertView=findViewById(R.id.convertView);
-		
+		convertView = findViewById(R.id.convertView);
+
 		popView = getLayoutInflater().inflate(R.layout.pop_view, null);
 		comment = (ImageView) popView.findViewById(R.id.comment);
 		laun = (ImageView) popView.findViewById(R.id.laun);
@@ -91,7 +119,6 @@ public class MoodInfoActivity extends BaseActivity {
 		comment.setFocusable(false);
 		laun.setFocusable(false);
 
-		// holder.comments.setOnClickListener(listener);
 		comment.setOnClickListener(listener);
 		laun.setOnClickListener(listener);
 		holder.commentmenu.setOnClickListener(new OnClickListener() {
@@ -102,8 +129,16 @@ public class MoodInfoActivity extends BaseActivity {
 				showMenu(v);
 			}
 		});
-		
-		
+
+		holder.delete.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				delMoodDialog();
+			}
+		});
+
 		convertView.setOnTouchListener(new OnTouchListener() {
 
 			@Override
@@ -118,6 +153,8 @@ public class MoodInfoActivity extends BaseActivity {
 			}
 		});
 
+		holder.comments.setOnItemClickListener(this);
+
 		initData();
 	}
 
@@ -127,20 +164,23 @@ public class MoodInfoActivity extends BaseActivity {
 		if (moodBean != null) {
 			LoadImageUtils.loadOriginalImg(holder.userhead, HttpMethod.IMAG_URL
 					+ moodBean.getUser().getHeadimage());
-			holder.username.setText("" + moodBean.getUser().getUsername());
+			holder.username.setText("" + moodBean.getUser().getNickname());
 			holder.time.setText(""
 					+ TimeUtility.getListTime(moodBean.getCreatetime()));
 			holder.content.setText("" + moodBean.getContent());
 			holder.gridAdapter = new GridAdapter(moodBean.getImg(), context);
 			holder.bingGridView.setAdapter(holder.gridAdapter);
-			holder.commentsAdapter = new CommentsAdapter(moodBean.getComment(),
-					context);
-			holder.comments.setAdapter(holder.commentsAdapter);
+			mInfoAdapter = new MoodInfoAdapter(moodBean.getComment(), context);
+			holder.comments.setAdapter(mInfoAdapter);
 
 			if (moodBean.isIslaud()) {
 				holder.laundTextView.setVisibility(View.VISIBLE);
 			} else {
 				holder.laundTextView.setVisibility(View.INVISIBLE);
+			}
+
+			if (!moodBean.getUid().equals(G.uid)) {
+				holder.delete.setVisibility(View.GONE);
 			}
 
 		}
@@ -173,6 +213,10 @@ public class MoodInfoActivity extends BaseActivity {
 				JSONObject response) {
 			// TODO Auto-generated method stub
 			super.onSuccess(statusCode, headers, response);
+			AppLog.i(TAG, "ÐÄÇé:" + response);
+			if (JsonUtils.isSuccess(response)) {
+				parseJson(response);
+			}
 		}
 
 		@Override
@@ -188,6 +232,55 @@ public class MoodInfoActivity extends BaseActivity {
 		}
 
 	};
+
+	private void parseJson(JSONObject object) {
+		try {
+			JSONObject mood = object.getJSONObject("mood");
+			MoodBean mBean = JsonUtils.getMoodBean(mood);
+			if (mBean != null) {
+				moodBean = mBean;
+				LoadImageUtils
+						.loadOriginalImg(holder.userhead, HttpMethod.IMAG_URL
+								+ moodBean.getUser().getHeadimage());
+				holder.username.setText("" + moodBean.getUser().getNickname());
+				holder.time.setText(""
+						+ TimeUtility.getListTime(moodBean.getCreatetime()));
+				holder.content.setText("" + moodBean.getContent());
+				holder.gridAdapter = new GridAdapter(moodBean.getImg(), context);
+				holder.bingGridView.setAdapter(holder.gridAdapter);
+				AppLog.i(TAG, "ÔÞ:" + moodBean.getLaudusers());
+				gallery = (HorizontalListView) laundView
+						.findViewById(R.id.horizontalListView1);
+				if (moodBean.getLaudusers() != null) {
+					int launlength = moodBean.getLaudusers().length;
+					if (launlength > 0) {
+						laundView.setVisibility(View.VISIBLE);
+					}
+					String imgs[] = new String[launlength];
+					for (int i = 0; i < launlength; i++) {
+						imgs[i] = moodBean.getLaudusers()[i].getHeadimage();
+					}
+
+					PicAdapter picAdapter = new PicAdapter(imgs, context);
+					gallery.setAdapter(picAdapter);
+				}
+
+				mInfoAdapter = new MoodInfoAdapter(moodBean.getComment(),
+						context);
+				holder.comments.setAdapter(mInfoAdapter);
+
+				if (moodBean.isIslaud()) {
+					holder.laundTextView.setVisibility(View.VISIBLE);
+				} else {
+					holder.laundTextView.setVisibility(View.INVISIBLE);
+				}
+
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	private OnClickListener listener = new OnClickListener() {
 
@@ -260,6 +353,7 @@ public class MoodInfoActivity extends BaseActivity {
 		UserBean userBean = new UserBean();
 		userBean.setUid(G.uid);
 		userBean.setUsername("ben");
+		userBean.setNickname("ben");
 		commentBean.setUser(userBean);
 		CommentBean[] commentBeans = moodBean.getComment();
 		CommentBean[] commentBeans2 = new CommentBean[commentBeans.length + 1];
@@ -272,6 +366,95 @@ public class MoodInfoActivity extends BaseActivity {
 		holder.comments.setAdapter(holder.commentsAdapter);
 		holder.commentsAdapter.notifyDataSetChanged();
 
+	}
+
+	protected void delMoodDialog() {
+		new AlertDialog.Builder(context)
+				.setTitle(getString(R.string.notice))
+				.setMessage(R.string.delete_msg)
+				.setPositiveButton(getString(android.R.string.ok),
+						new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								// TODO Auto-generated method stub
+								HttpMethod.delMood(moodBean.getId(),
+										new JsonHttpResponseHandler());
+								sendDeleteMood(moodBean);
+								finish();
+							}
+						})
+				.setNegativeButton(getString(android.R.string.cancel),
+						new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								// TODO Auto-generated method stub
+								dialog.dismiss();
+							}
+						}).show();
+	}
+
+	private void sendDeleteMood(MoodBean moodBean) {
+		Intent intent = new Intent();
+		intent.putExtra("moodid", moodBean.getId());
+		intent.setAction(ConstantS.ACTION_DEL_MOOD);
+		sendBroadcast(intent);
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		// TODO Auto-generated method stub
+
+		if (moodBean.getComment()[position].getUser().getUid().equals(G.uid)) {
+			delCommentDialog(position);
+		}
+
+	}
+
+	protected void delCommentDialog(final int position) {
+		new AlertDialog.Builder(context)
+				.setTitle(getString(R.string.notice))
+				.setMessage(R.string.delete_comment_notice)
+				.setPositiveButton(getString(android.R.string.ok),
+						new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								// TODO Auto-generated method stub
+								HttpMethod.delMoodComment(
+										moodBean.getComment()[position].getId(),
+										new JsonHttpResponseHandler());
+								delcomment(position);
+							}
+						})
+				.setNegativeButton(getString(android.R.string.cancel),
+						new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								// TODO Auto-generated method stub
+								dialog.dismiss();
+							}
+						}).show();
+	}
+
+	private void delcomment(int position) {
+		int length=moodBean.getComment().length;
+		List<CommentBean> list=new ArrayList<>();
+		for (int i = 0; i <length; i++) {
+			list.add(moodBean.getComment()[i]);
+		}
+		list.remove(position);
+		moodBean.setComment((CommentBean[]) list.toArray(new CommentBean[list
+				.size()]));
+		mInfoAdapter = new MoodInfoAdapter(moodBean.getComment(), context);
+		holder.comments.setAdapter(mInfoAdapter);
 	}
 
 }

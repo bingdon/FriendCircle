@@ -1,8 +1,15 @@
 package com.bing.support.image;
 
+import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import com.bing.friendplace.R;
+import com.bing.support.debug.AppLog;
+import com.bing.support.file.FileUtility;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,6 +19,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -94,8 +102,33 @@ public class PhotoUtils {
 				}).create();
 		dlg.show();
 	}
-	
-	
+
+	// 图片上传选择途径
+	public static void changeBgDialog(final Activity context) {
+		final CharSequence[] items = { context.getString(R.string.photo),
+				context.getString(R.string.takepic) };
+		AlertDialog dlg = new AlertDialog.Builder(context)
+				.setTitle(context.getString(R.string.change_bg))
+				.setItems(items, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int item) {
+						// 这里item是根据选择的方式，
+						// 在items数组里面定义了两种方式，拍照的下标为1所以就调用拍照方法
+						if (item == 1) {
+							Intent getImageByCamera = new Intent(
+									"android.media.action.IMAGE_CAPTURE");
+							context.startActivityForResult(getImageByCamera, 1);
+						} else {
+							Intent getImage = new Intent(
+									Intent.ACTION_GET_CONTENT);
+							getImage.addCategory(Intent.CATEGORY_OPENABLE);
+							getImage.setType("image/jpeg");
+							context.startActivityForResult(getImage, 0);
+						}
+					}
+				}).create();
+		dlg.show();
+	}
+
 	public static String getPicPathFromUri(Uri uri, Activity activity) {
 		String value = uri.getPath();
 
@@ -111,83 +144,140 @@ public class PhotoUtils {
 		}
 	}
 
-	
 	// 图片上传选择途径
-		public static void secPic(final Activity context) {
-			final CharSequence[] items = { "相册", "拍照" };
-			AlertDialog dlg = new AlertDialog.Builder(context).setTitle("选择图片")
-					.setItems(items, new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int item) {
-							// 这里item是根据选择的方式，
-							// 在items数组里面定义了两种方式，拍照的下标为1所以就调用拍照方法
-							if (item == 1) {
-								if (SdUtils.ExistSDCard()) {
-									try {
-										imageFileUri = context
-												.getContentResolver()
-												.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-														new ContentValues());
-									} catch (Exception e) {
-										// TODO: handle exception
-										e.printStackTrace();
-									}
-
-								} else {
+	public static void secPic(final Activity context) {
+		final CharSequence[] items = { "相册", "拍照" };
+		AlertDialog dlg = new AlertDialog.Builder(context).setTitle("选择图片")
+				.setItems(items, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int item) {
+						// 这里item是根据选择的方式，
+						// 在items数组里面定义了两种方式，拍照的下标为1所以就调用拍照方法
+						if (item == 1) {
+							if (SdUtils.ExistSDCard()) {
+								try {
 									imageFileUri = context
 											.getContentResolver()
-											.insert(MediaStore.Images.Media.INTERNAL_CONTENT_URI,
+											.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
 													new ContentValues());
-								}
-
-								if (imageFileUri != null) {
-									Intent getImageByCamera = new Intent(
-											"android.media.action.IMAGE_CAPTURE");
-
-									getImageByCamera
-											.putExtra(
-													android.provider.MediaStore.EXTRA_OUTPUT,
-													imageFileUri);
-
-									context.startActivityForResult(
-											getImageByCamera, 1);
-								} else {
-									Toast.makeText(
-											context,
-											context.getResources().getString(
-													R.string.cant_insert_album),
-											Toast.LENGTH_SHORT).show();
+								} catch (Exception e) {
+									// TODO: handle exception
+									e.printStackTrace();
 								}
 
 							} else {
-								Intent getImage = new Intent(
-										Intent.ACTION_GET_CONTENT);
-								getImage.addCategory(Intent.CATEGORY_OPENABLE);
-								getImage.setType("image/jpeg");
-								context.startActivityForResult(getImage, 0);
+								imageFileUri = context
+										.getContentResolver()
+										.insert(MediaStore.Images.Media.INTERNAL_CONTENT_URI,
+												new ContentValues());
 							}
+
+							if (imageFileUri != null) {
+								Intent getImageByCamera = new Intent(
+										"android.media.action.IMAGE_CAPTURE");
+
+								getImageByCamera
+										.putExtra(
+												android.provider.MediaStore.EXTRA_OUTPUT,
+												imageFileUri);
+
+								context.startActivityForResult(
+										getImageByCamera, 1);
+							} else {
+								Toast.makeText(
+										context,
+										context.getResources().getString(
+												R.string.cant_insert_album),
+										Toast.LENGTH_SHORT).show();
+							}
+
+						} else {
+							Intent getImage = new Intent(
+									Intent.ACTION_GET_CONTENT);
+							getImage.addCategory(Intent.CATEGORY_OPENABLE);
+							getImage.setType("image/jpeg");
+							context.startActivityForResult(getImage, 0);
 						}
-					}).create();
-			dlg.show();
-		}
+					}
+				}).create();
+		dlg.show();
+	}
+
+	/**
+	 * 把bitmap转换成String
+	 * 
+	 * @param filePath
+	 * @return
+	 */
+	public static synchronized String bitmapNCutToString(String filePath) {
+
+		Bitmap bm = getNoCutSmallBitmap(filePath);
+
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		bm.compress(Bitmap.CompressFormat.PNG, 40, baos);
+		byte[] b = baos.toByteArray();
+
+		return Base64.encodeToString(b, Base64.DEFAULT);
+
+	}
+
+	public static Bitmap getScaledBitmap(String fileName, int dstWidth) {
+		BitmapFactory.Options localOptions = new BitmapFactory.Options();
+		localOptions.inJustDecodeBounds = true;
+		BitmapFactory.decodeFile(fileName, localOptions);
+		int originWidth = localOptions.outWidth;
+		int originHeight = localOptions.outHeight;
+
+		localOptions.inSampleSize = originWidth > originHeight ? originWidth
+				/ dstWidth : originHeight / dstWidth;
+		localOptions.inJustDecodeBounds = false;
+
+		return BitmapFactory.decodeFile(fileName, localOptions);
+	}
+
 	
-		
-		/**
-		 * 把bitmap转换成String
-		 * 
-		 * @param filePath
-		 * @return
-		 */
-		public static synchronized String bitmapNCutToString(String filePath) {
+	/**
+	 * 获取listview 头像
+	 */
 
-			Bitmap bm = getNoCutSmallBitmap(filePath);
-
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			bm.compress(Bitmap.CompressFormat.PNG, 40, baos);
-			byte[] b = baos.toByteArray();
-
-			return Base64.encodeToString(b, Base64.DEFAULT);
-
+	public static Bitmap getListHeadBg(String username) {
+		Bitmap mBitmap=null;
+		try {
+			mBitmap = BitmapFactory.decodeFile(FileUtility.FRIEND_PATH_IMG
+					+ "/" + username + "bg"
+					+ ".jpg");
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		
+		return mBitmap;
+		
 
+	}
+	
+	
+	
+	/**
+	 * 保存此次背景
+	 * 
+	 * @param result
+	 */
+	public static void saveCurrent_ResultBitmap(Bitmap bitmap,String username) {
+		File file = new File(FileUtility.FRIEND_PATH_IMG,
+				username + "bg" + ".jpg");
+		BufferedOutputStream bos;
+		try {
+			bos = new BufferedOutputStream(new FileOutputStream(file));
+			bitmap.compress(CompressFormat.JPEG, 100, bos);
+			bos.flush();
+			bos.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
 }

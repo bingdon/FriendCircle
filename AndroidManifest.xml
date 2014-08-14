@@ -65,6 +65,8 @@
             android:theme="@style/Bingnotitle" >
         </activity>
         <activity android:name="MyAlbum"></activity>
+        <activity android:name="PhotoPagerActvity"></activity>
+        <activity android:name="CommentActivity"></activity>
     </application>
 
 </manifest>

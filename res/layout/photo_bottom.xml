@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:background="@color/actionbar_tran_color" >
+
+    <TextView
+        android:id="@+id/zan_txt"
+        style="@style/Small_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/menu_sec"
+        android:drawableLeft="@drawable/zan"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:clickable="true"
+        android:text="@string/zan" />
+
+    <TextView
+        android:id="@+id/comment_txt"
+        style="@style/Small_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/zan_txt"
+        android:background="@drawable/menu_sec"
+        android:drawableLeft="@drawable/comments"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:clickable="true"
+        android:text="@string/comment" />
+
+    <LinearLayout
+        android:id="@+id/comment_lay"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:clickable="true"
+        android:background="@drawable/menu_sec" >
+
+        <TextView
+            android:id="@+id/zan_num"
+            style="@style/Small_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/zan"
+            android:gravity="center"
+            android:text="@string/one" />
+
+        <TextView
+            android:id="@+id/comment_num"
+            style="@style/Small_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/comments"
+            android:gravity="center"
+            android:text="@string/one" />
+    </LinearLayout>
+
+</RelativeLayout>

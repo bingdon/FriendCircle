@@ -1,5 +1,11 @@
 package com.bing.friendplace;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import org.apache.http.Header;
 import org.json.JSONObject;
 
@@ -9,13 +15,21 @@ import com.bing.bean.UserBean;
 import com.bing.friendplace.CircleAdapter.CircleOnClickListener;
 import com.bing.support.debug.AppLog;
 import com.bing.support.debug.G;
+import com.bing.support.file.FileUtility;
 import com.bing.support.http.HttpMethod;
 import com.bing.support.http.JsonUtils;
 import com.bing.support.image.LoadImageUtils;
+import com.bing.support.image.PhotoUtils;
 import com.bing.ui.custmeview.BingListView.IXListViewListener;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -62,6 +76,8 @@ public class FriendPlaceActivity extends BaseListActivity implements
 	private int postion = 0;
 
 	private int noticecount = 0;
+
+	private Bitmap headbg_bmp;
 
 	@Override
 	protected void OnInitView() {
@@ -117,6 +133,9 @@ public class FriendPlaceActivity extends BaseListActivity implements
 		total_scan_count = (TextView) v.findViewById(R.id.total_scan_count);
 		userhead = (ImageView) v.findViewById(R.id.user_head);
 		headbg = (ImageView) v.findViewById(R.id.head_bg);
+
+		headbg.setOnClickListener(listener);
+
 	}
 
 	private void initSendView(View v) {
@@ -191,6 +210,9 @@ public class FriendPlaceActivity extends BaseListActivity implements
 				loopMyAblum();
 				break;
 
+			case R.id.head_bg:
+				PhotoUtils.changeBgDialog(context);
+				break;
 			default:
 				break;
 			}
@@ -198,9 +220,14 @@ public class FriendPlaceActivity extends BaseListActivity implements
 	};
 
 	@Override
-	public void onPicClick(int position) {
+	public void onPicClick(int position, int picpostion) {
 		// TODO Auto-generated method stub
-
+		Intent intent = new Intent();
+		intent.putExtra("picpostion", picpostion);
+		// intent.putExtra("imgs", list.get(position).getImg());
+		intent.putExtra("mood", list.get(position));
+		intent.setClass(context, PhotoPagerActvity.class);
+		startActivity(intent);
 	}
 
 	@Override
@@ -320,9 +347,26 @@ public class FriendPlaceActivity extends BaseListActivity implements
 								.getJSONObject("circle"));
 						today_scan_count.setText("" + visitDay);
 						total_scan_count.setText("" + visitAll);
-						LoadImageUtils
-								.loadOriginalImg(userhead, HttpMethod.IMAG_URL
+						headbg_bmp = PhotoUtils.getListHeadBg(circleBean
+								.getUsername());
+						if (headbg_bmp != null) {
+							headbg.setImageBitmap(headbg_bmp);
+						} else {
+
+							LoadImageUtils.loadOriginalImg(
+									headbg,
+									HttpMethod.IMAG_URL
+											+ circleBean.getHeadimage());
+							LoadImageUtils.getOriginalImg(HttpMethod.IMAG_URL
+									+ circleBean.getHeadimage(),
+									circleBean.getUsername());
+						}
+						
+						LoadImageUtils.loadOriginalImg(
+								userhead,
+								HttpMethod.IMAG_URL
 										+ circleBean.getHeadimage());
+
 					} catch (Exception e) {
 						// TODO: handle exception
 					}
@@ -347,4 +391,111 @@ public class FriendPlaceActivity extends BaseListActivity implements
 		startActivity(new Intent(context, MyAlbum.class));
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		if (resultCode != RESULT_OK) {
+			return;
+		}
+
+		if (requestCode == 0) {
+			try {
+
+				final String str;
+				Uri localUri = data.getData();
+				String[] arrayOfString = new String[1];
+				arrayOfString[0] = "_data";
+				Cursor localCursor = getContentResolver().query(localUri,
+						arrayOfString, null, null, null);
+				if (localCursor == null)
+					return;
+				localCursor.moveToFirst();
+				str = localCursor.getString(localCursor
+						.getColumnIndex(arrayOfString[0]));
+				localCursor.close();
+				headbg_bmp = PhotoUtils.getScaledBitmap(str, 600);
+				headbg.setImageBitmap(headbg_bmp);
+				saveCurrent_ResultBitmap(headbg_bmp);
+				new PostBg(G.uid, str).start();;
+				AppLog.i(TAG, "路径:" + str);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (requestCode == 1) {
+			try {
+				String path = PhotoUtils.getPicPathFromUri(
+						PhotoUtils.imageFileUri, this);
+				headbg_bmp = PhotoUtils.getScaledBitmap(path, 600);
+				headbg.setImageBitmap(headbg_bmp);
+				saveCurrent_ResultBitmap(headbg_bmp);
+				new PostBg(G.uid, path).start();
+				AppLog.i(TAG, "路径:" + path);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+	}
+
+	/**
+	 * 保存此次背景
+	 * 
+	 * @param result
+	 */
+	private void saveCurrent_ResultBitmap(Bitmap bitmap) {
+		AppLog.i(TAG, "开始保存");
+		File file = new File(FileUtility.FRIEND_PATH_IMG,
+				circleBean.getUsername() + "bg" + ".jpg");
+		BufferedOutputStream bos;
+		try {
+			bos = new BufferedOutputStream(new FileOutputStream(file));
+			bitmap.compress(CompressFormat.JPEG, 100, bos);
+			bos.flush();
+			bos.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		AppLog.i(TAG, "保存成功");
+	}
+
+	
+	
+	
+	
+	private Handler postBgHandler=new Handler(new Handler.Callback() {
+		
+		@Override
+		public boolean handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			switch (msg.what) {
+			case 0:
+				String str=msg.obj.toString();
+				HttpMethod.updateCircle("6", str,
+						postbgseHandler);
+				
+				break;
+
+			default:
+				break;
+			}
+			return false;
+		}
+	});
+
+	@Override
+	public void onDeleteClick(int position) {
+		// TODO Auto-generated method stub
+		delMoodDialog(position);
+	}
+
+	
+	
+	
 }

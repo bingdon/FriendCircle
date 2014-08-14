@@ -1,6 +1,8 @@
 package com.bing.app;
 
 import com.bing.friendplace.R;
+import com.bing.support.file.FileUtility;
+import com.bing.support.image.SdUtils;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -21,6 +23,9 @@ public class FriendApp extends Application {
 		super.onCreate();
 		instance=this;
 		initImageLoader(this);
+		if (SdUtils.ExistSDCard()) {
+			FileUtility.createPath();
+		}
 	}
 	
 	

@@ -6,9 +6,12 @@
     <color name="deepskyblue">#00BFFF</color>
     <color name="gole">#ffd700</color>
     <color name="black">#000000</color>
-     <!-- 灰色 -->
+    <color name="ivory">#ffffe0</color>
+    <!-- 灰色 -->
     <color name="gray">#808080</color>
     <color name="light_gray">#cbcbcb</color>
     <color name="lightgray">#d3d3d3</color>
+    <color name="actionbar_color">#666666</color>
+    <color name="actionbar_tran_color">#b0666666</color>
 
 </resources>

@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.view.ContextMenu;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.bing.bean.MoodBean;
 import com.bing.friendplace.adapter.MsgAdapter;
+import com.bing.friendplace.constant.ConstantS;
 import com.bing.friendplace.db.utils.MsgDataMangerUtils;
 import com.bing.support.debug.AppLog;
 import com.bing.support.debug.G;
@@ -130,7 +132,9 @@ public class MessageActivity extends BaseListActivity implements
 						msgDataMangerUtils.insert(moodBean);
 					}
 
-					moodBeans.addAll(0, mList);
+					getLastData();
+					
+//					moodBeans.addAll(0, mList);
 
 					msgAdapter.notifyDataSetChanged();
 
@@ -196,4 +200,6 @@ public class MessageActivity extends BaseListActivity implements
 		}
 	}
 
+	
+	
 }

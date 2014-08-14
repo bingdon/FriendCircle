@@ -53,7 +53,7 @@ public class CommentsAdapter extends BaseAdapter {
 			holder=(ViewHolder)convertView.getTag();
 		}
 		
-		holder.name.setText(cBeans[position].getUser().getUsername()+":");
+		holder.name.setText(cBeans[position].getUser().getNickname()+":");
 		holder.content.setText(""+cBeans[position].getContent());
 		
 		return convertView;

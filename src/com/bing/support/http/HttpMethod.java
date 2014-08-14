@@ -38,6 +38,12 @@ public class HttpMethod {
 
 	private static final String GET_MY_MOOD = BASE_URL_ + "userMoods";
 
+	private static final String UPDATE_CIRCLE = BASE_URL_ + "updateCircle";
+
+	private static final String DEL_MOOD_CRICLE = BASE_URL_ + "delMood";
+
+	private static final String DEL_MOOD_COMMENT = BASE_URL_ + "delMoodComment";
+
 	private static AsyncHttpClient client = new AsyncHttpClient();
 
 	public static void getMyCircle(String uid,
@@ -73,12 +79,12 @@ public class HttpMethod {
 	 *            是否可见 1为公开 0为私密
 	 * @param noticeuids
 	 *            提示用户ID 多个以","隔开
-	 * @param address           
+	 * @param address
 	 *            实时位置
 	 * @param responseHandler
 	 */
 	public static void PostMood2Circle(String uid, String content,
-			String viewlevel, String noticeuids,String address,
+			String viewlevel, String noticeuids, String address,
 			AsyncHttpResponseHandler responseHandler) {
 		RequestParams params = new RequestParams();
 		params.put("uid", uid);
@@ -187,6 +193,7 @@ public class HttpMethod {
 
 	/**
 	 * 获取个人心情
+	 * 
 	 * @param uid
 	 * @param first
 	 * @param limit
@@ -199,6 +206,48 @@ public class HttpMethod {
 		params.put("first", first);
 		params.put("limit", limit);
 		client.post(GET_MY_MOOD, params, responseHandler);
+	}
+
+	/**
+	 * 更换背景
+	 * 
+	 * @param uid
+	 * @param headimageStr
+	 * @param responseHandler
+	 */
+	public static void updateCircle(String uid, String headimageStr,
+			AsyncHttpResponseHandler responseHandler) {
+		RequestParams params = new RequestParams();
+		params.put("uid", uid);
+		params.put("headimageStr", headimageStr);
+		client.post(UPDATE_CIRCLE, params, responseHandler);
+	}
+
+	/**
+	 * 删除心情
+	 * 
+	 * @param moodid
+	 * @param responseHandler
+	 */
+	public static void delMood(String moodid,
+			AsyncHttpResponseHandler responseHandler) {
+		RequestParams params = new RequestParams();
+		params.put("id", moodid);
+		client.post(DEL_MOOD_CRICLE, params, responseHandler);
+	}
+
+	/**
+	 * 删除评论
+	 * 
+	 * @param id
+	 *            评论ID
+	 * @param responseHandler
+	 */
+	public static void delMoodComment(String id,
+			AsyncHttpResponseHandler responseHandler) {
+		RequestParams params = new RequestParams();
+		params.put("id", id);
+		client.post(DEL_MOOD_COMMENT, params, responseHandler);
 	}
 
 }

@@ -52,6 +52,8 @@ public class MsgDataMangerUtils implements MsgInterface {
 			cursor = db.query(MsgTable.TABLE_NAME, null, null, null, null,
 					null, "_ID desc");
 			// 获取moodid列的索引
+			int _idIndex = cursor.getColumnIndex(MsgTable._ID);
+
 			int idIndex = cursor.getColumnIndex(MsgTable.MOOD_ID);
 			// 获取name列的索引
 			int nameIndex = cursor.getColumnIndex(MsgTable.NAME);
@@ -69,9 +71,10 @@ public class MsgDataMangerUtils implements MsgInterface {
 			for (cursor.moveToFirst(); !(cursor.isAfterLast()); cursor
 					.moveToNext()) {
 				MoodBean moodBean = new MoodBean();
+				moodBean.set_id(cursor.getInt(_idIndex));
 				moodBean.setId(cursor.getString(idIndex));
 				UserBean userBean = new UserBean();
-				userBean.setUsername(cursor.getString(nameIndex));
+				userBean.setNickname(cursor.getString(nameIndex));
 				userBean.setHeadimage(cursor.getString(headurlIndex));
 				moodBean.setUser(userBean);
 				moodBean.setCreatetime(cursor.getString(timeIndex));
@@ -118,15 +121,14 @@ public class MsgDataMangerUtils implements MsgInterface {
 		long id = -1;
 		try {
 			ContentValues values = new ContentValues();
-			values.put(MsgTable.NAME, moodBean.getUser().getUsername());
+			values.put(MsgTable.NAME, moodBean.getUser().getNickname());
 			values.put(MsgTable.CONTENT, moodBean.getContent());
 			try {
 				values.put(MsgTable.CONTENT_PIC_URL, moodBean.getImg()[0]);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			values.put(MsgTable.HEAD_URL, moodBean.getUser().getUsername());
-			values.put(MsgTable.HEAD_URL, "");
+			values.put(MsgTable.HEAD_URL, moodBean.getUser().getHeadimage());
 			values.put(MsgTable.MOOD_ID, moodBean.getId());
 			values.put(MsgTable.TIME, moodBean.getCreatetime());
 			id = db.insert(MsgTable.TABLE_NAME, null, values);
@@ -141,12 +143,23 @@ public class MsgDataMangerUtils implements MsgInterface {
 		// TODO Auto-generated method stub
 		int del = -1;
 		try {
-			String where = MsgTable.MOOD_ID + " = ?";
-			String[] whereArgs = { String.valueOf(moodBean.getId()) };
+			String where = MsgTable._ID + " = ?";
+			String[] whereArgs = { String.valueOf(moodBean.get_id()) };
 			del = db.delete(MsgTable.TABLE_NAME, where, whereArgs);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		if (del<0) {
+			try {
+				String where = MsgTable.MOOD_ID + " = ?";
+				String[] whereArgs = { String.valueOf(moodBean.getId()) };
+				del = db.delete(MsgTable.TABLE_NAME, where, whereArgs);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		return del;
 	}
 

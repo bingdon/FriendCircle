@@ -3,6 +3,7 @@ package com.bing.friendplace;
 import java.util.List;
 
 import com.bing.bean.MoodBean;
+import com.bing.support.debug.G;
 import com.bing.support.http.HttpMethod;
 import com.bing.support.image.LoadImageUtils;
 import com.bing.support.time.TimeUtility;
@@ -18,6 +19,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -109,6 +112,7 @@ public class CircleAdapter extends BaseAdapter {
 					.findViewById(R.id.comment);
 			holder.laundTextView = (TextView) convertView
 					.findViewById(R.id.laud_txt);
+			holder.delete = (TextView) convertView.findViewById(R.id.delete);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -122,9 +126,14 @@ public class CircleAdapter extends BaseAdapter {
 		holder.content.setFocusableInTouchMode(false);
 
 		holder.username
-				.setText("" + list.get(position).getUser().getUsername());
+				.setText("" + list.get(position).getUser().getNickname());
 		holder.time.setText(""
 				+ TimeUtility.getListTime(list.get(position).getCreatetime()));
+		if (list.get(position).getUser().getUid().equals(G.uid)) {
+			holder.delete.setVisibility(View.VISIBLE);
+		} else {
+			holder.delete.setVisibility(View.GONE);
+		}
 		holder.content.setText("" + list.get(position).getContent());
 		holder.gridAdapter = new GridAdapter(list.get(position).getImg(),
 				context);
@@ -205,6 +214,29 @@ public class CircleAdapter extends BaseAdapter {
 			}
 		});
 
+		holder.bingGridView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				if (listener != null) {
+					listener.onPicClick(adapterPostion, position);
+				}
+			}
+		});
+
+		holder.delete.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (listener != null) {
+					listener.onDeleteClick(adapterPostion);
+				}
+			}
+		});
+
 		return convertView;
 	}
 
@@ -219,14 +251,17 @@ public class CircleAdapter extends BaseAdapter {
 		public CommentsAdapter commentsAdapter;
 		public ImageView commentmenu;
 		public TextView laundTextView;
+		public TextView delete;
 	}
 
 	public interface CircleOnClickListener {
-		public void onPicClick(int position);
+		public void onPicClick(int position, int picpostion);
 
 		public void onCommentClick(int position);
 
 		public void onLaunClick(int position);
+
+		public void onDeleteClick(int position);
 	}
 
 }
