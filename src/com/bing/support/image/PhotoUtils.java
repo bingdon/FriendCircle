@@ -8,7 +8,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import com.bing.friendplace.R;
-import com.bing.support.debug.AppLog;
 import com.bing.support.file.FileUtility;
 
 import android.app.Activity;
@@ -134,7 +133,7 @@ public class PhotoUtils {
 
 		if (value.startsWith("/external")) {
 			String[] proj = { MediaStore.Images.Media.DATA };
-			Cursor cursor = activity.managedQuery(uri, proj, null, null, null);
+			Cursor cursor = activity.getContentResolver().query(uri, proj, null, null, null);
 			int column_index = cursor
 					.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
 			cursor.moveToFirst();
@@ -146,8 +145,8 @@ public class PhotoUtils {
 
 	// 图片上传选择途径
 	public static void secPic(final Activity context) {
-		final CharSequence[] items = { "相册", "拍照" };
-		AlertDialog dlg = new AlertDialog.Builder(context).setTitle("选择图片")
+		final CharSequence[] items = {  context.getString(R.string.photo), context.getString(R.string.takepic)};
+		AlertDialog dlg = new AlertDialog.Builder(context).setTitle(context.getString(R.string.secphoto))
 				.setItems(items, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int item) {
 						// 这里item是根据选择的方式，

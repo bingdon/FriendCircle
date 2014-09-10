@@ -59,7 +59,6 @@ public class FriendPlaceActivity extends BaseListActivity implements
 	private TextView noticeNum;
 
 	private TextView noticetitle;
-
 	// ÆÀÂÛView
 	private View sendView;
 	// ÆÀÂÛ±à¼­
@@ -244,6 +243,7 @@ public class FriendPlaceActivity extends BaseListActivity implements
 		HttpMethod.postMoodLand(list.get(position).getId(), G.uid,
 				new JsonHttpResponseHandler());
 		list.get(position).setIslaud(true);
+		list.get(position).setLaudcount(list.get(position).getLaudcount()+1);
 		circleAdapter.notifyDataSetChanged();
 	}
 
@@ -468,7 +468,9 @@ public class FriendPlaceActivity extends BaseListActivity implements
 	
 	
 	
-	
+	/**
+	 * @deprecated
+	 */
 	private Handler postBgHandler=new Handler(new Handler.Callback() {
 		
 		@Override

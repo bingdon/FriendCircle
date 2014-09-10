@@ -1,7 +1,6 @@
 package com.bing.friendplace;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.http.Header;
@@ -25,7 +24,6 @@ import com.bing.ui.custmeview.BingGridView;
 import com.bing.ui.custmeview.HorizontalListView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
-import android.R.array;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;

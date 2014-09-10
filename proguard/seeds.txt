@@ -1,0 +1,1144 @@
+android.support.v4.app.BackStackState
+android.support.v4.app.BackStackState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.Fragment$SavedState
+android.support.v4.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentManagerState
+android.support.v4.app.FragmentManagerState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentState
+android.support.v4.app.FragmentState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentTabHost: void setOnTabChangedListener(android.widget.TabHost$OnTabChangeListener)
+android.support.v4.app.FragmentTabHost$SavedState
+android.support.v4.app.FragmentTabHost$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status[] values()
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status valueOf(java.lang.String)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColor(int)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColorResource(int)
+android.support.v4.view.PagerTabStrip: int getTabIndicatorColor()
+android.support.v4.view.PagerTabStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.PagerTabStrip: void setBackgroundColor(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundResource(int)
+android.support.v4.view.PagerTabStrip: void setDrawFullUnderline(boolean)
+android.support.v4.view.PagerTabStrip: boolean getDrawFullUnderline()
+android.support.v4.view.PagerTabStrip: int getMinHeight()
+android.support.v4.view.PagerTitleStrip: void setSingleLineAllCaps(android.widget.TextView)
+android.support.v4.view.PagerTitleStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTitleStrip: int getTextSpacing()
+android.support.v4.view.PagerTitleStrip: void setNonPrimaryAlpha(float)
+android.support.v4.view.PagerTitleStrip: void setTextColor(int)
+android.support.v4.view.PagerTitleStrip: void setGravity(int)
+android.support.v4.view.PagerTitleStrip: int getMinHeight()
+android.support.v4.view.ViewPager: java.lang.String TAG
+android.support.v4.view.ViewPager: boolean DEBUG
+android.support.v4.view.ViewPager: boolean USE_CACHE
+android.support.v4.view.ViewPager: int DEFAULT_OFFSCREEN_PAGES
+android.support.v4.view.ViewPager: int MAX_SETTLE_DURATION
+android.support.v4.view.ViewPager: int MIN_DISTANCE_FOR_FLING
+android.support.v4.view.ViewPager: int DEFAULT_GUTTER_SIZE
+android.support.v4.view.ViewPager: int MIN_FLING_VELOCITY
+android.support.v4.view.ViewPager: int[] LAYOUT_ATTRS
+android.support.v4.view.ViewPager: int mExpectedAdapterCount
+android.support.v4.view.ViewPager: java.util.Comparator COMPARATOR
+android.support.v4.view.ViewPager: android.view.animation.Interpolator sInterpolator
+android.support.v4.view.ViewPager: java.util.ArrayList mItems
+android.support.v4.view.ViewPager: android.support.v4.view.ViewPager$ItemInfo mTempItem
+android.support.v4.view.ViewPager: android.graphics.Rect mTempRect
+android.support.v4.view.ViewPager: android.support.v4.view.PagerAdapter mAdapter
+android.support.v4.view.ViewPager: int mCurItem
+android.support.v4.view.ViewPager: int mRestoredCurItem
+android.support.v4.view.ViewPager: android.os.Parcelable mRestoredAdapterState
+android.support.v4.view.ViewPager: java.lang.ClassLoader mRestoredClassLoader
+android.support.v4.view.ViewPager: android.widget.Scroller mScroller
+android.support.v4.view.ViewPager: android.support.v4.view.ViewPager$PagerObserver mObserver
+android.support.v4.view.ViewPager: int mPageMargin
+android.support.v4.view.ViewPager: android.graphics.drawable.Drawable mMarginDrawable
+android.support.v4.view.ViewPager: int mTopPageBounds
+android.support.v4.view.ViewPager: int mBottomPageBounds
+android.support.v4.view.ViewPager: float mFirstOffset
+android.support.v4.view.ViewPager: float mLastOffset
+android.support.v4.view.ViewPager: int mChildWidthMeasureSpec
+android.support.v4.view.ViewPager: int mChildHeightMeasureSpec
+android.support.v4.view.ViewPager: boolean mInLayout
+android.support.v4.view.ViewPager: boolean mScrollingCacheEnabled
+android.support.v4.view.ViewPager: boolean mPopulatePending
+android.support.v4.view.ViewPager: int mOffscreenPageLimit
+android.support.v4.view.ViewPager: boolean mIsBeingDragged
+android.support.v4.view.ViewPager: boolean mIsUnableToDrag
+android.support.v4.view.ViewPager: boolean mIgnoreGutter
+android.support.v4.view.ViewPager: int mDefaultGutterSize
+android.support.v4.view.ViewPager: int mGutterSize
+android.support.v4.view.ViewPager: int mTouchSlop
+android.support.v4.view.ViewPager: float mLastMotionX
+android.support.v4.view.ViewPager: float mLastMotionY
+android.support.v4.view.ViewPager: float mInitialMotionX
+android.support.v4.view.ViewPager: float mInitialMotionY
+android.support.v4.view.ViewPager: int mActivePointerId
+android.support.v4.view.ViewPager: int INVALID_POINTER
+android.support.v4.view.ViewPager: android.view.VelocityTracker mVelocityTracker
+android.support.v4.view.ViewPager: int mMinimumVelocity
+android.support.v4.view.ViewPager: int mMaximumVelocity
+android.support.v4.view.ViewPager: int mFlingDistance
+android.support.v4.view.ViewPager: int mCloseEnough
+android.support.v4.view.ViewPager: int CLOSE_ENOUGH
+android.support.v4.view.ViewPager: boolean mFakeDragging
+android.support.v4.view.ViewPager: long mFakeDragBeginTime
+android.support.v4.view.ViewPager: android.support.v4.widget.EdgeEffectCompat mLeftEdge
+android.support.v4.view.ViewPager: android.support.v4.widget.EdgeEffectCompat mRightEdge
+android.support.v4.view.ViewPager: boolean mFirstLayout
+android.support.v4.view.ViewPager: boolean mNeedCalculatePageOffsets
+android.support.v4.view.ViewPager: boolean mCalledSuper
+android.support.v4.view.ViewPager: int mDecorChildCount
+android.support.v4.view.ViewPager: android.support.v4.view.ViewPager$OnPageChangeListener mOnPageChangeListener
+android.support.v4.view.ViewPager: android.support.v4.view.ViewPager$OnPageChangeListener mInternalPageChangeListener
+android.support.v4.view.ViewPager: android.support.v4.view.ViewPager$OnAdapterChangeListener mAdapterChangeListener
+android.support.v4.view.ViewPager: android.support.v4.view.ViewPager$PageTransformer mPageTransformer
+android.support.v4.view.ViewPager: java.lang.reflect.Method mSetChildrenDrawingOrderEnabled
+android.support.v4.view.ViewPager: int DRAW_ORDER_DEFAULT
+android.support.v4.view.ViewPager: int DRAW_ORDER_FORWARD
+android.support.v4.view.ViewPager: int DRAW_ORDER_REVERSE
+android.support.v4.view.ViewPager: int mDrawingOrder
+android.support.v4.view.ViewPager: java.util.ArrayList mDrawingOrderedChildren
+android.support.v4.view.ViewPager: android.support.v4.view.ViewPager$ViewPositionComparator sPositionComparator
+android.support.v4.view.ViewPager: int SCROLL_STATE_IDLE
+android.support.v4.view.ViewPager: int SCROLL_STATE_DRAGGING
+android.support.v4.view.ViewPager: int SCROLL_STATE_SETTLING
+android.support.v4.view.ViewPager: java.lang.Runnable mEndScrollRunnable
+android.support.v4.view.ViewPager: int mScrollState
+android.support.v4.view.ViewPager: ViewPager(android.content.Context)
+android.support.v4.view.ViewPager: ViewPager(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.ViewPager: void initViewPager()
+android.support.v4.view.ViewPager: void onDetachedFromWindow()
+android.support.v4.view.ViewPager: void setScrollState(int)
+android.support.v4.view.ViewPager: void setAdapter(android.support.v4.view.PagerAdapter)
+android.support.v4.view.ViewPager: void removeNonDecorViews()
+android.support.v4.view.ViewPager: android.support.v4.view.PagerAdapter getAdapter()
+android.support.v4.view.ViewPager: void setOnAdapterChangeListener(android.support.v4.view.ViewPager$OnAdapterChangeListener)
+android.support.v4.view.ViewPager: int getClientWidth()
+android.support.v4.view.ViewPager: void setCurrentItem(int)
+android.support.v4.view.ViewPager: void setCurrentItem(int,boolean)
+android.support.v4.view.ViewPager: int getCurrentItem()
+android.support.v4.view.ViewPager: void setCurrentItemInternal(int,boolean,boolean)
+android.support.v4.view.ViewPager: void setCurrentItemInternal(int,boolean,boolean,int)
+android.support.v4.view.ViewPager: void scrollToItem(int,boolean,int,boolean)
+android.support.v4.view.ViewPager: void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
+android.support.v4.view.ViewPager: void setPageTransformer(boolean,android.support.v4.view.ViewPager$PageTransformer)
+android.support.v4.view.ViewPager: void setChildrenDrawingOrderEnabledCompat(boolean)
+android.support.v4.view.ViewPager: int getChildDrawingOrder(int,int)
+android.support.v4.view.ViewPager: android.support.v4.view.ViewPager$OnPageChangeListener setInternalPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
+android.support.v4.view.ViewPager: int getOffscreenPageLimit()
+android.support.v4.view.ViewPager: void setOffscreenPageLimit(int)
+android.support.v4.view.ViewPager: void setPageMargin(int)
+android.support.v4.view.ViewPager: int getPageMargin()
+android.support.v4.view.ViewPager: void setPageMarginDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.ViewPager: void setPageMarginDrawable(int)
+android.support.v4.view.ViewPager: boolean verifyDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.ViewPager: void drawableStateChanged()
+android.support.v4.view.ViewPager: float distanceInfluenceForSnapDuration(float)
+android.support.v4.view.ViewPager: void smoothScrollTo(int,int)
+android.support.v4.view.ViewPager: void smoothScrollTo(int,int,int)
+android.support.v4.view.ViewPager: android.support.v4.view.ViewPager$ItemInfo addNewItem(int,int)
+android.support.v4.view.ViewPager: void dataSetChanged()
+android.support.v4.view.ViewPager: void populate()
+android.support.v4.view.ViewPager: void populate(int)
+android.support.v4.view.ViewPager: void sortChildDrawingOrder()
+android.support.v4.view.ViewPager: void calculatePageOffsets(android.support.v4.view.ViewPager$ItemInfo,int,android.support.v4.view.ViewPager$ItemInfo)
+android.support.v4.view.ViewPager: android.os.Parcelable onSaveInstanceState()
+android.support.v4.view.ViewPager: void onRestoreInstanceState(android.os.Parcelable)
+android.support.v4.view.ViewPager: void addView(android.view.View,int,android.view.ViewGroup$LayoutParams)
+android.support.v4.view.ViewPager: void removeView(android.view.View)
+android.support.v4.view.ViewPager: android.support.v4.view.ViewPager$ItemInfo infoForChild(android.view.View)
+android.support.v4.view.ViewPager: android.support.v4.view.ViewPager$ItemInfo infoForAnyChild(android.view.View)
+android.support.v4.view.ViewPager: android.support.v4.view.ViewPager$ItemInfo infoForPosition(int)
+android.support.v4.view.ViewPager: void onAttachedToWindow()
+android.support.v4.view.ViewPager: void onMeasure(int,int)
+android.support.v4.view.ViewPager: void onSizeChanged(int,int,int,int)
+android.support.v4.view.ViewPager: void recomputeScrollPosition(int,int,int,int)
+android.support.v4.view.ViewPager: void onLayout(boolean,int,int,int,int)
+android.support.v4.view.ViewPager: void computeScroll()
+android.support.v4.view.ViewPager: boolean pageScrolled(int)
+android.support.v4.view.ViewPager: void onPageScrolled(int,float,int)
+android.support.v4.view.ViewPager: void completeScroll(boolean)
+android.support.v4.view.ViewPager: boolean isGutterDrag(float,float)
+android.support.v4.view.ViewPager: void enableLayers(boolean)
+android.support.v4.view.ViewPager: boolean onInterceptTouchEvent(android.view.MotionEvent)
+android.support.v4.view.ViewPager: boolean onTouchEvent(android.view.MotionEvent)
+android.support.v4.view.ViewPager: void requestParentDisallowInterceptTouchEvent(boolean)
+android.support.v4.view.ViewPager: boolean performDrag(float)
+android.support.v4.view.ViewPager: android.support.v4.view.ViewPager$ItemInfo infoForCurrentScrollPosition()
+android.support.v4.view.ViewPager: int determineTargetPage(int,float,int,int)
+android.support.v4.view.ViewPager: void draw(android.graphics.Canvas)
+android.support.v4.view.ViewPager: void onDraw(android.graphics.Canvas)
+android.support.v4.view.ViewPager: boolean beginFakeDrag()
+android.support.v4.view.ViewPager: void endFakeDrag()
+android.support.v4.view.ViewPager: void fakeDragBy(float)
+android.support.v4.view.ViewPager: boolean isFakeDragging()
+android.support.v4.view.ViewPager: void onSecondaryPointerUp(android.view.MotionEvent)
+android.support.v4.view.ViewPager: void endDrag()
+android.support.v4.view.ViewPager: void setScrollingCacheEnabled(boolean)
+android.support.v4.view.ViewPager: boolean canScrollHorizontally(int)
+android.support.v4.view.ViewPager: boolean canScroll(android.view.View,boolean,int,int,int)
+android.support.v4.view.ViewPager: boolean dispatchKeyEvent(android.view.KeyEvent)
+android.support.v4.view.ViewPager: boolean executeKeyEvent(android.view.KeyEvent)
+android.support.v4.view.ViewPager: boolean arrowScroll(int)
+android.support.v4.view.ViewPager: android.graphics.Rect getChildRectInPagerCoordinates(android.graphics.Rect,android.view.View)
+android.support.v4.view.ViewPager: boolean pageLeft()
+android.support.v4.view.ViewPager: boolean pageRight()
+android.support.v4.view.ViewPager: void addFocusables(java.util.ArrayList,int,int)
+android.support.v4.view.ViewPager: void addTouchables(java.util.ArrayList)
+android.support.v4.view.ViewPager: boolean onRequestFocusInDescendants(int,android.graphics.Rect)
+android.support.v4.view.ViewPager: boolean dispatchPopulateAccessibilityEvent(android.view.accessibility.AccessibilityEvent)
+android.support.v4.view.ViewPager: android.view.ViewGroup$LayoutParams generateDefaultLayoutParams()
+android.support.v4.view.ViewPager: android.view.ViewGroup$LayoutParams generateLayoutParams(android.view.ViewGroup$LayoutParams)
+android.support.v4.view.ViewPager: boolean checkLayoutParams(android.view.ViewGroup$LayoutParams)
+android.support.v4.view.ViewPager: android.view.ViewGroup$LayoutParams generateLayoutParams(android.util.AttributeSet)
+android.support.v4.view.ViewPager: void access$000(android.support.v4.view.ViewPager,int)
+android.support.v4.view.ViewPager: android.support.v4.view.PagerAdapter access$200(android.support.v4.view.ViewPager)
+android.support.v4.view.ViewPager: int access$300(android.support.v4.view.ViewPager)
+android.support.v4.view.ViewPager: int[] access$400()
+android.support.v4.view.ViewPager: void <clinit>()
+android.support.v4.view.ViewPager$SavedState
+android.support.v4.view.ViewPager$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.DrawerLayout: void setScrimColor(int)
+android.support.v4.widget.DrawerLayout: void setDrawerListener(android.support.v4.widget.DrawerLayout$DrawerListener)
+android.support.v4.widget.DrawerLayout: void setDrawerLockMode(int)
+android.support.v4.widget.DrawerLayout$SavedState
+android.support.v4.widget.DrawerLayout$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.SlidingPaneLayout: void setParallaxDistance(int)
+android.support.v4.widget.SlidingPaneLayout: int getParallaxDistance()
+android.support.v4.widget.SlidingPaneLayout: void setSliderFadeColor(int)
+android.support.v4.widget.SlidingPaneLayout: int getSliderFadeColor()
+android.support.v4.widget.SlidingPaneLayout: void setCoveredFadeColor(int)
+android.support.v4.widget.SlidingPaneLayout: int getCoveredFadeColor()
+android.support.v4.widget.SlidingPaneLayout: void setPanelSlideListener(android.support.v4.widget.SlidingPaneLayout$PanelSlideListener)
+android.support.v4.widget.SlidingPaneLayout: void setShadowDrawable(android.graphics.drawable.Drawable)
+android.support.v4.widget.SlidingPaneLayout: void setShadowResource(int)
+android.support.v4.widget.SlidingPaneLayout$SavedState
+android.support.v4.widget.SlidingPaneLayout$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.SwipeRefreshLayout
+android.support.v4.widget.SwipeRefreshLayout: SwipeRefreshLayout(android.content.Context)
+android.support.v4.widget.SwipeRefreshLayout: SwipeRefreshLayout(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.SwipeRefreshLayout: void setOnRefreshListener(android.support.v4.widget.SwipeRefreshLayout$OnRefreshListener)
+android.support.v4.widget.SwipeRefreshLayout: void setTriggerPercentage(float)
+android.support.v4.widget.SwipeRefreshLayout: void setRefreshing(boolean)
+android.support.v4.widget.SwipeRefreshLayout: void setTargetOffsetTopAndBottom(int)
+com.baidu.location.BDLocation
+com.baidu.location.BDLocation: android.os.Parcelable$Creator CREATOR
+com.baidu.location.CommonEncrypt
+com.baidu.location.CommonEncrypt: byte[] encrypt(byte[])
+com.baidu.location.Jni
+com.baidu.location.Jni: java.lang.String a(byte[],int)
+com.baidu.location.Jni: java.lang.String b(double,double,int,int)
+com.baidu.location.Jni: java.lang.String c(byte[],int)
+com.baidu.location.Jni: java.lang.String g(byte[])
+com.baidu.location.Jni: void f(byte[],byte[])
+com.baidu.location.LocationClientOption$LocationMode: com.baidu.location.LocationClientOption$LocationMode[] values()
+com.baidu.location.LocationClientOption$LocationMode: com.baidu.location.LocationClientOption$LocationMode valueOf(java.lang.String)
+com.baidu.location.R$a
+com.baidu.location.R$a: com.baidu.location.R a
+com.baidu.location.R$a: R$a(com.baidu.location.R)
+com.baidu.location.R$a: void onReceive(android.content.Context,android.content.Intent)
+com.baidu.location.R$b
+com.baidu.location.R$b: double do
+com.baidu.location.R$b: double if
+com.baidu.location.R$b: java.util.HashMap b
+com.baidu.location.R$b: double c
+com.baidu.location.R$b: com.baidu.location.R a
+com.baidu.location.R$b: R$b(com.baidu.location.R,com.baidu.location.u$b)
+com.baidu.location.R$b: double a(com.baidu.location.R$b)
+com.baidu.location.R$b: java.util.HashMap if()
+com.baidu.location.R$b: double a()
+com.baidu.location.R$c
+com.baidu.location.R$c: boolean a
+com.baidu.location.R$c: com.baidu.location.R b
+com.baidu.location.R$c: R$c(com.baidu.location.R)
+com.baidu.location.R$c: void a(android.content.Context)
+com.baidu.location.R$c: void onReceive(android.content.Context,android.content.Intent)
+com.baidu.location.f
+com.baidu.location.f: f()
+com.baidu.mapapi.map.MapView: com.baidu.mapapi.map.BaiduMap getMap()
+com.baidu.mapapi.map.MapViewLayoutParams$ELayoutMode: com.baidu.mapapi.map.MapViewLayoutParams$ELayoutMode[] values()
+com.baidu.mapapi.map.MapViewLayoutParams$ELayoutMode: com.baidu.mapapi.map.MapViewLayoutParams$ELayoutMode valueOf(java.lang.String)
+com.baidu.mapapi.map.MyLocationConfiguration$LocationMode: com.baidu.mapapi.map.MyLocationConfiguration$LocationMode[] values()
+com.baidu.mapapi.map.MyLocationConfiguration$LocationMode: com.baidu.mapapi.map.MyLocationConfiguration$LocationMode valueOf(java.lang.String)
+com.baidu.mapapi.search.core.PoiInfo$POITYPE: com.baidu.mapapi.search.core.PoiInfo$POITYPE[] values()
+com.baidu.mapapi.search.core.PoiInfo$POITYPE: com.baidu.mapapi.search.core.PoiInfo$POITYPE valueOf(java.lang.String)
+com.baidu.mapapi.search.core.SearchResult$ERRORNO: com.baidu.mapapi.search.core.SearchResult$ERRORNO[] values()
+com.baidu.mapapi.search.core.SearchResult$ERRORNO: com.baidu.mapapi.search.core.SearchResult$ERRORNO valueOf(java.lang.String)
+com.baidu.mapapi.search.route.DrivingRoutePlanOption$DrivingPolicy: com.baidu.mapapi.search.route.DrivingRoutePlanOption$DrivingPolicy[] values()
+com.baidu.mapapi.search.route.DrivingRoutePlanOption$DrivingPolicy: com.baidu.mapapi.search.route.DrivingRoutePlanOption$DrivingPolicy valueOf(java.lang.String)
+com.baidu.mapapi.search.route.TransitRouteLine$TransitStep$TransitRouteStepType: com.baidu.mapapi.search.route.TransitRouteLine$TransitStep$TransitRouteStepType[] values()
+com.baidu.mapapi.search.route.TransitRouteLine$TransitStep$TransitRouteStepType: com.baidu.mapapi.search.route.TransitRouteLine$TransitStep$TransitRouteStepType valueOf(java.lang.String)
+com.baidu.mapapi.search.route.TransitRoutePlanOption$TransitPolicy: com.baidu.mapapi.search.route.TransitRoutePlanOption$TransitPolicy[] values()
+com.baidu.mapapi.search.route.TransitRoutePlanOption$TransitPolicy: com.baidu.mapapi.search.route.TransitRoutePlanOption$TransitPolicy valueOf(java.lang.String)
+com.baidu.mapapi.utils.CoordinateConverter$CoordType: com.baidu.mapapi.utils.CoordinateConverter$CoordType[] values()
+com.baidu.mapapi.utils.CoordinateConverter$CoordType: com.baidu.mapapi.utils.CoordinateConverter$CoordType valueOf(java.lang.String)
+com.baidu.platform.comapi.map.MapRenderer
+com.baidu.platform.comapi.map.MapRenderer: void nativeInit(int)
+com.baidu.platform.comapi.map.MapRenderer: void nativeResize(int,int,int)
+com.baidu.platform.comapi.map.MapRenderer: int nativeRender(int)
+com.baidu.platform.comapi.map.d: com.baidu.platform.comapi.map.d[] values()
+com.baidu.platform.comapi.map.d: com.baidu.platform.comapi.map.d valueOf(java.lang.String)
+com.baidu.platform.comapi.map.u: com.baidu.platform.comapi.map.u[] values()
+com.baidu.platform.comapi.map.u: com.baidu.platform.comapi.map.u valueOf(java.lang.String)
+com.baidu.platform.comjni.base.networkdetect.JNINetworkDetect
+com.baidu.platform.comjni.base.networkdetect.JNINetworkDetect: int Create()
+com.baidu.platform.comjni.engine.JNIEngine
+com.baidu.platform.comjni.engine.JNIEngine: int initClass(java.lang.Object,int)
+com.baidu.platform.comjni.engine.JNIEngine: boolean InitEngine(android.content.Context,android.os.Bundle)
+com.baidu.platform.comjni.engine.JNIEngine: boolean UnInitEngine()
+com.baidu.platform.comjni.engine.JNIEngine: void SetProxyInfo(java.lang.String,int)
+com.baidu.platform.comjni.engine.JNIEngine: boolean StartSocketProc()
+com.baidu.platform.comjni.map.basemap.JNIBaseMap
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: int Create()
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: int SetCallback(int,com.baidu.platform.comjni.map.basemap.BaseMapCallback)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: int Release(int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: boolean Init(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,int,int,int,int,int,int,int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void OnPause(int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void OnResume(int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void ResetImageRes(int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void SetMapStatus(int,android.os.Bundle)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: int SetMapControlMode(int,int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: android.os.Bundle GetMapStatus(int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: float GetZoomToBound(int,android.os.Bundle)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void ShowSatelliteMap(int,boolean)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void ShowTrafficMap(int,boolean)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void ShowLayers(int,int,boolean)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void UpdateLayers(int,int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: int AddLayer(int,int,int,java.lang.String)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void ClearLayer(int,int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: java.lang.String GetNearlyObjID(int,int,int,int,int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: java.lang.String ScrPtToGeoPoint(int,int,int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: java.lang.String GeoPtToScrPoint(int,int,int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void SaveScreenToLocal(int,java.lang.String)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: boolean OnRecordAdd(int,int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: boolean OnRecordStart(int,int,boolean,int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: boolean OnRecordSuspend(int,int,boolean,int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: boolean OnRecordRemove(int,int,boolean)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: java.lang.String OnRecordGetAll(int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: java.lang.String OnRecordGetAt(int,int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: boolean OnRecordImport(int,boolean)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: java.lang.String OnHotcityGet(int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: java.lang.String OnSchcityGet(int,java.lang.String)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void addOneOverlayItem(int,android.os.Bundle)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void updateOneOverlayItem(int,android.os.Bundle)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void removeOneOverlayItem(int,android.os.Bundle)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void PostStatInfo(int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: int MapProc(int,int,int,int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: int CreateDuplicate(int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: int[] GetScreenBuf(int,int[])
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void enableDrawHouseHeight(int,boolean)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: boolean isDrawHouseHeightEnable(int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap: void clearHeatMapLayerCache(int)
+com.baidu.platform.comjni.map.cloud.JniCloud
+com.baidu.platform.comjni.map.cloud.JniCloud: int create()
+com.baidu.platform.comjni.map.cloud.JniCloud: int release(int)
+com.baidu.platform.comjni.map.cloud.JniCloud: java.lang.String getSearchResult(int,int)
+com.baidu.platform.comjni.map.cloud.JniCloud: void cloudSearch(int,android.os.Bundle)
+com.baidu.platform.comjni.map.cloud.JniCloud: void cloudDetailSearch(int,android.os.Bundle)
+com.baidu.platform.comjni.map.commonmemcache.JNICommonMemCache
+com.baidu.platform.comjni.map.commonmemcache.JNICommonMemCache: int Create()
+com.baidu.platform.comjni.map.commonmemcache.JNICommonMemCache: int Release(int)
+com.baidu.platform.comjni.map.commonmemcache.JNICommonMemCache: void Init(int,android.os.Bundle)
+com.baidu.platform.comjni.map.search.JNISearch
+com.baidu.platform.comjni.map.search.JNISearch: int Create()
+com.baidu.platform.comjni.map.search.JNISearch: int Release(int)
+com.baidu.platform.comjni.map.search.JNISearch: java.lang.String GetSearchResult(int,int)
+com.baidu.platform.comjni.map.search.JNISearch: boolean ForceSearchByCityName(int,android.os.Bundle)
+com.baidu.platform.comjni.map.search.JNISearch: boolean AreaSearch(int,android.os.Bundle)
+com.baidu.platform.comjni.map.search.JNISearch: boolean RoutePlanByBus(int,android.os.Bundle)
+com.baidu.platform.comjni.map.search.JNISearch: boolean RoutePlanByCar(int,android.os.Bundle)
+com.baidu.platform.comjni.map.search.JNISearch: boolean RoutePlanByFoot(int,android.os.Bundle)
+com.baidu.platform.comjni.map.search.JNISearch: boolean POIDetailSearchPlace(int,java.lang.String)
+com.baidu.platform.comjni.map.search.JNISearch: boolean BusLineDetailSearch(int,java.lang.String,java.lang.String)
+com.baidu.platform.comjni.map.search.JNISearch: boolean SuggestionSearch(int,android.os.Bundle)
+com.baidu.platform.comjni.map.search.JNISearch: boolean ReverseGeocodeSearch(int,int,int)
+com.baidu.platform.comjni.map.search.JNISearch: boolean geocode(int,java.lang.String,java.lang.String)
+com.baidu.platform.comjni.map.search.JNISearch: boolean PoiRGCShareUrlSearch(int,int,int,java.lang.String,java.lang.String)
+com.baidu.platform.comjni.map.search.JNISearch: boolean PoiDetailShareUrlSearch(int,java.lang.String)
+com.baidu.platform.comjni.map.search.JNISearch: boolean MapBoundSearch(int,android.os.Bundle)
+com.baidu.platform.comjni.tools.JNITools
+com.baidu.platform.comjni.tools.JNITools: boolean TransGeoStr2Pt(java.lang.Object)
+com.baidu.platform.comjni.tools.JNITools: void TransNodeStr2Pt(java.lang.Object)
+com.baidu.platform.comjni.tools.JNITools: boolean TransGeoStr2ComplexPt(java.lang.Object)
+com.baidu.platform.comjni.tools.JNITools: void GetDistanceByMC(java.lang.Object)
+com.baidu.platform.comjni.tools.JNITools: boolean CoordinateEncryptEx(float,float,java.lang.String,java.lang.Object)
+com.baidu.platform.comjni.tools.ParcelItem
+com.baidu.platform.comjni.tools.ParcelItem: android.os.Parcelable$Creator a
+com.baidu.vi.VDeviceAPI
+com.baidu.vi.VDeviceAPI: void onNetworkStateChanged()
+com.baidu.vi.VMsg
+com.baidu.vi.VMsg: void OnUserCommand1(int,int,int,int)
+com.bing.app.FriendApp
+com.bing.app.FriendApp: FriendApp()
+com.bing.friendplace.BaseActivity: BaseActivity()
+com.bing.friendplace.BaseListActivity: BaseListActivity()
+com.bing.friendplace.CommentActivity
+com.bing.friendplace.CommentActivity: CommentActivity()
+com.bing.friendplace.ContactsActivity
+com.bing.friendplace.ContactsActivity: ContactsActivity()
+com.bing.friendplace.FriendPlaceActivity
+com.bing.friendplace.FriendPlaceActivity: FriendPlaceActivity()
+com.bing.friendplace.MainActivity
+com.bing.friendplace.MainActivity: MainActivity()
+com.bing.friendplace.MessageActivity
+com.bing.friendplace.MessageActivity: MessageActivity()
+com.bing.friendplace.MoodInfoActivity
+com.bing.friendplace.MoodInfoActivity: MoodInfoActivity()
+com.bing.friendplace.MyAlbum
+com.bing.friendplace.MyAlbum: MyAlbum()
+com.bing.friendplace.PhotoPagerActvity
+com.bing.friendplace.PhotoPagerActvity: PhotoPagerActvity()
+com.bing.friendplace.PublishActivity
+com.bing.friendplace.PublishActivity: PublishActivity()
+com.bing.friendplace.R$anim
+com.bing.friendplace.R$anim: int zoom_enter
+com.bing.friendplace.R$anim: int zoom_exit
+com.bing.friendplace.R$anim: R$anim()
+com.bing.friendplace.R$attr
+com.bing.friendplace.R$attr: R$attr()
+com.bing.friendplace.R$color
+com.bing.friendplace.R$color: int actionbar_color
+com.bing.friendplace.R$color: int actionbar_tran_color
+com.bing.friendplace.R$color: int black
+com.bing.friendplace.R$color: int deepskyblue
+com.bing.friendplace.R$color: int gole
+com.bing.friendplace.R$color: int gray
+com.bing.friendplace.R$color: int ivory
+com.bing.friendplace.R$color: int light_gray
+com.bing.friendplace.R$color: int lightgray
+com.bing.friendplace.R$color: int transparent
+com.bing.friendplace.R$color: int white
+com.bing.friendplace.R$color: R$color()
+com.bing.friendplace.R$dimen
+com.bing.friendplace.R$dimen: int activity_horizontal_margin
+com.bing.friendplace.R$dimen: int activity_vertical_margin
+com.bing.friendplace.R$dimen: R$dimen()
+com.bing.friendplace.R$drawable
+com.bing.friendplace.R$drawable: int actionbar
+com.bing.friendplace.R$drawable: int actionbar_arrow
+com.bing.friendplace.R$drawable: int biao
+com.bing.friendplace.R$drawable: int biao2
+com.bing.friendplace.R$drawable: int camera
+com.bing.friendplace.R$drawable: int camera_pressed
+com.bing.friendplace.R$drawable: int camera_sec
+com.bing.friendplace.R$drawable: int check_box_sex
+com.bing.friendplace.R$drawable: int comment
+com.bing.friendplace.R$drawable: int comment_normal
+com.bing.friendplace.R$drawable: int comment_press
+com.bing.friendplace.R$drawable: int comment_sec
+com.bing.friendplace.R$drawable: int comment_sec_menu
+com.bing.friendplace.R$drawable: int comments
+com.bing.friendplace.R$drawable: int cut_line
+com.bing.friendplace.R$drawable: int eye
+com.bing.friendplace.R$drawable: int ic_at
+com.bing.friendplace.R$drawable: int ic_delete
+com.bing.friendplace.R$drawable: int ic_delete_p
+com.bing.friendplace.R$drawable: int ic_empty_
+com.bing.friendplace.R$drawable: int ic_fabu_tianjia
+com.bing.friendplace.R$drawable: int ic_launcher
+com.bing.friendplace.R$drawable: int ic_loading_
+com.bing.friendplace.R$drawable: int ic_loading_large_
+com.bing.friendplace.R$drawable: int ic_postion
+com.bing.friendplace.R$drawable: int ic_visible_range
+com.bing.friendplace.R$drawable: int iconfont_send_xh
+com.bing.friendplace.R$drawable: int laun
+com.bing.friendplace.R$drawable: int laun_sec
+com.bing.friendplace.R$drawable: int laund
+com.bing.friendplace.R$drawable: int left_sec
+com.bing.friendplace.R$drawable: int list_arrow
+com.bing.friendplace.R$drawable: int list_bg
+com.bing.friendplace.R$drawable: int list_sec
+com.bing.friendplace.R$drawable: int menu_bg
+com.bing.friendplace.R$drawable: int menu_bg_press
+com.bing.friendplace.R$drawable: int menu_sec
+com.bing.friendplace.R$drawable: int mood_menu_bg
+com.bing.friendplace.R$drawable: int mood_menu_press
+com.bing.friendplace.R$drawable: int notice
+com.bing.friendplace.R$drawable: int notice_pressed
+com.bing.friendplace.R$drawable: int notice_sec
+com.bing.friendplace.R$drawable: int pic_empty
+com.bing.friendplace.R$drawable: int pic_failure
+com.bing.friendplace.R$drawable: int pic_loading
+com.bing.friendplace.R$drawable: int pic_loading_
+com.bing.friendplace.R$drawable: int pic_preview
+com.bing.friendplace.R$drawable: int publish_state
+com.bing.friendplace.R$drawable: int radiobtn
+com.bing.friendplace.R$drawable: int radiobtn_sec
+com.bing.friendplace.R$drawable: int searchicon
+com.bing.friendplace.R$drawable: int send_btn_sec
+com.bing.friendplace.R$drawable: int send_failed
+com.bing.friendplace.R$drawable: int send_successfully
+com.bing.friendplace.R$drawable: int star
+com.bing.friendplace.R$drawable: int upload_white
+com.bing.friendplace.R$drawable: int user_bg
+com.bing.friendplace.R$drawable: int zan
+com.bing.friendplace.R$drawable: R$drawable()
+com.bing.friendplace.R$id
+com.bing.friendplace.R$id: int FrameLayout1
+com.bing.friendplace.R$id: int RelativeLayout1
+com.bing.friendplace.R$id: int _day
+com.bing.friendplace.R$id: int _month
+com.bing.friendplace.R$id: int a
+com.bing.friendplace.R$id: int action_settings
+com.bing.friendplace.R$id: int actionbar
+com.bing.friendplace.R$id: int address
+com.bing.friendplace.R$id: int at_line
+com.bing.friendplace.R$id: int at_one
+com.bing.friendplace.R$id: int b
+com.bing.friendplace.R$id: int button1
+com.bing.friendplace.R$id: int checkBox1
+com.bing.friendplace.R$id: int cir_visit
+com.bing.friendplace.R$id: int comment
+com.bing.friendplace.R$id: int comment_edit
+com.bing.friendplace.R$id: int comment_lay
+com.bing.friendplace.R$id: int comment_list
+com.bing.friendplace.R$id: int comment_num
+com.bing.friendplace.R$id: int comment_txt
+com.bing.friendplace.R$id: int constact_list
+com.bing.friendplace.R$id: int content
+com.bing.friendplace.R$id: int content_pic
+com.bing.friendplace.R$id: int contentpic
+com.bing.friendplace.R$id: int convertView
+com.bing.friendplace.R$id: int delete
+com.bing.friendplace.R$id: int dialog
+com.bing.friendplace.R$id: int editText1
+com.bing.friendplace.R$id: int head_bg
+com.bing.friendplace.R$id: int horizontalListView1
+com.bing.friendplace.R$id: int include1
+com.bing.friendplace.R$id: int index_textV
+com.bing.friendplace.R$id: int isat
+com.bing.friendplace.R$id: int laud_txt
+com.bing.friendplace.R$id: int laun
+com.bing.friendplace.R$id: int laun_list
+com.bing.friendplace.R$id: int left_txt
+com.bing.friendplace.R$id: int listView1
+com.bing.friendplace.R$id: int list_swipe
+com.bing.friendplace.R$id: int m_listview
+com.bing.friendplace.R$id: int name
+com.bing.friendplace.R$id: int notice_count
+com.bing.friendplace.R$id: int notice_fra
+com.bing.friendplace.R$id: int photoView1
+com.bing.friendplace.R$id: int photo_pager
+com.bing.friendplace.R$id: int pic
+com.bing.friendplace.R$id: int picGridView1
+com.bing.friendplace.R$id: int pic_grid
+com.bing.friendplace.R$id: int pic_progressBar
+com.bing.friendplace.R$id: int position
+com.bing.friendplace.R$id: int position_check
+com.bing.friendplace.R$id: int position_line
+com.bing.friendplace.R$id: int privatee
+com.bing.friendplace.R$id: int publicc
+com.bing.friendplace.R$id: int radioGroup1
+com.bing.friendplace.R$id: int right_title_img
+com.bing.friendplace.R$id: int right_title_txt
+com.bing.friendplace.R$id: int scrollView1
+com.bing.friendplace.R$id: int search
+com.bing.friendplace.R$id: int send_msg_btn
+com.bing.friendplace.R$id: int send_msg_editText
+com.bing.friendplace.R$id: int send_v
+com.bing.friendplace.R$id: int sideBar1
+com.bing.friendplace.R$id: int start
+com.bing.friendplace.R$id: int sum_textV
+com.bing.friendplace.R$id: int time
+com.bing.friendplace.R$id: int title
+com.bing.friendplace.R$id: int title_txt
+com.bing.friendplace.R$id: int today
+com.bing.friendplace.R$id: int today_scan_count
+com.bing.friendplace.R$id: int total_scan_count
+com.bing.friendplace.R$id: int user_head
+com.bing.friendplace.R$id: int userhead
+com.bing.friendplace.R$id: int username
+com.bing.friendplace.R$id: int visible_line
+com.bing.friendplace.R$id: int visible_txt
+com.bing.friendplace.R$id: int zan_num
+com.bing.friendplace.R$id: int zan_txt
+com.bing.friendplace.R$id: R$id()
+com.bing.friendplace.R$layout
+com.bing.friendplace.R$layout: int ablum_item
+com.bing.friendplace.R$layout: int ablum_time
+com.bing.friendplace.R$layout: int actionbar_layer
+com.bing.friendplace.R$layout: int activity_base_list
+com.bing.friendplace.R$layout: int activity_comment
+com.bing.friendplace.R$layout: int activity_friend_place
+com.bing.friendplace.R$layout: int activity_main
+com.bing.friendplace.R$layout: int activity_mood_info
+com.bing.friendplace.R$layout: int activity_msg
+com.bing.friendplace.R$layout: int activity_people_list
+com.bing.friendplace.R$layout: int activity_photo_pager
+com.bing.friendplace.R$layout: int activity_publish
+com.bing.friendplace.R$layout: int activity_visible_range
+com.bing.friendplace.R$layout: int circle_ada
+com.bing.friendplace.R$layout: int circle_rigth_lay
+com.bing.friendplace.R$layout: int circle_rigth_lay_merge
+com.bing.friendplace.R$layout: int comment_ada
+com.bing.friendplace.R$layout: int comment_item
+com.bing.friendplace.R$layout: int friend_item
+com.bing.friendplace.R$layout: int laund_item
+com.bing.friendplace.R$layout: int mood_info_right_lay
+com.bing.friendplace.R$layout: int msg_ada
+com.bing.friendplace.R$layout: int msg_center
+com.bing.friendplace.R$layout: int msg_item
+com.bing.friendplace.R$layout: int msg_txt
+com.bing.friendplace.R$layout: int pager_index
+com.bing.friendplace.R$layout: int photo_bottom
+com.bing.friendplace.R$layout: int photo_pager_
+com.bing.friendplace.R$layout: int pic_grid
+com.bing.friendplace.R$layout: int pic_grid_
+com.bing.friendplace.R$layout: int pic_item
+com.bing.friendplace.R$layout: int pop_view
+com.bing.friendplace.R$layout: int publish_merge
+com.bing.friendplace.R$layout: int send_v
+com.bing.friendplace.R$layout: int time2coment
+com.bing.friendplace.R$layout: int user_head
+com.bing.friendplace.R$layout: int user_head_label
+com.bing.friendplace.R$layout: R$layout()
+com.bing.friendplace.R$menu
+com.bing.friendplace.R$menu: int friend_place
+com.bing.friendplace.R$menu: int main
+com.bing.friendplace.R$menu: int message
+com.bing.friendplace.R$menu: R$menu()
+com.bing.friendplace.R$string
+com.bing.friendplace.R$string: int aboutme
+com.bing.friendplace.R$string: int action_settings
+com.bing.friendplace.R$string: int app_name
+com.bing.friendplace.R$string: int at_txt
+com.bing.friendplace.R$string: int back
+com.bing.friendplace.R$string: int cant_insert_album
+com.bing.friendplace.R$string: int change_bg
+com.bing.friendplace.R$string: int clearall
+com.bing.friendplace.R$string: int comment
+com.bing.friendplace.R$string: int cur_position
+com.bing.friendplace.R$string: int date_format
+com.bing.friendplace.R$string: int day
+com.bing.friendplace.R$string: int delete
+com.bing.friendplace.R$string: int delete_comment_notice
+com.bing.friendplace.R$string: int delete_msg
+com.bing.friendplace.R$string: int deletefailure
+com.bing.friendplace.R$string: int done
+com.bing.friendplace.R$string: int hello_world
+com.bing.friendplace.R$string: int hour
+com.bing.friendplace.R$string: int is_end_notice
+com.bing.friendplace.R$string: int justnow
+com.bing.friendplace.R$string: int launed
+com.bing.friendplace.R$string: int loacting
+com.bing.friendplace.R$string: int min
+com.bing.friendplace.R$string: int month
+com.bing.friendplace.R$string: int msg
+com.bing.friendplace.R$string: int myabulm
+com.bing.friendplace.R$string: int nonewmsg
+com.bing.friendplace.R$string: int notice
+com.bing.friendplace.R$string: int nullcontentnotice
+com.bing.friendplace.R$string: int one
+com.bing.friendplace.R$string: int photo
+com.bing.friendplace.R$string: int privatee
+com.bing.friendplace.R$string: int publicc
+com.bing.friendplace.R$string: int publish
+com.bing.friendplace.R$string: int publish_content_hint
+com.bing.friendplace.R$string: int publish_mmod
+com.bing.friendplace.R$string: int say_hint
+com.bing.friendplace.R$string: int sec
+com.bing.friendplace.R$string: int seccontacts
+com.bing.friendplace.R$string: int secphoto
+com.bing.friendplace.R$string: int send
+com.bing.friendplace.R$string: int send_failed
+com.bing.friendplace.R$string: int send_photo
+com.bing.friendplace.R$string: int send_successfully
+com.bing.friendplace.R$string: int sending
+com.bing.friendplace.R$string: int submit
+com.bing.friendplace.R$string: int takepic
+com.bing.friendplace.R$string: int the_day_before_yesterday
+com.bing.friendplace.R$string: int title_activity_friend_place
+com.bing.friendplace.R$string: int today
+com.bing.friendplace.R$string: int todaycan_count
+com.bing.friendplace.R$string: int total_scan_count
+com.bing.friendplace.R$string: int visible_range
+com.bing.friendplace.R$string: int xiekang
+com.bing.friendplace.R$string: int year
+com.bing.friendplace.R$string: int year_format
+com.bing.friendplace.R$string: int yesterday
+com.bing.friendplace.R$string: int zan
+com.bing.friendplace.R$string: R$string()
+com.bing.friendplace.R$style
+com.bing.friendplace.R$style: int AppBaseTheme
+com.bing.friendplace.R$style: int AppTheme
+com.bing.friendplace.R$style: int Back_style
+com.bing.friendplace.R$style: int Bingnotitle
+com.bing.friendplace.R$style: int Content_txt_style
+com.bing.friendplace.R$style: int MRadioButton
+com.bing.friendplace.R$style: int Name_style
+com.bing.friendplace.R$style: int Small_style
+com.bing.friendplace.R$style: int Title_style
+com.bing.friendplace.R$style: int defineCheckBox
+com.bing.friendplace.R$style: R$style()
+com.bing.friendplace.VisibleRangeActivity
+com.bing.friendplace.VisibleRangeActivity: VisibleRangeActivity()
+com.bing.ui.custmeview.BingGridView
+com.bing.ui.custmeview.BingGridView: BingGridView(android.content.Context)
+com.bing.ui.custmeview.BingGridView: BingGridView(android.content.Context,android.util.AttributeSet)
+com.bing.ui.custmeview.BingGridView: void onMeasure(int,int)
+com.bing.ui.custmeview.BingListView
+com.bing.ui.custmeview.BingListView: float mLastY
+com.bing.ui.custmeview.BingListView: android.widget.Scroller mScroller
+com.bing.ui.custmeview.BingListView: android.widget.AbsListView$OnScrollListener mScrollListener
+com.bing.ui.custmeview.BingListView: int mTotalItemCount
+com.bing.ui.custmeview.BingListView: com.bing.ui.custmeview.BingListView$IXListViewListener mListViewListener
+com.bing.ui.custmeview.BingListView: BingListView(android.content.Context,android.util.AttributeSet)
+com.bing.ui.custmeview.BingListView: void initWithContext(android.content.Context)
+com.bing.ui.custmeview.BingListView: void onScrollStateChanged(android.widget.AbsListView,int)
+com.bing.ui.custmeview.BingListView: void onScroll(android.widget.AbsListView,int,int,int)
+com.bing.ui.custmeview.BingListView: boolean onTouchEvent(android.view.MotionEvent)
+com.bing.ui.custmeview.BingListView: void startLoadMore()
+com.bing.ui.custmeview.BingListView: void setXListViewListener(com.bing.ui.custmeview.BingListView$IXListViewListener)
+com.bing.ui.custmeview.BingListView$IXListViewListener
+com.bing.ui.custmeview.BingListView$IXListViewListener: void onLoadMore()
+com.bing.ui.custmeview.BingListView$OnXScrollListener
+com.bing.ui.custmeview.BingListView$OnXScrollListener: void onXScrolling(android.view.View)
+com.bing.ui.custmeview.HorizontalListView
+com.bing.ui.custmeview.HorizontalListView: boolean mAlwaysOverrideTouch
+com.bing.ui.custmeview.HorizontalListView: android.widget.ListAdapter mAdapter
+com.bing.ui.custmeview.HorizontalListView: int mLeftViewIndex
+com.bing.ui.custmeview.HorizontalListView: int mRightViewIndex
+com.bing.ui.custmeview.HorizontalListView: int mCurrentX
+com.bing.ui.custmeview.HorizontalListView: int mNextX
+com.bing.ui.custmeview.HorizontalListView: int mMaxX
+com.bing.ui.custmeview.HorizontalListView: int mDisplayOffset
+com.bing.ui.custmeview.HorizontalListView: android.widget.Scroller mScroller
+com.bing.ui.custmeview.HorizontalListView: android.view.GestureDetector mGesture
+com.bing.ui.custmeview.HorizontalListView: java.util.Queue mRemovedViewQueue
+com.bing.ui.custmeview.HorizontalListView: android.widget.AdapterView$OnItemSelectedListener mOnItemSelected
+com.bing.ui.custmeview.HorizontalListView: android.widget.AdapterView$OnItemClickListener mOnItemClicked
+com.bing.ui.custmeview.HorizontalListView: android.widget.AdapterView$OnItemLongClickListener mOnItemLongClicked
+com.bing.ui.custmeview.HorizontalListView: boolean mDataChanged
+com.bing.ui.custmeview.HorizontalListView: android.database.DataSetObserver mDataObserver
+com.bing.ui.custmeview.HorizontalListView: android.view.GestureDetector$OnGestureListener mOnGesture
+com.bing.ui.custmeview.HorizontalListView: HorizontalListView(android.content.Context)
+com.bing.ui.custmeview.HorizontalListView: HorizontalListView(android.content.Context,android.util.AttributeSet)
+com.bing.ui.custmeview.HorizontalListView: void initView()
+com.bing.ui.custmeview.HorizontalListView: void setOnItemSelectedListener(android.widget.AdapterView$OnItemSelectedListener)
+com.bing.ui.custmeview.HorizontalListView: void setOnItemClickListener(android.widget.AdapterView$OnItemClickListener)
+com.bing.ui.custmeview.HorizontalListView: void setOnItemLongClickListener(android.widget.AdapterView$OnItemLongClickListener)
+com.bing.ui.custmeview.HorizontalListView: android.widget.ListAdapter getAdapter()
+com.bing.ui.custmeview.HorizontalListView: android.view.View getSelectedView()
+com.bing.ui.custmeview.HorizontalListView: void setAdapter(android.widget.ListAdapter)
+com.bing.ui.custmeview.HorizontalListView: void reset()
+com.bing.ui.custmeview.HorizontalListView: void setSelection(int)
+com.bing.ui.custmeview.HorizontalListView: void addAndMeasureChild(android.view.View,int)
+com.bing.ui.custmeview.HorizontalListView: void onLayout(boolean,int,int,int,int)
+com.bing.ui.custmeview.HorizontalListView: void fillList(int)
+com.bing.ui.custmeview.HorizontalListView: void fillListRight(int,int)
+com.bing.ui.custmeview.HorizontalListView: void fillListLeft(int,int)
+com.bing.ui.custmeview.HorizontalListView: void removeNonVisibleItems(int)
+com.bing.ui.custmeview.HorizontalListView: void positionItems(int)
+com.bing.ui.custmeview.HorizontalListView: void scrollTo(int)
+com.bing.ui.custmeview.HorizontalListView: boolean dispatchTouchEvent(android.view.MotionEvent)
+com.bing.ui.custmeview.HorizontalListView: boolean onFling(android.view.MotionEvent,android.view.MotionEvent,float,float)
+com.bing.ui.custmeview.HorizontalListView: boolean onDown(android.view.MotionEvent)
+com.bing.ui.custmeview.HorizontalListView: void setAdapter(android.widget.Adapter)
+com.bing.ui.custmeview.HorizontalListView: android.widget.Adapter getAdapter()
+com.bing.ui.custmeview.HorizontalListView: void access$2(com.bing.ui.custmeview.HorizontalListView,boolean)
+com.bing.ui.custmeview.HorizontalListView: void access$3(com.bing.ui.custmeview.HorizontalListView)
+com.bing.ui.custmeview.HorizontalListView: android.widget.AdapterView$OnItemClickListener access$4(com.bing.ui.custmeview.HorizontalListView)
+com.bing.ui.custmeview.HorizontalListView: int access$5(com.bing.ui.custmeview.HorizontalListView)
+com.bing.ui.custmeview.HorizontalListView: android.widget.AdapterView$OnItemSelectedListener access$6(com.bing.ui.custmeview.HorizontalListView)
+com.bing.ui.custmeview.HorizontalListView: android.widget.AdapterView$OnItemLongClickListener access$7(com.bing.ui.custmeview.HorizontalListView)
+com.bing.ui.custmeview.HorizontalListView$1
+com.bing.ui.custmeview.HorizontalListView$1: com.bing.ui.custmeview.HorizontalListView this$0
+com.bing.ui.custmeview.HorizontalListView$1: HorizontalListView$1(com.bing.ui.custmeview.HorizontalListView)
+com.bing.ui.custmeview.HorizontalListView$1: void onChanged()
+com.bing.ui.custmeview.HorizontalListView$1: void onInvalidated()
+com.bing.ui.custmeview.HorizontalListView$2
+com.bing.ui.custmeview.HorizontalListView$2: com.bing.ui.custmeview.HorizontalListView this$0
+com.bing.ui.custmeview.HorizontalListView$2: HorizontalListView$2(com.bing.ui.custmeview.HorizontalListView)
+com.bing.ui.custmeview.HorizontalListView$2: boolean onDown(android.view.MotionEvent)
+com.bing.ui.custmeview.HorizontalListView$2: boolean onFling(android.view.MotionEvent,android.view.MotionEvent,float,float)
+com.bing.ui.custmeview.HorizontalListView$2: boolean onScroll(android.view.MotionEvent,android.view.MotionEvent,float,float)
+com.bing.ui.custmeview.HorizontalListView$2: boolean onSingleTapConfirmed(android.view.MotionEvent)
+com.bing.ui.custmeview.HorizontalListView$2: void onLongPress(android.view.MotionEvent)
+com.bing.ui.custmeview.HorizontalListView$2: boolean isEventWithinView(android.view.MotionEvent,android.view.View)
+com.bing.ui.custmeview.HorizontalListView$3
+com.bing.ui.custmeview.HorizontalListView$3: com.bing.ui.custmeview.HorizontalListView this$0
+com.bing.ui.custmeview.HorizontalListView$3: HorizontalListView$3(com.bing.ui.custmeview.HorizontalListView)
+com.bing.ui.custmeview.HorizontalListView$3: void run()
+com.bing.ui.custmeview.IndexScroller
+com.bing.ui.custmeview.IndexScroller: float mIndexbarWidth
+com.bing.ui.custmeview.IndexScroller: float mIndexbarMargin
+com.bing.ui.custmeview.IndexScroller: float mPreviewPadding
+com.bing.ui.custmeview.IndexScroller: float mDensity
+com.bing.ui.custmeview.IndexScroller: float mScaledDensity
+com.bing.ui.custmeview.IndexScroller: float mAlphaRate
+com.bing.ui.custmeview.IndexScroller: int mState
+com.bing.ui.custmeview.IndexScroller: int mListViewWidth
+com.bing.ui.custmeview.IndexScroller: int mListViewHeight
+com.bing.ui.custmeview.IndexScroller: int mCurrentSection
+com.bing.ui.custmeview.IndexScroller: boolean mIsIndexing
+com.bing.ui.custmeview.IndexScroller: android.widget.ListView mListView
+com.bing.ui.custmeview.IndexScroller: android.widget.SectionIndexer mIndexer
+com.bing.ui.custmeview.IndexScroller: java.lang.String[] mSections
+com.bing.ui.custmeview.IndexScroller: android.graphics.RectF mIndexbarRect
+com.bing.ui.custmeview.IndexScroller: int STATE_HIDDEN
+com.bing.ui.custmeview.IndexScroller: int STATE_SHOWING
+com.bing.ui.custmeview.IndexScroller: int STATE_SHOWN
+com.bing.ui.custmeview.IndexScroller: int STATE_HIDING
+com.bing.ui.custmeview.IndexScroller: android.os.Handler mHandler
+com.bing.ui.custmeview.IndexScroller: IndexScroller(android.content.Context,android.widget.ListView)
+com.bing.ui.custmeview.IndexScroller: void draw(android.graphics.Canvas)
+com.bing.ui.custmeview.IndexScroller: boolean onTouchEvent(android.view.MotionEvent)
+com.bing.ui.custmeview.IndexScroller: void onSizeChanged(int,int,int,int)
+com.bing.ui.custmeview.IndexScroller: void show()
+com.bing.ui.custmeview.IndexScroller: void hide()
+com.bing.ui.custmeview.IndexScroller: void setAdapter(android.widget.Adapter)
+com.bing.ui.custmeview.IndexScroller: void setState(int)
+com.bing.ui.custmeview.IndexScroller: boolean contains(float,float)
+com.bing.ui.custmeview.IndexScroller: int getSectionByPoint(float)
+com.bing.ui.custmeview.IndexScroller: void fade(long)
+com.bing.ui.custmeview.IndexScroller: int access$0(com.bing.ui.custmeview.IndexScroller)
+com.bing.ui.custmeview.IndexScroller: float access$1(com.bing.ui.custmeview.IndexScroller)
+com.bing.ui.custmeview.IndexScroller: void access$2(com.bing.ui.custmeview.IndexScroller,float)
+com.bing.ui.custmeview.IndexScroller: void access$3(com.bing.ui.custmeview.IndexScroller,int)
+com.bing.ui.custmeview.IndexScroller: android.widget.ListView access$4(com.bing.ui.custmeview.IndexScroller)
+com.bing.ui.custmeview.IndexScroller: void access$5(com.bing.ui.custmeview.IndexScroller,long)
+com.bing.ui.custmeview.IndexScroller$1
+com.bing.ui.custmeview.IndexScroller$1: com.bing.ui.custmeview.IndexScroller this$0
+com.bing.ui.custmeview.IndexScroller$1: IndexScroller$1(com.bing.ui.custmeview.IndexScroller)
+com.bing.ui.custmeview.IndexScroller$1: void handleMessage(android.os.Message)
+com.bing.ui.custmeview.IndexableListView
+com.bing.ui.custmeview.IndexableListView: boolean mIsFastScrollEnabled
+com.bing.ui.custmeview.IndexableListView: com.bing.ui.custmeview.IndexScroller mScroller
+com.bing.ui.custmeview.IndexableListView: android.view.GestureDetector mGestureDetector
+com.bing.ui.custmeview.IndexableListView: IndexableListView(android.content.Context)
+com.bing.ui.custmeview.IndexableListView: IndexableListView(android.content.Context,android.util.AttributeSet)
+com.bing.ui.custmeview.IndexableListView: IndexableListView(android.content.Context,android.util.AttributeSet,int)
+com.bing.ui.custmeview.IndexableListView: boolean isFastScrollEnabled()
+com.bing.ui.custmeview.IndexableListView: void setFastScrollEnabled(boolean)
+com.bing.ui.custmeview.IndexableListView: void draw(android.graphics.Canvas)
+com.bing.ui.custmeview.IndexableListView: boolean onTouchEvent(android.view.MotionEvent)
+com.bing.ui.custmeview.IndexableListView: boolean onInterceptTouchEvent(android.view.MotionEvent)
+com.bing.ui.custmeview.IndexableListView: void setAdapter(android.widget.ListAdapter)
+com.bing.ui.custmeview.IndexableListView: void onSizeChanged(int,int,int,int)
+com.bing.ui.custmeview.IndexableListView: com.bing.ui.custmeview.IndexScroller access$0(com.bing.ui.custmeview.IndexableListView)
+com.bing.ui.custmeview.IndexableListView$1
+com.bing.ui.custmeview.IndexableListView$1: com.bing.ui.custmeview.IndexableListView this$0
+com.bing.ui.custmeview.IndexableListView$1: IndexableListView$1(com.bing.ui.custmeview.IndexableListView)
+com.bing.ui.custmeview.IndexableListView$1: boolean onFling(android.view.MotionEvent,android.view.MotionEvent,float,float)
+com.bing.ui.custmeview.SideBar
+com.bing.ui.custmeview.SideBar: com.bing.ui.custmeview.SideBar$OnTouchingLetterChangedListener onTouchingLetterChangedListener
+com.bing.ui.custmeview.SideBar: java.lang.String[] b
+com.bing.ui.custmeview.SideBar: int choose
+com.bing.ui.custmeview.SideBar: android.graphics.Paint paint
+com.bing.ui.custmeview.SideBar: android.widget.TextView mTextDialog
+com.bing.ui.custmeview.SideBar: void <clinit>()
+com.bing.ui.custmeview.SideBar: void setTextView(android.widget.TextView)
+com.bing.ui.custmeview.SideBar: SideBar(android.content.Context,android.util.AttributeSet,int)
+com.bing.ui.custmeview.SideBar: SideBar(android.content.Context,android.util.AttributeSet)
+com.bing.ui.custmeview.SideBar: SideBar(android.content.Context)
+com.bing.ui.custmeview.SideBar: void onDraw(android.graphics.Canvas)
+com.bing.ui.custmeview.SideBar: boolean dispatchTouchEvent(android.view.MotionEvent)
+com.bing.ui.custmeview.SideBar: void setOnTouchingLetterChangedListener(com.bing.ui.custmeview.SideBar$OnTouchingLetterChangedListener)
+com.bing.ui.custmeview.SideBar$OnTouchingLetterChangedListener
+com.bing.ui.custmeview.SideBar$OnTouchingLetterChangedListener: void onTouchingLetterChanged(java.lang.String)
+com.bing.ui.custmeview.ViewPagerFixed
+com.bing.ui.custmeview.ViewPagerFixed: ViewPagerFixed(android.content.Context)
+com.bing.ui.custmeview.ViewPagerFixed: ViewPagerFixed(android.content.Context,android.util.AttributeSet)
+com.bing.ui.custmeview.ViewPagerFixed: boolean onTouchEvent(android.view.MotionEvent)
+com.bing.ui.custmeview.ViewPagerFixed: boolean onInterceptTouchEvent(android.view.MotionEvent)
+com.google.gson.FieldNamingPolicy: com.google.gson.FieldNamingPolicy[] values()
+com.google.gson.FieldNamingPolicy: com.google.gson.FieldNamingPolicy valueOf(java.lang.String)
+com.google.gson.LongSerializationPolicy: com.google.gson.LongSerializationPolicy[] values()
+com.google.gson.LongSerializationPolicy: com.google.gson.LongSerializationPolicy valueOf(java.lang.String)
+com.google.gson.stream.JsonToken: com.google.gson.stream.JsonToken[] values()
+com.google.gson.stream.JsonToken: com.google.gson.stream.JsonToken valueOf(java.lang.String)
+com.nostra13.universalimageloader.core.assist.FailReason$FailType: com.nostra13.universalimageloader.core.assist.FailReason$FailType[] values()
+com.nostra13.universalimageloader.core.assist.FailReason$FailType: com.nostra13.universalimageloader.core.assist.FailReason$FailType valueOf(java.lang.String)
+com.nostra13.universalimageloader.core.assist.ImageScaleType: com.nostra13.universalimageloader.core.assist.ImageScaleType[] values()
+com.nostra13.universalimageloader.core.assist.ImageScaleType: com.nostra13.universalimageloader.core.assist.ImageScaleType valueOf(java.lang.String)
+com.nostra13.universalimageloader.core.assist.LoadedFrom: com.nostra13.universalimageloader.core.assist.LoadedFrom[] values()
+com.nostra13.universalimageloader.core.assist.LoadedFrom: com.nostra13.universalimageloader.core.assist.LoadedFrom valueOf(java.lang.String)
+com.nostra13.universalimageloader.core.assist.QueueProcessingType: com.nostra13.universalimageloader.core.assist.QueueProcessingType[] values()
+com.nostra13.universalimageloader.core.assist.QueueProcessingType: com.nostra13.universalimageloader.core.assist.QueueProcessingType valueOf(java.lang.String)
+com.nostra13.universalimageloader.core.assist.ViewScaleType: com.nostra13.universalimageloader.core.assist.ViewScaleType[] values()
+com.nostra13.universalimageloader.core.assist.ViewScaleType: com.nostra13.universalimageloader.core.assist.ViewScaleType valueOf(java.lang.String)
+com.nostra13.universalimageloader.core.download.ImageDownloader$Scheme: com.nostra13.universalimageloader.core.download.ImageDownloader$Scheme[] values()
+com.nostra13.universalimageloader.core.download.ImageDownloader$Scheme: com.nostra13.universalimageloader.core.download.ImageDownloader$Scheme valueOf(java.lang.String)
+demo.Pinyin4jAppletDemo
+demo.Pinyin4jAppletDemo: java.awt.Dimension APP_SIZE
+demo.Pinyin4jAppletDemo: long serialVersionUID
+demo.Pinyin4jAppletDemo: javax.swing.JPanel jContentPane
+demo.Pinyin4jAppletDemo: javax.swing.JTabbedPane jTabbedPane
+demo.Pinyin4jAppletDemo: javax.swing.JPanel formattedCharPanel
+demo.Pinyin4jAppletDemo: javax.swing.JPanel optionPanel
+demo.Pinyin4jAppletDemo: javax.swing.JButton convertButton
+demo.Pinyin4jAppletDemo: javax.swing.JPanel buttonPanel
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea formattedOutputField
+demo.Pinyin4jAppletDemo: javax.swing.JComboBox toneTypesComboBox
+demo.Pinyin4jAppletDemo: javax.swing.JComboBox vCharTypesComboBox
+demo.Pinyin4jAppletDemo: javax.swing.JComboBox caseTypesComboBox
+demo.Pinyin4jAppletDemo: java.lang.String appName
+demo.Pinyin4jAppletDemo: java.lang.String[] caseTypes
+demo.Pinyin4jAppletDemo: java.lang.String[] vCharTypes
+demo.Pinyin4jAppletDemo: java.lang.String[] toneTypes
+demo.Pinyin4jAppletDemo: javax.swing.JLabel toneLabel
+demo.Pinyin4jAppletDemo: javax.swing.JLabel charLabel
+demo.Pinyin4jAppletDemo: javax.swing.JTextField charTextField
+demo.Pinyin4jAppletDemo: javax.swing.JPanel unformattedCharPanel
+demo.Pinyin4jAppletDemo: javax.swing.JLabel unformattedHanyuPinyinLabel
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea unformattedHanyuPinyinTextArea
+demo.Pinyin4jAppletDemo: javax.swing.JPanel unformattedHanyuPinyinPanel
+demo.Pinyin4jAppletDemo: javax.swing.JPanel unformattedTongyongPinyinPanel
+demo.Pinyin4jAppletDemo: javax.swing.JLabel unformattedTongyongPinyinLabel
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea unformattedTongyongPinyinTextArea
+demo.Pinyin4jAppletDemo: javax.swing.JPanel unformattedWadePinyinPanel
+demo.Pinyin4jAppletDemo: javax.swing.JLabel unformattedWadePinyinLabel
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea unformattedWadePinyinTextArea
+demo.Pinyin4jAppletDemo: javax.swing.JPanel unformattedMPS2PinyinPanel
+demo.Pinyin4jAppletDemo: javax.swing.JLabel unformattedMPS2PinyinLabel
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea unformattedMPS2PinyinTextArea
+demo.Pinyin4jAppletDemo: javax.swing.JPanel unformattedYalePinyinPanel
+demo.Pinyin4jAppletDemo: javax.swing.JLabel unformattedYalePinyinLabel
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea unformattedYalePinyinTextArea
+demo.Pinyin4jAppletDemo: javax.swing.JPanel unformattedGwoyeuRomatzyhPanel
+demo.Pinyin4jAppletDemo: javax.swing.JLabel unformattedGwoyeuRomatzyhLabel
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea unformattedGwoyeuRomatzyhTextArea
+demo.Pinyin4jAppletDemo: javax.swing.JScrollPane unformattedMPS2PinyinScrollPane
+demo.Pinyin4jAppletDemo: javax.swing.JScrollPane unformattedHanyuPinyinScrollPane
+demo.Pinyin4jAppletDemo: javax.swing.JScrollPane unformattedTongyongPinyinScrollPane
+demo.Pinyin4jAppletDemo: javax.swing.JScrollPane unformattedWadePinyinScrollPane
+demo.Pinyin4jAppletDemo: javax.swing.JScrollPane unformattedYalePinyinScrollPane
+demo.Pinyin4jAppletDemo: javax.swing.JScrollPane unformattedGwoyeuRomatzyhScrollPane
+demo.Pinyin4jAppletDemo: javax.swing.JTextField getCharTextField()
+demo.Pinyin4jAppletDemo: javax.swing.JPanel getUnformattedCharPanel()
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea getUnformattedHanyuPinyinTextArea()
+demo.Pinyin4jAppletDemo: javax.swing.JPanel getUnformattedHanyuPinyinPanel()
+demo.Pinyin4jAppletDemo: javax.swing.JPanel getUnformattedTongyongPinyinPanel()
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea getUnformattedTongyongPinyinTextArea()
+demo.Pinyin4jAppletDemo: javax.swing.JPanel getUnformattedWadePinyinPanel()
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea getUnformattedWadePinyinTextArea()
+demo.Pinyin4jAppletDemo: javax.swing.JPanel getUnformattedMPS2PinyinPanel()
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea getUnformattedMPS2PinyinTextArea()
+demo.Pinyin4jAppletDemo: javax.swing.JPanel getUnformattedYalePinyinPanel()
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea getUnformattedYalePinyinTextArea()
+demo.Pinyin4jAppletDemo: javax.swing.JPanel getUnformattedGwoyeuRomatzyhPanel()
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea getUnformattedGwoyeuRomatzyhTextArea()
+demo.Pinyin4jAppletDemo: javax.swing.JScrollPane getUnformattedMPS2PinyinScrollPane()
+demo.Pinyin4jAppletDemo: javax.swing.JScrollPane getUnformattedHanyuPinyinScrollPane()
+demo.Pinyin4jAppletDemo: javax.swing.JScrollPane getUnformattedTongyongPinyinScrollPane()
+demo.Pinyin4jAppletDemo: javax.swing.JScrollPane getUnformattedWadePinyinScrollPane()
+demo.Pinyin4jAppletDemo: javax.swing.JScrollPane getUnformattedYalePinyinScrollPane()
+demo.Pinyin4jAppletDemo: javax.swing.JScrollPane getUnformattedGwoyeuRomatzyhScrollPane()
+demo.Pinyin4jAppletDemo: void main(java.lang.String[])
+demo.Pinyin4jAppletDemo: Pinyin4jAppletDemo()
+demo.Pinyin4jAppletDemo: void init()
+demo.Pinyin4jAppletDemo: javax.swing.JPanel getJContentPane()
+demo.Pinyin4jAppletDemo: javax.swing.JTabbedPane getJTabbedPane()
+demo.Pinyin4jAppletDemo: javax.swing.JPanel getFormattedCharPanel()
+demo.Pinyin4jAppletDemo: javax.swing.JPanel getOptionPanel()
+demo.Pinyin4jAppletDemo: javax.swing.JButton getConvertButton()
+demo.Pinyin4jAppletDemo: javax.swing.JPanel getButtonPanel()
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea getFormattedOutputField()
+demo.Pinyin4jAppletDemo: javax.swing.JComboBox getToneTypesComboBox()
+demo.Pinyin4jAppletDemo: javax.swing.JComboBox getVCharTypesComboBox()
+demo.Pinyin4jAppletDemo: javax.swing.JComboBox getCaseTypesComboBox()
+demo.Pinyin4jAppletDemo: java.lang.String getChineseCharText()
+demo.Pinyin4jAppletDemo: java.lang.String access$000(demo.Pinyin4jAppletDemo)
+demo.Pinyin4jAppletDemo: javax.swing.JComboBox access$100(demo.Pinyin4jAppletDemo)
+demo.Pinyin4jAppletDemo: javax.swing.JComboBox access$200(demo.Pinyin4jAppletDemo)
+demo.Pinyin4jAppletDemo: javax.swing.JComboBox access$300(demo.Pinyin4jAppletDemo)
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea access$400(demo.Pinyin4jAppletDemo)
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea access$500(demo.Pinyin4jAppletDemo)
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea access$600(demo.Pinyin4jAppletDemo)
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea access$700(demo.Pinyin4jAppletDemo)
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea access$800(demo.Pinyin4jAppletDemo)
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea access$900(demo.Pinyin4jAppletDemo)
+demo.Pinyin4jAppletDemo: javax.swing.JTextArea access$1000(demo.Pinyin4jAppletDemo)
+demo.Pinyin4jAppletDemo: void <clinit>()
+demo.Pinyin4jAppletDemo$1
+demo.Pinyin4jAppletDemo$1: demo.Pinyin4jAppletDemo val$appletDemo
+demo.Pinyin4jAppletDemo$1: Pinyin4jAppletDemo$1(demo.Pinyin4jAppletDemo)
+demo.Pinyin4jAppletDemo$1: void windowClosing(java.awt.event.WindowEvent)
+demo.Pinyin4jAppletDemo$2
+demo.Pinyin4jAppletDemo$2: demo.Pinyin4jAppletDemo this$0
+demo.Pinyin4jAppletDemo$2: Pinyin4jAppletDemo$2(demo.Pinyin4jAppletDemo)
+demo.Pinyin4jAppletDemo$2: void actionPerformed(java.awt.event.ActionEvent)
+demo.Pinyin4jAppletDemo$2: void updateUnformattedTextField(char)
+demo.Pinyin4jAppletDemo$2: void updateFormattedTextField(char,java.lang.String,java.lang.String,java.lang.String)
+demo.Pinyin4jAppletDemo$2: java.lang.String concatPinyinStringArray(java.lang.String[])
+demo.Pinyin4jAppletDemo$3
+demo.Pinyin4jAppletDemo$3: demo.Pinyin4jAppletDemo this$0
+demo.Pinyin4jAppletDemo$3: Pinyin4jAppletDemo$3(demo.Pinyin4jAppletDemo)
+demo.Pinyin4jAppletDemo$3: void actionPerformed(java.awt.event.ActionEvent)
+net.sourceforge.pinyin4j.ChineseToPinyinResource
+net.sourceforge.pinyin4j.ChineseToPinyinResource: java.util.Properties unicodeToHanyuPinyinTable
+net.sourceforge.pinyin4j.ChineseToPinyinResource: void setUnicodeToHanyuPinyinTable(java.util.Properties)
+net.sourceforge.pinyin4j.ChineseToPinyinResource: java.util.Properties getUnicodeToHanyuPinyinTable()
+net.sourceforge.pinyin4j.ChineseToPinyinResource: ChineseToPinyinResource()
+net.sourceforge.pinyin4j.ChineseToPinyinResource: void initializeResource()
+net.sourceforge.pinyin4j.ChineseToPinyinResource: java.lang.String[] getHanyuPinyinStringArray(char)
+net.sourceforge.pinyin4j.ChineseToPinyinResource: boolean isValidRecord(java.lang.String)
+net.sourceforge.pinyin4j.ChineseToPinyinResource: java.lang.String getHanyuPinyinRecordFromChar(char)
+net.sourceforge.pinyin4j.ChineseToPinyinResource: net.sourceforge.pinyin4j.ChineseToPinyinResource getInstance()
+net.sourceforge.pinyin4j.ChineseToPinyinResource: ChineseToPinyinResource(net.sourceforge.pinyin4j.ChineseToPinyinResource$1)
+net.sourceforge.pinyin4j.ChineseToPinyinResource$1
+net.sourceforge.pinyin4j.ChineseToPinyinResource$ChineseToPinyinResourceHolder
+net.sourceforge.pinyin4j.ChineseToPinyinResource$ChineseToPinyinResourceHolder: net.sourceforge.pinyin4j.ChineseToPinyinResource theInstance
+net.sourceforge.pinyin4j.ChineseToPinyinResource$ChineseToPinyinResourceHolder: ChineseToPinyinResource$ChineseToPinyinResourceHolder()
+net.sourceforge.pinyin4j.ChineseToPinyinResource$ChineseToPinyinResourceHolder: void <clinit>()
+net.sourceforge.pinyin4j.ChineseToPinyinResource$Field
+net.sourceforge.pinyin4j.ChineseToPinyinResource$Field: java.lang.String LEFT_BRACKET
+net.sourceforge.pinyin4j.ChineseToPinyinResource$Field: java.lang.String RIGHT_BRACKET
+net.sourceforge.pinyin4j.ChineseToPinyinResource$Field: java.lang.String COMMA
+net.sourceforge.pinyin4j.ChineseToPinyinResource$Field: net.sourceforge.pinyin4j.ChineseToPinyinResource this$0
+net.sourceforge.pinyin4j.ChineseToPinyinResource$Field: ChineseToPinyinResource$Field(net.sourceforge.pinyin4j.ChineseToPinyinResource)
+net.sourceforge.pinyin4j.GwoyeuRomatzyhResource
+net.sourceforge.pinyin4j.GwoyeuRomatzyhResource: com.hp.hpl.sparta.Document pinyinToGwoyeuMappingDoc
+net.sourceforge.pinyin4j.GwoyeuRomatzyhResource: void setPinyinToGwoyeuMappingDoc(com.hp.hpl.sparta.Document)
+net.sourceforge.pinyin4j.GwoyeuRomatzyhResource: com.hp.hpl.sparta.Document getPinyinToGwoyeuMappingDoc()
+net.sourceforge.pinyin4j.GwoyeuRomatzyhResource: GwoyeuRomatzyhResource()
+net.sourceforge.pinyin4j.GwoyeuRomatzyhResource: void initializeResource()
+net.sourceforge.pinyin4j.GwoyeuRomatzyhResource: net.sourceforge.pinyin4j.GwoyeuRomatzyhResource getInstance()
+net.sourceforge.pinyin4j.GwoyeuRomatzyhResource: GwoyeuRomatzyhResource(net.sourceforge.pinyin4j.GwoyeuRomatzyhResource$1)
+net.sourceforge.pinyin4j.GwoyeuRomatzyhResource$1
+net.sourceforge.pinyin4j.GwoyeuRomatzyhResource$GwoyeuRomatzyhSystemResourceHolder
+net.sourceforge.pinyin4j.GwoyeuRomatzyhResource$GwoyeuRomatzyhSystemResourceHolder: net.sourceforge.pinyin4j.GwoyeuRomatzyhResource theInstance
+net.sourceforge.pinyin4j.GwoyeuRomatzyhResource$GwoyeuRomatzyhSystemResourceHolder: GwoyeuRomatzyhResource$GwoyeuRomatzyhSystemResourceHolder()
+net.sourceforge.pinyin4j.GwoyeuRomatzyhResource$GwoyeuRomatzyhSystemResourceHolder: void <clinit>()
+net.sourceforge.pinyin4j.GwoyeuRomatzyhTranslator
+net.sourceforge.pinyin4j.GwoyeuRomatzyhTranslator: java.lang.String[] tones
+net.sourceforge.pinyin4j.GwoyeuRomatzyhTranslator: GwoyeuRomatzyhTranslator()
+net.sourceforge.pinyin4j.GwoyeuRomatzyhTranslator: java.lang.String convertHanyuPinyinToGwoyeuRomatzyh(java.lang.String)
+net.sourceforge.pinyin4j.GwoyeuRomatzyhTranslator: void <clinit>()
+net.sourceforge.pinyin4j.PinyinFormatter
+net.sourceforge.pinyin4j.PinyinFormatter: PinyinFormatter()
+net.sourceforge.pinyin4j.PinyinFormatter: java.lang.String formatHanyuPinyin(java.lang.String,net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat)
+net.sourceforge.pinyin4j.PinyinFormatter: java.lang.String convertToneNumber2ToneMark(java.lang.String)
+net.sourceforge.pinyin4j.PinyinHelper
+net.sourceforge.pinyin4j.PinyinHelper: java.lang.String[] toHanyuPinyinStringArray(char)
+net.sourceforge.pinyin4j.PinyinHelper: java.lang.String[] toHanyuPinyinStringArray(char,net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat)
+net.sourceforge.pinyin4j.PinyinHelper: java.lang.String[] getFormattedHanyuPinyinStringArray(char,net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat)
+net.sourceforge.pinyin4j.PinyinHelper: java.lang.String[] getUnformattedHanyuPinyinStringArray(char)
+net.sourceforge.pinyin4j.PinyinHelper: java.lang.String[] toTongyongPinyinStringArray(char)
+net.sourceforge.pinyin4j.PinyinHelper: java.lang.String[] toWadeGilesPinyinStringArray(char)
+net.sourceforge.pinyin4j.PinyinHelper: java.lang.String[] toMPS2PinyinStringArray(char)
+net.sourceforge.pinyin4j.PinyinHelper: java.lang.String[] toYalePinyinStringArray(char)
+net.sourceforge.pinyin4j.PinyinHelper: java.lang.String[] convertToTargetPinyinStringArray(char,net.sourceforge.pinyin4j.PinyinRomanizationType)
+net.sourceforge.pinyin4j.PinyinHelper: java.lang.String[] toGwoyeuRomatzyhStringArray(char)
+net.sourceforge.pinyin4j.PinyinHelper: java.lang.String[] convertToGwoyeuRomatzyhStringArray(char)
+net.sourceforge.pinyin4j.PinyinHelper: java.lang.String toHanyuPinyinString(java.lang.String,net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat,java.lang.String)
+net.sourceforge.pinyin4j.PinyinHelper: java.lang.String getFirstHanyuPinyinString(char,net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat)
+net.sourceforge.pinyin4j.PinyinHelper: PinyinHelper()
+net.sourceforge.pinyin4j.PinyinRomanizationResource
+net.sourceforge.pinyin4j.PinyinRomanizationResource: com.hp.hpl.sparta.Document pinyinMappingDoc
+net.sourceforge.pinyin4j.PinyinRomanizationResource: void setPinyinMappingDoc(com.hp.hpl.sparta.Document)
+net.sourceforge.pinyin4j.PinyinRomanizationResource: com.hp.hpl.sparta.Document getPinyinMappingDoc()
+net.sourceforge.pinyin4j.PinyinRomanizationResource: PinyinRomanizationResource()
+net.sourceforge.pinyin4j.PinyinRomanizationResource: void initializeResource()
+net.sourceforge.pinyin4j.PinyinRomanizationResource: net.sourceforge.pinyin4j.PinyinRomanizationResource getInstance()
+net.sourceforge.pinyin4j.PinyinRomanizationResource: PinyinRomanizationResource(net.sourceforge.pinyin4j.PinyinRomanizationResource$1)
+net.sourceforge.pinyin4j.PinyinRomanizationResource$1
+net.sourceforge.pinyin4j.PinyinRomanizationResource$PinyinRomanizationSystemResourceHolder
+net.sourceforge.pinyin4j.PinyinRomanizationResource$PinyinRomanizationSystemResourceHolder: net.sourceforge.pinyin4j.PinyinRomanizationResource theInstance
+net.sourceforge.pinyin4j.PinyinRomanizationResource$PinyinRomanizationSystemResourceHolder: PinyinRomanizationResource$PinyinRomanizationSystemResourceHolder()
+net.sourceforge.pinyin4j.PinyinRomanizationResource$PinyinRomanizationSystemResourceHolder: void <clinit>()
+net.sourceforge.pinyin4j.PinyinRomanizationTranslator
+net.sourceforge.pinyin4j.PinyinRomanizationTranslator: PinyinRomanizationTranslator()
+net.sourceforge.pinyin4j.PinyinRomanizationTranslator: java.lang.String convertRomanizationSystem(java.lang.String,net.sourceforge.pinyin4j.PinyinRomanizationType,net.sourceforge.pinyin4j.PinyinRomanizationType)
+net.sourceforge.pinyin4j.PinyinRomanizationType
+net.sourceforge.pinyin4j.PinyinRomanizationType: net.sourceforge.pinyin4j.PinyinRomanizationType HANYU_PINYIN
+net.sourceforge.pinyin4j.PinyinRomanizationType: net.sourceforge.pinyin4j.PinyinRomanizationType WADEGILES_PINYIN
+net.sourceforge.pinyin4j.PinyinRomanizationType: net.sourceforge.pinyin4j.PinyinRomanizationType MPS2_PINYIN
+net.sourceforge.pinyin4j.PinyinRomanizationType: net.sourceforge.pinyin4j.PinyinRomanizationType YALE_PINYIN
+net.sourceforge.pinyin4j.PinyinRomanizationType: net.sourceforge.pinyin4j.PinyinRomanizationType TONGYONG_PINYIN
+net.sourceforge.pinyin4j.PinyinRomanizationType: net.sourceforge.pinyin4j.PinyinRomanizationType GWOYEU_ROMATZYH
+net.sourceforge.pinyin4j.PinyinRomanizationType: java.lang.String tagName
+net.sourceforge.pinyin4j.PinyinRomanizationType: PinyinRomanizationType(java.lang.String)
+net.sourceforge.pinyin4j.PinyinRomanizationType: java.lang.String getTagName()
+net.sourceforge.pinyin4j.PinyinRomanizationType: void setTagName(java.lang.String)
+net.sourceforge.pinyin4j.PinyinRomanizationType: void <clinit>()
+net.sourceforge.pinyin4j.ResourceHelper
+net.sourceforge.pinyin4j.ResourceHelper: java.lang.Class class$net$sourceforge$pinyin4j$ResourceHelper
+net.sourceforge.pinyin4j.ResourceHelper: ResourceHelper()
+net.sourceforge.pinyin4j.ResourceHelper: java.io.BufferedInputStream getResourceInputStream(java.lang.String)
+net.sourceforge.pinyin4j.ResourceHelper: java.lang.Class class$(java.lang.String)
+net.sourceforge.pinyin4j.TextHelper
+net.sourceforge.pinyin4j.TextHelper: TextHelper()
+net.sourceforge.pinyin4j.TextHelper: java.lang.String extractToneNumber(java.lang.String)
+net.sourceforge.pinyin4j.TextHelper: java.lang.String extractPinyinString(java.lang.String)
+net.sourceforge.pinyin4j.format.HanyuPinyinCaseType
+net.sourceforge.pinyin4j.format.HanyuPinyinCaseType: net.sourceforge.pinyin4j.format.HanyuPinyinCaseType UPPERCASE
+net.sourceforge.pinyin4j.format.HanyuPinyinCaseType: net.sourceforge.pinyin4j.format.HanyuPinyinCaseType LOWERCASE
+net.sourceforge.pinyin4j.format.HanyuPinyinCaseType: java.lang.String name
+net.sourceforge.pinyin4j.format.HanyuPinyinCaseType: java.lang.String getName()
+net.sourceforge.pinyin4j.format.HanyuPinyinCaseType: void setName(java.lang.String)
+net.sourceforge.pinyin4j.format.HanyuPinyinCaseType: HanyuPinyinCaseType(java.lang.String)
+net.sourceforge.pinyin4j.format.HanyuPinyinCaseType: void <clinit>()
+net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat
+net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat: net.sourceforge.pinyin4j.format.HanyuPinyinVCharType vCharType
+net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat: net.sourceforge.pinyin4j.format.HanyuPinyinCaseType caseType
+net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat: net.sourceforge.pinyin4j.format.HanyuPinyinToneType toneType
+net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat: HanyuPinyinOutputFormat()
+net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat: void restoreDefault()
+net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat: net.sourceforge.pinyin4j.format.HanyuPinyinCaseType getCaseType()
+net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat: void setCaseType(net.sourceforge.pinyin4j.format.HanyuPinyinCaseType)
+net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat: net.sourceforge.pinyin4j.format.HanyuPinyinToneType getToneType()
+net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat: void setToneType(net.sourceforge.pinyin4j.format.HanyuPinyinToneType)
+net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat: net.sourceforge.pinyin4j.format.HanyuPinyinVCharType getVCharType()
+net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat: void setVCharType(net.sourceforge.pinyin4j.format.HanyuPinyinVCharType)
+net.sourceforge.pinyin4j.format.HanyuPinyinToneType
+net.sourceforge.pinyin4j.format.HanyuPinyinToneType: net.sourceforge.pinyin4j.format.HanyuPinyinToneType WITH_TONE_NUMBER
+net.sourceforge.pinyin4j.format.HanyuPinyinToneType: net.sourceforge.pinyin4j.format.HanyuPinyinToneType WITHOUT_TONE
+net.sourceforge.pinyin4j.format.HanyuPinyinToneType: net.sourceforge.pinyin4j.format.HanyuPinyinToneType WITH_TONE_MARK
+net.sourceforge.pinyin4j.format.HanyuPinyinToneType: java.lang.String name
+net.sourceforge.pinyin4j.format.HanyuPinyinToneType: java.lang.String getName()
+net.sourceforge.pinyin4j.format.HanyuPinyinToneType: void setName(java.lang.String)
+net.sourceforge.pinyin4j.format.HanyuPinyinToneType: HanyuPinyinToneType(java.lang.String)
+net.sourceforge.pinyin4j.format.HanyuPinyinToneType: void <clinit>()
+net.sourceforge.pinyin4j.format.HanyuPinyinVCharType
+net.sourceforge.pinyin4j.format.HanyuPinyinVCharType: net.sourceforge.pinyin4j.format.HanyuPinyinVCharType WITH_U_AND_COLON
+net.sourceforge.pinyin4j.format.HanyuPinyinVCharType: net.sourceforge.pinyin4j.format.HanyuPinyinVCharType WITH_V
+net.sourceforge.pinyin4j.format.HanyuPinyinVCharType: net.sourceforge.pinyin4j.format.HanyuPinyinVCharType WITH_U_UNICODE
+net.sourceforge.pinyin4j.format.HanyuPinyinVCharType: java.lang.String name
+net.sourceforge.pinyin4j.format.HanyuPinyinVCharType: java.lang.String getName()
+net.sourceforge.pinyin4j.format.HanyuPinyinVCharType: void setName(java.lang.String)
+net.sourceforge.pinyin4j.format.HanyuPinyinVCharType: HanyuPinyinVCharType(java.lang.String)
+net.sourceforge.pinyin4j.format.HanyuPinyinVCharType: void <clinit>()
+net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination
+net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination: long serialVersionUID
+net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination: BadHanyuPinyinOutputFormatCombination(java.lang.String)
+uk.co.senab.photoview.PhotoView
+uk.co.senab.photoview.PhotoView: PhotoView(android.content.Context)
+uk.co.senab.photoview.PhotoView: PhotoView(android.content.Context,android.util.AttributeSet)
+uk.co.senab.photoview.PhotoView: PhotoView(android.content.Context,android.util.AttributeSet,int)
+uk.co.senab.photoview.PhotoView: void setPhotoViewRotation(float)
+uk.co.senab.photoview.PhotoView: void setRotationTo(float)
+uk.co.senab.photoview.PhotoView: void setRotationBy(float)
+uk.co.senab.photoview.PhotoView: android.graphics.RectF getDisplayRect()
+uk.co.senab.photoview.PhotoView: android.graphics.Matrix getDisplayMatrix()
+uk.co.senab.photoview.PhotoView: float getMinScale()
+uk.co.senab.photoview.PhotoView: float getMinimumScale()
+uk.co.senab.photoview.PhotoView: float getMidScale()
+uk.co.senab.photoview.PhotoView: float getMediumScale()
+uk.co.senab.photoview.PhotoView: float getMaxScale()
+uk.co.senab.photoview.PhotoView: float getMaximumScale()
+uk.co.senab.photoview.PhotoView: float getScale()
+uk.co.senab.photoview.PhotoView: android.widget.ImageView$ScaleType getScaleType()
+uk.co.senab.photoview.PhotoView: void setAllowParentInterceptOnEdge(boolean)
+uk.co.senab.photoview.PhotoView: void setMinScale(float)
+uk.co.senab.photoview.PhotoView: void setMinimumScale(float)
+uk.co.senab.photoview.PhotoView: void setMidScale(float)
+uk.co.senab.photoview.PhotoView: void setMediumScale(float)
+uk.co.senab.photoview.PhotoView: void setMaxScale(float)
+uk.co.senab.photoview.PhotoView: void setMaximumScale(float)
+uk.co.senab.photoview.PhotoView: void setImageDrawable(android.graphics.drawable.Drawable)
+uk.co.senab.photoview.PhotoView: void setImageResource(int)
+uk.co.senab.photoview.PhotoView: void setImageURI(android.net.Uri)
+uk.co.senab.photoview.PhotoView: void setOnMatrixChangeListener(uk.co.senab.photoview.PhotoViewAttacher$OnMatrixChangedListener)
+uk.co.senab.photoview.PhotoView: void setOnLongClickListener(android.view.View$OnLongClickListener)
+uk.co.senab.photoview.PhotoView: void setOnPhotoTapListener(uk.co.senab.photoview.PhotoViewAttacher$OnPhotoTapListener)
+uk.co.senab.photoview.PhotoView: uk.co.senab.photoview.PhotoViewAttacher$OnPhotoTapListener getOnPhotoTapListener()
+uk.co.senab.photoview.PhotoView: void setOnViewTapListener(uk.co.senab.photoview.PhotoViewAttacher$OnViewTapListener)
+uk.co.senab.photoview.PhotoView: uk.co.senab.photoview.PhotoViewAttacher$OnViewTapListener getOnViewTapListener()
+uk.co.senab.photoview.PhotoView: void setScale(float)
+uk.co.senab.photoview.PhotoView: void setScaleType(android.widget.ImageView$ScaleType)
+uk.co.senab.photoview.PhotoView: void setZoomable(boolean)
+uk.co.senab.photoview.PhotoView: android.graphics.Bitmap getVisibleRectangleBitmap()
+uk.co.senab.photoview.PhotoView: void setZoomTransitionDuration(int)
+uk.co.senab.photoview.PhotoView: uk.co.senab.photoview.IPhotoView getIPhotoViewImplementation()
+uk.co.senab.photoview.PhotoView: void setOnDoubleTapListener(android.view.GestureDetector$OnDoubleTapListener)

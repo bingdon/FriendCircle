@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FriendPlace</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="back">Back</string>
+    <string name="title_activity_friend_place">Circle of friends</string>
+    <string name="todaycan_count">Today visitors</string>
+    <string name="total_scan_count">Total visitors</string>
+    <string name="loacting">loacting&#8230;</string>
+
+    <!-- time -->
+    <string name="year">years ago</string>
+    <string name="month">months ago</string>
+    <string name="day">days ago</string>
+    <string name="hour">hours ago</string>
+    <string name="min">mins ago</string>
+    <string name="sec">secs ago</string>
+    <string name="justnow">just now</string>
+    <string name="yesterday">yesterday</string>
+    <string name="the_day_before_yesterday">The day before yesterday</string>
+    <string name="today">Today</string>
+    <string name="date_format">Mmdd HH:mm</string>
+    <string name="year_format">yyyyyears Mmdd HH:mm</string>
+    <string name="publish_content_hint">Write mood</string>
+    <string name="cur_position">Current Position:</string>
+    <string name="visible_range">The visible range</string>
+    <string name="at_txt">Remind friends</string>
+    <string name="publish">publish</string>
+    <string name="takepic">Take a photograph</string>
+    <string name="photo">Ablum</string>
+    <string name="secphoto">Select a picture</string>
+    <string name="cant_insert_album">Accident, unable to write the album</string>
+    <string name="send">Send</string>
+    <string name="publicc">Public</string>
+    <string name="privatee">Private</string>
+    <string name="msg">Message</string>
+    <string name="clearall">Clear</string>
+    <string name="seccontacts">Select Contacts</string>
+    <string name="send_successfully">Sent successfully</string>
+    <string name="sending">sending&#8230;</string>
+    <string name="send_failed">Send failed</string>
+    <string name="send_photo">Uploading picture</string>
+    <string name="publish_mmod">Published mood</string>
+    <string name="nonewmsg">No new information</string>
+    <string name="done">Done</string>
+    <string name="say_hint">Say something</string>
+    <string name="nullcontentnotice">Content can not be empty</string>
+    <string name="launed">Liked</string>
+    <string name="aboutme">About me</string>
+    <string name="delete">Delete</string>
+    <string name="deletefailure">deletefailure</string>
+    <string name="myabulm">Myabulm</string>
+    <string name="xiekang">/</string>
+    <string name="one">1</string>
+    <string name="zan">Like</string>
+    <string name="comment">Comment</string>
+    <string name="submit">Submit</string>
+    <string name="change_bg">Replace the background</string>
+    <string name="notice">notice</string>
+    <string name="delete_msg">Delete mood？</string>
+    <string name="delete_comment_notice">Delete comment？</string>
+    <string name="is_end_notice">There are no display information</string>
+
+</resources>

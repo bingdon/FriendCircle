@@ -61,7 +61,7 @@ public class ConstactsAdapter extends BaseAdapter implements SectionIndexer {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		holder.username.setText("" + list.get(position).getUsername());
+		holder.username.setText("" + list.get(position).getNickname());
 		if (list.get(position).isSec()) {
 			holder.secBox.setChecked(true);
 		}else {

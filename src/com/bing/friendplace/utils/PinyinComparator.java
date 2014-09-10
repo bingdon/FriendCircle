@@ -17,8 +17,8 @@ public class PinyinComparator implements Comparator<FriendBean>{
      * 比较两个字符串 
      */  
     public int compare(FriendBean o1, FriendBean o2) {  
-        String name1 =  o1.getUsername();  
-        String name2 =  o2.getUsername();  
+        String name1 =  o1.getNickname();  
+        String name2 =  o2.getNickname();  
         String str1 = getPingYin(name1);  
         String str2 = getPingYin(name2);  
         int flag = str1.compareTo(str2);  

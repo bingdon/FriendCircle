@@ -26,10 +26,17 @@
         android:numColumns="3" >
     </com.bing.ui.custmeview.BingGridView>
 
+     <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Content_txt_style"
+        android:text="" />
+    
     <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         layout="@layout/time2coment" />
 
     <include
@@ -45,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:divider="@color/transparent"
-        android:dividerHeight="1dp" >
+        android:dividerHeight="0dp" >
     </ListView>
 
 </LinearLayout>

@@ -121,7 +121,7 @@ public class MsgDataMangerUtils implements MsgInterface {
 		long id = -1;
 		try {
 			ContentValues values = new ContentValues();
-			values.put(MsgTable.NAME, moodBean.getUser().getNickname());
+			values.put(MsgTable.NAME, ""+moodBean.getUser().getNickname());
 			values.put(MsgTable.CONTENT, moodBean.getContent());
 			try {
 				values.put(MsgTable.CONTENT_PIC_URL, moodBean.getImg()[0]);

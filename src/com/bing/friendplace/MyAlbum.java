@@ -39,9 +39,9 @@ public class MyAlbum extends BaseListActivity implements OnRefreshListener,
 	private ImageView headbg;
 
 	private CircleBean circleBean;
-	
+
 	private Bitmap headbg_bmp;
-	
+
 	@Override
 	protected void OnInitView() {
 		// TODO Auto-generated method stub
@@ -72,9 +72,8 @@ public class MyAlbum extends BaseListActivity implements OnRefreshListener,
 			}
 		});
 
-		
 		ablumAdapter.setOnClickLitener(this);
-		
+
 		OnInitData();
 
 	}
@@ -82,8 +81,17 @@ public class MyAlbum extends BaseListActivity implements OnRefreshListener,
 	private void initHeadView(View v) {
 		userhead = (ImageView) v.findViewById(R.id.user_head);
 		headbg = (ImageView) v.findViewById(R.id.head_bg);
+		v.findViewById(R.id.today).setVisibility(View.VISIBLE);
+		v.findViewById(R.id.today).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(context, PublishActivity.class));
+			}
+		});
 		headbg.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -109,7 +117,8 @@ public class MyAlbum extends BaseListActivity implements OnRefreshListener,
 	@Override
 	protected void OnLoadMore() {
 		// TODO Auto-generated method stub
-		HttpMethod.getuserMoods(G.uid, first, limit, new ResponseHandler(false));
+		HttpMethod
+				.getuserMoods(G.uid, first, limit, new ResponseHandler(false));
 	}
 
 	@Override
@@ -147,7 +156,7 @@ public class MyAlbum extends BaseListActivity implements OnRefreshListener,
 
 						circleBean = JsonUtils.getCircleBean(response
 								.getJSONObject("circle"));
-						
+
 						headbg_bmp = PhotoUtils.getListHeadBg(circleBean
 								.getUsername());
 						if (headbg_bmp != null) {
@@ -162,12 +171,11 @@ public class MyAlbum extends BaseListActivity implements OnRefreshListener,
 									+ circleBean.getHeadimage(),
 									circleBean.getUsername());
 						}
-						
-						LoadImageUtils.loadOriginalImg(
-								userhead,
-								HttpMethod.IMAG_URL
+
+						LoadImageUtils
+								.loadOriginalImg(userhead, HttpMethod.IMAG_URL
 										+ circleBean.getHeadimage());
-						
+
 					} catch (Exception e) {
 						// TODO: handle exception
 					}
@@ -180,33 +188,32 @@ public class MyAlbum extends BaseListActivity implements OnRefreshListener,
 		HttpMethod.getFriendList(G.uid, responseHandler);
 	}
 
-	
 	@Override
 	protected void arrangeList() {
 		// TODO Auto-generated method stub
 		super.arrangeList();
-		int length=list.size();
+		int length = list.size();
 		for (int i = 0; i < length; i++) {
-			String createtime=list.get(i).getCreatetime();
-			String day=""+BingDateUtils.getDay(createtime);
-			String month=BingDateUtils.getMonth(createtime)+"月";
-			if (i==0) {
+			String createtime = list.get(i).getCreatetime();
+			String day = "" + BingDateUtils.getDay(createtime);
+			String month = BingDateUtils.getMonth(createtime) + "月";
+			if (i == 0) {
 				list.get(i).setDay(day);
 				list.get(i).setMonth(month);
-			}else {
-				String lastcreatetime=list.get(i-1).getCreatetime();
-				String lastday=""+BingDateUtils.getDay(lastcreatetime);
-				String lastmonth=BingDateUtils.getMonth(lastcreatetime)+"月";
-				if (lastday.equals(day)&&lastmonth.equals(month)) {
+			} else {
+				String lastcreatetime = list.get(i - 1).getCreatetime();
+				String lastday = "" + BingDateUtils.getDay(lastcreatetime);
+				String lastmonth = BingDateUtils.getMonth(lastcreatetime) + "月";
+				if (lastday.equals(day) && lastmonth.equals(month)) {
 					list.get(i).setDay("");
 					list.get(i).setMonth("");
-				}else {
+				} else {
 					list.get(i).setDay(day);
 					list.get(i).setMonth(month);
 				}
 			}
 		}
-		
+
 	}
 
 	@Override
@@ -224,9 +231,7 @@ public class MyAlbum extends BaseListActivity implements OnRefreshListener,
 		// TODO Auto-generated method stub
 		delMoodDialog(position);
 	}
-	
-	
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
@@ -252,8 +257,10 @@ public class MyAlbum extends BaseListActivity implements OnRefreshListener,
 				localCursor.close();
 				headbg_bmp = PhotoUtils.getScaledBitmap(str, 600);
 				headbg.setImageBitmap(headbg_bmp);
-				PhotoUtils.saveCurrent_ResultBitmap(headbg_bmp, circleBean.getUsername());
-				new PostBg(G.uid, str).start();;
+				PhotoUtils.saveCurrent_ResultBitmap(headbg_bmp,
+						circleBean.getUsername());
+				new PostBg(G.uid, str).start();
+				;
 				AppLog.i(TAG, "路径:" + str);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -265,7 +272,8 @@ public class MyAlbum extends BaseListActivity implements OnRefreshListener,
 						PhotoUtils.imageFileUri, this);
 				headbg_bmp = PhotoUtils.getScaledBitmap(path, 600);
 				headbg.setImageBitmap(headbg_bmp);
-				PhotoUtils.saveCurrent_ResultBitmap(headbg_bmp, circleBean.getUsername());
+				PhotoUtils.saveCurrent_ResultBitmap(headbg_bmp,
+						circleBean.getUsername());
 				new PostBg(G.uid, path).start();
 				AppLog.i(TAG, "路径:" + path);
 			} catch (Exception e) {
@@ -274,5 +282,5 @@ public class MyAlbum extends BaseListActivity implements OnRefreshListener,
 
 		}
 	}
-	
+
 }

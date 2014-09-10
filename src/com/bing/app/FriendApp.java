@@ -52,9 +52,9 @@ public class FriendApp extends Application {
 		ImageLoader.getInstance().init(config);
 		
 		options = new DisplayImageOptions.Builder()
-		.showImageOnLoading(R.drawable.pic_loading_)
-		.showImageForEmptyUri(R.drawable.pic_empty)
-		.showImageOnFail(R.drawable.pic_failure).cacheInMemory(true)
+		.showImageOnLoading(R.drawable.ic_loading_large_)
+		.showImageForEmptyUri(R.drawable.ic_empty_)
+		.showImageOnFail(R.drawable.ic_empty_).cacheInMemory(true)
 		.cacheOnDisc(true).considerExifParams(true).build();
 		
 		

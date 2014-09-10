@@ -2,32 +2,22 @@ package com.bing.friendplace.adapter;
 
 import java.util.List;
 
-import com.bing.bean.AblumBean;
 import com.bing.bean.MoodBean;
 import com.bing.friendplace.CommentsAdapter;
 import com.bing.friendplace.GridAdapter;
 import com.bing.friendplace.R;
-import com.bing.support.http.HttpMethod;
-import com.bing.support.image.LoadImageUtils;
-import com.bing.support.time.BingDateUtils;
-import com.bing.support.time.TimeUtility;
 import com.bing.support.view.ListUtils;
 import com.bing.ui.custmeview.BingGridView;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager.LayoutParams;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -42,7 +32,6 @@ public class AblumAdapter extends BaseAdapter {
 
 	private CircleOnClickListener listener;
 
-	private int realPostion = 0;
 
 	public AblumAdapter(List<MoodBean> list, Context context) {
 
@@ -99,6 +88,7 @@ public class AblumAdapter extends BaseAdapter {
 			holder.laundTextView = (TextView) convertView
 					.findViewById(R.id.laud_txt);
 			holder.delete = (TextView) convertView.findViewById(R.id.delete);
+			holder.address=(TextView)convertView.findViewById(R.id.address);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -117,6 +107,7 @@ public class AblumAdapter extends BaseAdapter {
 		// holder.time.setText(""
 		// + TimeUtility.getListTime(list.get(position).getCreatetime()));
 		holder.content.setText("" + list.get(position).getContent());
+		holder.address.setText(list.get(position).getAddress());
 		holder.gridAdapter = new GridAdapter(list.get(position).getImg(),
 				context);
 		holder.bingGridView.setAdapter(holder.gridAdapter);
@@ -124,11 +115,19 @@ public class AblumAdapter extends BaseAdapter {
 				.getComment(), context);
 		holder.comments.setAdapter(holder.commentsAdapter);
 		ListUtils.setListViewHeightBasedOnChildren(holder.comments);
-
+		holder.laundTextView.setVisibility(View.VISIBLE);
+		int likecou = list.get(position).getLaudcount();
 		if (list.get(position).isIslaud()) {
-			holder.laundTextView.setVisibility(View.VISIBLE);
+			holder.laundTextView.setText(context.getString(R.string.launed)
+					+ "(" + likecou + ")");
 		} else {
-			holder.laundTextView.setVisibility(View.INVISIBLE);
+			if (likecou > 0) {
+				holder.laundTextView.setText(context.getString(R.string.zan)
+						+ "(" + likecou + ")");
+			} else {
+				holder.laundTextView.setText(R.string.zan);
+			}
+
 		}
 
 		holder.day.setText("" + list.get(position).getDay());
@@ -175,6 +174,7 @@ public class AblumAdapter extends BaseAdapter {
 		public ImageView commentmenu;
 		public TextView laundTextView;
 		public TextView delete;
+		public TextView address;
 	}
 
 	public interface CircleOnClickListener {

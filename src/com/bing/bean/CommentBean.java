@@ -27,7 +27,7 @@ public class CommentBean implements Serializable {
 	}
 
 	public String getContent() {
-		return content;
+		return ""+content;
 	}
 
 	public void setContent(String content) {
@@ -35,7 +35,7 @@ public class CommentBean implements Serializable {
 	}
 
 	public String getCreatetime() {
-		return createtime;
+		return ""+createtime;
 	}
 
 	public void setCreatetime(String createtime) {
@@ -43,6 +43,9 @@ public class CommentBean implements Serializable {
 	}
 
 	public UserBean getUser() {
+		if (user==null) {
+			user=new UserBean();
+		}
 		return user;
 	}
 

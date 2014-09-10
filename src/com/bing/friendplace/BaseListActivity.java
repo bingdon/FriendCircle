@@ -62,14 +62,13 @@ public abstract class BaseListActivity extends BaseActivity {
 		OnInitView();
 		initFilter();
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		unregisterReceiver(delReceiver);
 	}
-	
 
 	protected abstract void OnReshData();
 
@@ -140,6 +139,10 @@ public abstract class BaseListActivity extends BaseActivity {
 			try {
 				JSONArray jsonArray = response.getJSONArray("moods");
 				int length = jsonArray.length();
+				if (length == 0) {
+					Toast.makeText(context, R.string.is_end_notice,
+							Toast.LENGTH_SHORT).show();
+				}
 				for (int i = 0; i < length; i++) {
 					MoodBean moodBean = JsonUtils.getMoodBean(jsonArray
 							.getJSONObject(i));
@@ -159,6 +162,9 @@ public abstract class BaseListActivity extends BaseActivity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else {
+			Toast.makeText(context, R.string.is_end_notice,
+					Toast.LENGTH_SHORT).show();
 		}
 
 	}
@@ -264,8 +270,6 @@ public abstract class BaseListActivity extends BaseActivity {
 						}).show();
 	}
 
-	
-	
 	public class PostBg extends Thread {
 		String uid;
 		String path;
@@ -279,26 +283,23 @@ public abstract class BaseListActivity extends BaseActivity {
 		public void run() {
 			// TODO Auto-generated method stub
 			super.run();
-			Message msg=new Message();
-			msg.what=0;
-			msg.obj=PhotoUtils.bitmapNCutToString(path);
+			Message msg = new Message();
+			msg.what = 0;
+			msg.obj = PhotoUtils.bitmapNCutToString(path);
 			postBgHandler.sendMessage(msg);
 		}
 	}
-	
-	
-	
-	private Handler postBgHandler=new Handler(new Handler.Callback() {
-		
+
+	private Handler postBgHandler = new Handler(new Handler.Callback() {
+
 		@Override
 		public boolean handleMessage(Message msg) {
 			// TODO Auto-generated method stub
 			switch (msg.what) {
 			case 0:
-				String str=msg.obj.toString();
-				HttpMethod.updateCircle(G.uid, str,
-						postbgseHandler);
-				
+				String str = msg.obj.toString();
+				HttpMethod.updateCircle(G.uid, str, postbgseHandler);
+
 				break;
 
 			default:
@@ -307,51 +308,45 @@ public abstract class BaseListActivity extends BaseActivity {
 			return false;
 		}
 	});
-	
-	
-	
-	private void initFilter(){
-		IntentFilter filter=new IntentFilter();
+
+	private void initFilter() {
+		IntentFilter filter = new IntentFilter();
 		filter.addAction(ConstantS.ACTION_DEL_MOOD);
 		registerReceiver(delReceiver, filter);
 	}
-	
-	
-	private BroadcastReceiver delReceiver=new BroadcastReceiver() {
-		
+
+	private BroadcastReceiver delReceiver = new BroadcastReceiver() {
+
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			// TODO Auto-generated method stub
-			String action=intent.getAction();
+			String action = intent.getAction();
 			if (action.equals(ConstantS.ACTION_DEL_MOOD)) {
-				String id=intent.getStringExtra("moodid");
+				String id = intent.getStringExtra("moodid");
 				delMoodbyid(id);
 			}
 		}
 	};
-	
-	
-	private void delMoodbyid(String id){
-		if (list==null||list.size()==0) {
+
+	private void delMoodbyid(String id) {
+		if (list == null || list.size() == 0) {
 			return;
 		}
-		
-		int length=list.size();
+
+		int length = list.size();
 		for (int i = 0; i < length; i++) {
 			if (id.equals(list.get(i).getId())) {
-				
+
 				list.remove(i);
 				if (circleAdapter != null) {
 					circleAdapter.notifyDataSetChanged();
-				} else if(ablumAdapter != null){
+				} else if (ablumAdapter != null) {
 					ablumAdapter.notifyDataSetChanged();
 				}
 				return;
 			}
 		}
-		
-		
+
 	}
-	
-	
+
 }

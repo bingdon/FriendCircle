@@ -10,15 +10,15 @@ public class UserBean implements Serializable {
 	private static final long serialVersionUID = -7932248789954130375L;
 
 	private String uid;
-	
+
 	private String username;
 
 	private String headimage;
-	
+
 	private String nickname;
-	
+
 	public String getNickname() {
-		return nickname;
+		return "" + nickname;
 	}
 
 	public void setNickname(String nickname) {
@@ -26,7 +26,7 @@ public class UserBean implements Serializable {
 	}
 
 	public String getHeadimage() {
-		return headimage;
+		return "" + headimage;
 	}
 
 	public void setHeadimage(String headimage) {
@@ -34,7 +34,7 @@ public class UserBean implements Serializable {
 	}
 
 	public String getUid() {
-		return uid;
+		return ""+uid;
 	}
 
 	public void setUid(String uid) {
@@ -42,13 +42,19 @@ public class UserBean implements Serializable {
 	}
 
 	public String getUsername() {
-		return username;
+		return "" + username;
 	}
 
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String info = "uid=" + uid + ",username=" + username + ",headimage="
+				+ headimage + ",nickname=" + nickname;
+		return info;
+	}
+
 }

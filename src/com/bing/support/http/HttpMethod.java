@@ -182,7 +182,12 @@ public class HttpMethod {
 		params.put("uid", uid);
 		client.post(GET_NOTICE_MOOD, params, responseHandler);
 	}
-
+	/**
+	 * 获取心情详情
+	 * @param moodid
+	 * @param uid
+	 * @param responseHandler
+	 */
 	public static void getMoodInfo(String moodid, String uid,
 			AsyncHttpResponseHandler responseHandler) {
 		RequestParams params = new RequestParams();

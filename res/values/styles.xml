@@ -37,10 +37,14 @@
     
     
     <style name="Name_style" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/deepskyblue</item>
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="Content_txt_style" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+    
     <style name="Bingnotitle" parent="AppTheme">
          <item name="android:windowNoTitle">true</item>  
     </style>

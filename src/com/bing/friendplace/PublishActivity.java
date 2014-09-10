@@ -7,6 +7,11 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.baidu.location.LocationClientOption.LocationMode;
 import com.bing.bean.FriendBean;
 import com.bing.bean.MoodBean;
 import com.bing.friendplace.adapter.PublishGridAdapter;
@@ -28,7 +33,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View.OnClickListener;
 import android.view.View;
-import android.view.Window;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
@@ -39,6 +46,7 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 	private List<String> list = new ArrayList<>();
 	private PublishGridAdapter publishGridAdapter;
 	private GridView picBingGridView;
+	private TextView addressTextView;
 	private TextView visible_txt;
 	private EditText editText;
 	private TextView at_one;
@@ -48,11 +56,17 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 
 	private String address = "";
 
+	private LocationClient mLocationClient;
+	private MyLocationListener mMyLocationListener;
+	private LocationMode tempMode = LocationMode.Hight_Accuracy;
+	private String tempcoor = "gcj02";
+	private CheckBox posBox;
+	private boolean isLoaction = false;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_publish);
 		OnInitView();
 	}
@@ -64,9 +78,12 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 		list.add("ling");
 		titleTextView.setText(R.string.publish);
 		rightTextView.setText(R.string.send);
+		findViewById(R.id.position_line).setOnClickListener(listener);
+		posBox = (CheckBox) findViewById(R.id.position_check);
 		editText = (EditText) findViewById(R.id.content);
 		picBingGridView = (GridView) findViewById(R.id.pic_grid);
 		at_one = (TextView) findViewById(R.id.at_one);
+		addressTextView = (TextView) findViewById(R.id.position);
 		visible_txt = (TextView) findViewById(R.id.visible_txt);
 		publishGridAdapter = new PublishGridAdapter(context, list);
 		picBingGridView.setAdapter(publishGridAdapter);
@@ -74,6 +91,16 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 		rightTextView.setOnClickListener(listener);
 		findViewById(R.id.visible_line).setOnClickListener(listener);
 		findViewById(R.id.at_line).setOnClickListener(listener);
+		posBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				// TODO Auto-generated method stub
+				isLoaction = isChecked;
+			}
+		});
+		InitLocation();
 	}
 
 	@Override
@@ -92,6 +119,13 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 		// TODO Auto-generated method stub
 		super.onResume();
 		OnInitData();
+	}
+
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		mLocationClient.stop();
 	}
 
 	@Override
@@ -178,11 +212,23 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 				loopSecPeopleActivity();
 				break;
 
+			case R.id.position_line:
+
+				setPosition();
+				break;
 			default:
 				break;
 			}
 		}
 	};
+
+	private void setPosition() {
+		if (isLoaction) {
+			posBox.setChecked(false);
+		} else {
+			posBox.setChecked(true);
+		}
+	}
 
 	private void publishMood() {
 		content = editText.getText().toString();
@@ -271,9 +317,13 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 		NoticeUtils.removeNotice(ConstantS.PUBLISH_MOOD, context);
 		NoticeUtils.showProgressPublish(context, 0, list.size() - 1,
 				ConstantS.PUBLISH_MOOD);
-
-		HttpMethod.postMoodImg(moodid, PhotoUtils.bitmapNCutToString(list
-				.get(0)), new UpPicHandler(0, moodid));
+		try {
+			HttpMethod.postMoodImg(moodid, PhotoUtils.bitmapNCutToString(list
+					.get(0)), new UpPicHandler(0, moodid));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 
 		// new Thread(new Runnable() {
 		//
@@ -325,9 +375,14 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 					list.size() - 1, ConstantS.PUBLISH_MOOD);
 			if (position < list.size() - 2) {
 				position++;
-				HttpMethod.postMoodImg(moodid,
-						PhotoUtils.bitmapNCutToString(list.get(position)),
-						new UpPicHandler(position, moodid));
+				try {
+					HttpMethod.postMoodImg(moodid,
+							PhotoUtils.bitmapNCutToString(list.get(position)),
+							new UpPicHandler(position, moodid));
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				
 			} else {
 				NoticeUtils.removeNotice(ConstantS.PUBLISH_MOOD, context);
 				NoticeUtils.showSuccessfulNotification(context);
@@ -348,7 +403,7 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 		for (int i = 0; i < list.size(); i++) {
 			FriendBean friendBean = list.get(i);
 			if (friendBean.isSec()) {
-				name = name + " " + friendBean.getUsername();
+				name = name + " " + friendBean.getNickname();
 				uids = uids + "," + friendBean.getUid();
 			}
 
@@ -414,6 +469,46 @@ public class PublishActivity extends BaseActivity implements PicClickListener {
 		if (!TextUtils.isEmpty(sharedText)) {
 			editText.setText(sharedText);
 		}
+	}
+
+	/**
+	 * 初始化监听
+	 */
+	private void InitLocation() {
+		mLocationClient = new LocationClient(context);
+		mMyLocationListener = new MyLocationListener();
+		mLocationClient.registerLocationListener(mMyLocationListener);
+		LocationClientOption option = new LocationClientOption();
+		option.setLocationMode(tempMode);// 设置定位模式
+		option.setCoorType(tempcoor);// 返回的定位结果是百度经纬度，默认值gcj02
+		option.setIsNeedAddress(true);
+		int span = 1000;
+		option.setScanSpan(span);// 设置发起定位请求的间隔时间为5000ms
+		mLocationClient.setLocOption(option);
+		mLocationClient.start();
+	}
+
+	
+	public class MyLocationListener implements BDLocationListener {
+
+		@Override
+		public void onReceiveLocation(BDLocation arg0) {
+			// TODO Auto-generated method stub
+			AppLog.i(TAG, "地址:" + arg0.getAddrStr()+"是否定位:"+isLoaction);
+			if (isLoaction) {
+				address = arg0.getAddrStr();
+				if (!TextUtils.isEmpty(address)) {
+					addressTextView.setText("" + address);
+				}else {
+					addressTextView.setText(getString(R.string.loacting));
+				}
+			} else {
+				address = "";
+				addressTextView.setText("" + address);
+			}
+
+		}
+
 	}
 
 }

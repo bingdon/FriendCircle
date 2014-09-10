@@ -22,7 +22,6 @@ public class MsgAdapter extends BaseAdapter {
 
 	private List<MoodBean> list;
 
-	private Context context;
 
 	private LayoutInflater inflater;
 
@@ -31,7 +30,6 @@ public class MsgAdapter extends BaseAdapter {
 
 		this.inflater = LayoutInflater.from(context);
 
-		this.context = context;
 	}
 
 	@Override

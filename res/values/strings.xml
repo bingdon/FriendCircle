@@ -8,6 +8,7 @@
     <string name="title_activity_friend_place">朋友圈</string>
     <string name="todaycan_count">今日访客</string>
     <string name="total_scan_count">总浏览量</string>
+    <string name="loacting">定位中&#8230;</string>
 
     <!-- time -->
     <string name="year">年前</string>
@@ -59,6 +60,7 @@
     <string name="change_bg">更换背景</string>
     <string name="notice">提示</string>
     <string name="delete_msg">是否要删除心情？</string>
-     <string name="delete_comment_notice">是否要删除评论？</string>
+    <string name="delete_comment_notice">是否要删除评论？</string>
+    <string name="is_end_notice">目前没有任何显示信息</string>
 
 </resources>

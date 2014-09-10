@@ -17,7 +17,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:clickable="true"
-        android:src="@drawable/comment_sec" />
+        android:src="@drawable/comment_sec"/>
 
     <TextView
         android:id="@+id/laud_txt"

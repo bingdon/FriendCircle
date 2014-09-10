@@ -8,7 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.view.ContextMenu;
 import android.view.MenuItem;
@@ -20,7 +19,6 @@ import android.widget.Toast;
 
 import com.bing.bean.MoodBean;
 import com.bing.friendplace.adapter.MsgAdapter;
-import com.bing.friendplace.constant.ConstantS;
 import com.bing.friendplace.db.utils.MsgDataMangerUtils;
 import com.bing.support.debug.AppLog;
 import com.bing.support.debug.G;
@@ -121,20 +119,20 @@ public class MessageActivity extends BaseListActivity implements
 			AppLog.i(TAG, "返回:" + response);
 			if (JsonUtils.isSuccess(response)) {
 				try {
-					JSONArray jsonArray = response.getJSONArray("moods");
+					JSONArray jsonArray = response.getJSONArray("notices");
 					List<MoodBean> mList = new ArrayList<>();
 					int length = jsonArray.length();
 					for (int i = 0; i < length; i++) {
 						MoodBean moodBean = JsonUtils.getMoodBean(jsonArray
-								.getJSONObject(i));
-
+								.getJSONObject(i).getJSONObject("mood"));
 						mList.add(moodBean);
+						AppLog.i(TAG, "用户名:" + moodBean.getUser());
 						msgDataMangerUtils.insert(moodBean);
 					}
 
 					getLastData();
-					
-//					moodBeans.addAll(0, mList);
+
+					// moodBeans.addAll(0, mList);
 
 					msgAdapter.notifyDataSetChanged();
 
@@ -160,7 +158,7 @@ public class MessageActivity extends BaseListActivity implements
 	@Override
 	public void onLoadMore() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -175,7 +173,6 @@ public class MessageActivity extends BaseListActivity implements
 		msgAdapter = new MsgAdapter(context, moodBeans);
 		mBingListView.setAdapter(msgAdapter);
 		msgAdapter.notifyDataSetChanged();
-
 	}
 
 	private void deleteMsg(int position) {
@@ -200,6 +197,4 @@ public class MessageActivity extends BaseListActivity implements
 		}
 	}
 
-	
-	
 }

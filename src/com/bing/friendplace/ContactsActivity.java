@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import com.bing.bean.FriendBean;
 import com.bing.friendplace.adapter.ConstactsAdapter;
+import com.bing.friendplace.utils.CharacterParser;
 import com.bing.friendplace.utils.PinyinComparator;
 import com.bing.support.debug.G;
 import com.bing.support.http.HttpMethod;
@@ -22,10 +23,14 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -40,6 +45,12 @@ public class ContactsActivity extends BaseActivity {
 	private ConstactsAdapter constactsAdapter;
 
 	private List<FriendBean> list = new ArrayList<>();
+	
+	private List<FriendBean> list2=new ArrayList<>();
+	
+	private CharacterParser characterParser;
+	
+	private EditText search;
 
 
 	@Override
@@ -59,6 +70,7 @@ public class ContactsActivity extends BaseActivity {
 		listView = (ListView) findViewById(R.id.constact_list);
 		sideBar = (SideBar) findViewById(R.id.sideBar1);
 		dialog = (TextView) findViewById(R.id.dialog);
+		search=(EditText)findViewById(R.id.search);
 		rightTextView.setOnClickListener(listener);
 		sideBar.setTextView(dialog);
 		constactsAdapter = new ConstactsAdapter(context, list);
@@ -72,11 +84,22 @@ public class ContactsActivity extends BaseActivity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-				if (list.get(position).isSec()) {
-					list.get(position).setSec(false);
+				
+				if (list2!=null&&list2.size()>0) {
+					if (list2.get(position).isSec()) {
+						list2.get(position).setSec(false);
+					}else {
+						list2.get(position).setSec(true);
+					}
 				}else {
-					list.get(position).setSec(true);
+					if (list.get(position).isSec()) {
+						list.get(position).setSec(false);
+					}else {
+						list.get(position).setSec(true);
+					}
 				}
+				
+				
 				
 				constactsAdapter.notifyDataSetChanged();
 				
@@ -97,6 +120,29 @@ public class ContactsActivity extends BaseActivity {
 			}
 		});
 
+		
+		search.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				// TODO Auto-generated method stub
+				search4Adapter(s.toString());
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		getMyfriend();
 	}
 
@@ -174,10 +220,41 @@ public class ContactsActivity extends BaseActivity {
 	
 	private void doneSec(){
 		Intent intent = new Intent(context, PublishActivity.class);
-		intent.putExtra("atpeople", (Serializable)list);
+		if (list2!=null&&list2.size()>0) {
+			intent.putExtra("atpeople", (Serializable)list2);
+		}else {
+			intent.putExtra("atpeople", (Serializable)list);
+		}
 		setResult(RESULT_OK, intent);
 		finish();
 	}
 	
 
+	private void search4Adapter(String key){
+		if (characterParser==null) {
+			characterParser=CharacterParser.getInstance();
+		}
+		list2=new ArrayList<>();
+		if (TextUtils.isEmpty(key)) {
+			list2=list;
+		}else {
+			list2.clear();
+			for (FriendBean friendBean : list) {
+				String name = friendBean.getNickname();
+				if (name.indexOf(key.toString()) != -1
+						|| characterParser.getSelling(name).startsWith(
+								key.toString())) {
+					list2.add(friendBean);
+				}
+			}
+		}
+		
+		
+		sort(list2);
+		constactsAdapter = new ConstactsAdapter(context, list2);
+		listView.setAdapter(constactsAdapter);
+		constactsAdapter.notifyDataSetChanged();
+		
+	}
+	
 }

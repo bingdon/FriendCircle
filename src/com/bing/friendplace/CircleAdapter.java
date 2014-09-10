@@ -113,6 +113,7 @@ public class CircleAdapter extends BaseAdapter {
 			holder.laundTextView = (TextView) convertView
 					.findViewById(R.id.laud_txt);
 			holder.delete = (TextView) convertView.findViewById(R.id.delete);
+			holder.address = (TextView) convertView.findViewById(R.id.address);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -124,17 +125,17 @@ public class CircleAdapter extends BaseAdapter {
 		holder.comments.setFocusableInTouchMode(false);
 		holder.content.setFocusable(false);
 		holder.content.setFocusableInTouchMode(false);
-
 		holder.username
 				.setText("" + list.get(position).getUser().getNickname());
 		holder.time.setText(""
 				+ TimeUtility.getListTime(list.get(position).getCreatetime()));
-		if (list.get(position).getUser().getUid().equals(G.uid)) {
+		if (G.uid.equals(list.get(position).getUser().getUid())) {
 			holder.delete.setVisibility(View.VISIBLE);
 		} else {
 			holder.delete.setVisibility(View.GONE);
 		}
 		holder.content.setText("" + list.get(position).getContent());
+		holder.address.setText(list.get(position).getAddress());
 		holder.gridAdapter = new GridAdapter(list.get(position).getImg(),
 				context);
 		holder.bingGridView.setAdapter(holder.gridAdapter);
@@ -142,11 +143,19 @@ public class CircleAdapter extends BaseAdapter {
 				.getComment(), context);
 		holder.comments.setAdapter(holder.commentsAdapter);
 		ListUtils.setListViewHeightBasedOnChildren(holder.comments);
-
+		holder.laundTextView.setVisibility(View.VISIBLE);
+		int likecou = list.get(position).getLaudcount();
 		if (list.get(position).isIslaud()) {
-			holder.laundTextView.setVisibility(View.VISIBLE);
+			holder.laundTextView.setText(context.getString(R.string.launed)
+					+ "(" + likecou + ")");
 		} else {
-			holder.laundTextView.setVisibility(View.INVISIBLE);
+			if (likecou > 0) {
+				holder.laundTextView.setText(context.getString(R.string.zan)
+						+ "(" + likecou + ")");
+			} else {
+				holder.laundTextView.setText(R.string.zan);
+			}
+
 		}
 
 		LoadImageUtils.loadOriginalImg(holder.userhead, HttpMethod.IMAG_URL
@@ -252,6 +261,7 @@ public class CircleAdapter extends BaseAdapter {
 		public ImageView commentmenu;
 		public TextView laundTextView;
 		public TextView delete;
+		public TextView address;
 	}
 
 	public interface CircleOnClickListener {

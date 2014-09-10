@@ -39,6 +39,16 @@ public class MoodBean implements Serializable {
 	
 	private LaundUsersBean [] laudusers;
 	
+	private String address;
+	
+	public String getAddress() {
+		return ""+address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	public LaundUsersBean[] getLaudusers() {
 		return laudusers;
 	}
@@ -122,6 +132,9 @@ public class MoodBean implements Serializable {
 	}
 
 	public UserBean getUser() {
+		if (user==null) {
+			user=new UserBean();
+		}
 		return user;
 	}
 
